@@ -1,0 +1,141 @@
+/* General Styling */
+body {
+  font-family: 'Roboto', sans-serif; /* Clean, modern font */
+  color: #0f1a4b; /* Darker navy text for enhanced readability */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f8fa; /* Softer light background color */
+}
+
+/* Container */
+.container {
+  width: 85%; /* Wider container for more content space */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Section Styling */
+.welcome-section {
+  padding: 60px 20px; /* Generous padding for section spacing */
+  background-color: #ffffff; /* White background for sections */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lighter shadow for a more subtle depth */
+  border-radius: 16px; /* Slightly more rounded corners for a modern look */
+}
+
+/* Title Styling */
+.welcome-title {
+  font-size: 2.5rem; /* Slightly smaller for elegance */
+  color: #1d3b8f; /* Rich blue color for main title */
+  font-weight: 600; /* Thinner weight for a more elegant feel */
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Paragraph Styling */
+.welcome-text {
+  font-size: 1.2rem;
+  color: #444444; /* Medium grey for main text */
+  margin-bottom: 20px;
+  text-align: justify;
+  line-height: 1.8;
+}
+
+/* Services Columns */
+.services-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Space between columns */
+}
+
+.services-column {
+  flex: 1; /* Flex-grow to take available space */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for columns */
+  border-radius: 8px; /* Rounded corners for columns */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.services-column h2 {
+  font-size: 1.8rem;
+  color: #1d3b8f; /* Match the title color for consistency */
+  margin-bottom: 15px;
+}
+
+.services-column ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.services-column li {
+  font-size: 1.1rem;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.service-price {
+  font-weight: bold;
+  color: #e7542c; /* Match the heading color for consistency */
+  margin-left: 5px;
+}
+
+/* Call-to-Action Styling */
+.cta-button {
+  display: inline-block;
+  padding: 14px 32px; /* Slightly larger padding for emphasis */
+  font-size: 1.2rem; /* Larger font size for better visibility */
+  color: #ffffff; /* White text for the button */
+  background-color: #23406b; /* Richer blue background for the button */
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px; /* More rounded corners for a modern feel */
+  margin-top: 40px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #1a3455; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .services-columns {
+    flex-direction: column;
+    gap: 0; /* Remove gap on small screens */
+  }
+
+  .services-column {
+    margin-bottom: 20px; /* Space between stacked columns */
+  }
+}
+
+/* Add this to your existing CSS */
+
+.tax-filing-image {
+  width: 90%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 20px; /* Space above the image */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.know-more-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #1d3b8f;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.know-more-button:hover {
+  background-color: #142960;
+}

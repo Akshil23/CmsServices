@@ -1,0 +1,101 @@
+/* Underline styling for nav links */
+.nav-link {
+    color: #852085 !important;
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #fd851d; /* Underline color */
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    width: 100%; /* Expand underline on hover */
+}
+
+.nav-link:hover {
+    color: #fd851d !important; /* Match underline color on hover */
+}
+
+/* Dropdown styling */
+.dropdown-custom .dropdown-toggle {
+    color: hsl(300, 61%, 32%) !important;
+    font-size: 30px;
+    font-weight: 600;
+    background: transparent !important; /* Remove default background */
+    border: none !important; /* Remove default border */
+    position: relative;
+    text-decoration: none !important;
+}
+
+/* Remove default dropdown arrow styling */
+.dropdown-custom .dropdown-toggle::after {
+    content: "";
+    position: absolute;
+    margin-left: 0.3rem; /* Add space between text and arrow */
+    vertical-align: 0.15rem; /* Adjust vertical alignment */
+    border: 0.1rem solid transparent; /* Adjust the size of the dropdown arrow */
+    border-top-color: #fd851d; /* Set the arrow color */
+    border-bottom: 0; /* Remove the default arrow styling */
+    border-left: 0; /* Remove the default arrow styling */
+    border-right: 0; /* Remove the default arrow styling */
+}
+
+/* Add underline to dropdown text */
+.dropdown-custom:hover .dropdown-toggle {
+    text-decoration: none; /* Remove default underline */
+}
+
+.dropdown-custom:hover .dropdown-toggle::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #fd851d; /* Underline color */
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease-in-out;
+}
+
+.dropdown-custom:hover .dropdown-toggle::after {
+    width: 100%; /* Expand underline on hover */
+}
+
+
+.btn-custom {
+    background-color: #852085;
+    border-color: #4CAF50;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 10px 20px;
+    transition: background-color 0.8s ease, transform 0.2s ease;
+    margin-right: 20px;
+}
+
+.btn-custom:hover {
+    background-color: #fd851d;
+    border-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Logo adjustments */
+.logo {
+    height: 150px; /* Reduced to a normal size */
+    transition: transform 0.6s ease, filter 0.3s ease;
+    margin-left: -100px;
+}
+
+.logo:hover {
+    transform: scale(1.5); /* Slightly enlarge the logo on hover */
+}
