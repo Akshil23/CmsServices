@@ -1,17 +1,16 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom'; // Assuming you're using React Router for navigation
+import { useNavigate } from 'react-router-dom'; // For navigation
 import '../../styles/Home/WelcomeSection.css';
-import Cms_logo from '/Users/ak/Cms_services/Cms_services/public/Cms_logo.png'; // Update this path based on where you save your image
+import Cms_logo from '/Users/ak/Cms_services/Cms_services/public/Cms_logo.png'; // Update this path if necessary
 
 const WelcomeSection: React.FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleTaxFilingClick = () => {
-    history.push('/tax-filing'); // Navigate to the tax filing page
+    navigate('/tax-filing'); // Navigate to the tax filing page
   };
 
   const handleImmigrationClick = () => {
-    history.push('/immigration-services'); // Navigate to the immigration services page
+    navigate('/immigration-services'); // Navigate to the immigration services page
   };
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Navbar, Nav, Container, Button, Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/Home/Header.css";
@@ -9,7 +9,7 @@ const Header = () => {
 			<Container>
 				<Navbar.Brand href="/">
 					<img
-						src="/logo.jpg"
+						src="/Cms_logo.png"
 						alt="Logo"
 						className="d-inline-block align-top logo"
 					/>
