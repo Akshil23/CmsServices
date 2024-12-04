@@ -3,7 +3,7 @@ import '../styles/pages/ImmigrationServices.css'; // Custom CSS for consistency
 import { FaWhatsapp } from 'react-icons/fa'; // Icon for WhatsApp
 
 const DetailedImmigrationServices: React.FC = () => {
-  const whatsappNumber = "6474469738"; // Replace with your WhatsApp number
+  const whatsappNumber = "+16474469738"; // Replace with your WhatsApp number
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
