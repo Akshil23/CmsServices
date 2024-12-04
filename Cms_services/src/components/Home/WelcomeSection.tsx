@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'; // For navigation
 import '../../styles/Home/WelcomeSection.css'; // Importing custom CSS for the Welcome Section
-import Cms_logo from '/Users/ak/Cms_services/Cms_services/public/Cms_logo.png'; // Update this path if necessary
+import Cms_logo from '/Cms_logo.png'; // Update this path if necessary
 
 const WelcomeSection: React.FC = () => {
   const navigate = useNavigate(); // Initialize useNavigate for page navigation
