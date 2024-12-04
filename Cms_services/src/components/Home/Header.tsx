@@ -1,4 +1,3 @@
-
 import { Navbar, Nav, Container, Button, Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/Home/Header.css";
@@ -21,33 +20,29 @@ const Header = () => {
 							HOME
 						</Nav.Link>
 						<Dropdown className="mx-3 dropdown-custom">
-    <Dropdown.Toggle 
-        variant="link" 
-        id="dropdown-services" 
-        className="nav-link">
-        SERVICES
-    </Dropdown.Toggle>
+							<Dropdown.Toggle variant="link" id="dropdown-services" className="nav-link">
+								SERVICES
+							</Dropdown.Toggle>
 
-    <Dropdown.Menu>
-        <Dropdown.Item href="/pages/TaxFiling">
-            Tax Filing
-        </Dropdown.Item>
-        <Dropdown.Item href="/services/immigration">
-            Immigration Services
-        </Dropdown.Item>
-    </Dropdown.Menu>
-	</Dropdown>
-						<Nav.Link href="/about" className="mx-3 nav-link">
+							<Dropdown.Menu>
+								<Dropdown.Item href="/tax-filing">Tax Filing</Dropdown.Item>
+								<Dropdown.Item href="/immigration-services">Immigration Services</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
+						<Nav.Link href="/about-us" className="mx-3 nav-link nav-large">
 							ABOUT US
 						</Nav.Link>
-					
-					<Nav.Link href="/" className="mx-3 nav-link">
-							CONTACT US
-						</Nav.Link></Nav>
-					<Button variant="secondary" className="ml-lg-3 btn-custom">
-						GET A FREE QUOTE
-					</Button>
+
+						
+					</Nav>
 				</Navbar.Collapse>
+				<Navbar.Brand href="/">
+					<img
+						src="/logo2.jpeg"
+						alt="Logo2"
+						className="d-inline-block align-right logo"
+					/>
+				</Navbar.Brand>
 			</Container>
 		</Navbar>
 	);
