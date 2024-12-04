@@ -40,7 +40,7 @@ const TaxFilingPage: React.FC = () => {
       <div className="content-wrapper">
         {/* Page Header */}
         <header className="page-header">
-          <h1><strong><span className="heading">Tax Preparation Services</span></strong></h1>
+          <h1><strong><span className="heading" id="he">Tax Preparation Services</span></strong></h1>
           <p>Your trusted partner for filing taxes efficiently and accurately.</p>
         </header>
 

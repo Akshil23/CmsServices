@@ -6,7 +6,7 @@
   background-size: 15%; /* Adjusted logo size */
   background-attachment: fixed;
   background-color: #ffffff; /* Fallback color */
-  color: #333;
+  color: #000000;
   padding: 40px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
   line-height: 1.7; /* Better readability */
@@ -15,6 +15,10 @@
   text-align: center;
 }
 
+.page-header{
+
+  color:#1d3b8f;
+}
 /* Content Wrapper - Box for the main content */
 .content-wrapper {
   background-color: rgba(255, 255, 255, 0.9); /* Light translucent background */
@@ -28,12 +32,12 @@
 /* Header Styling */
 .page-header h1 {
   font-size: 2.8rem;
-  color: rgb(154, 50, 168); /* Purple for main header */
+  color: #1d3b8f; /* Purple for main header */
   margin-bottom: 15px;
 }
 
 .page-header .heading {
-  color: rgb(154, 50, 168); /* Matching purple color */
+  color: #1d3b8f; /* Matching purple color */
   font-weight: bold;
 }
 
@@ -58,7 +62,7 @@
 
 .nav-links ul li a {
   font-size: 1.1rem;
-  color: #1e964a;
+  color: #1d3b8f;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -86,7 +90,7 @@
 }
 
 .pricing-box .price {
-  color: #1e964a; /* Green for pricing */
+  color: #1d3b8f; /* Green for pricing */
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 15px;
@@ -171,7 +175,7 @@
 .user-info-form input:focus, 
 .user-info-form select:focus, 
 .user-info-form textarea:focus {
-  border-color: #1e964a; /* Green border on focus */
+  border-color: #1d3b8f; /* Green border on focus */
   outline: none;
 }
 

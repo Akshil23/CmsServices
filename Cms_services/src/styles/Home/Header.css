@@ -1,101 +1,141 @@
-/* Nav Link Styling */
-.nav-link {
+/* General Styling */
+.navbar {
+    padding: 10px 20px; /* Compact padding for the navbar */
+  }
+  
+  .navbar-brand .logo {
+    max-height: 80px; /* Limit logo size */
+    transition: transform 0.6s ease; /* Smooth hover effect */
+    margin: 0; /* Remove negative margins */
+  }
+  
+  .navbar-brand .logo:hover {
+    transform: scale(1.2); /* Enlarge logo slightly on hover */
+  }
+  
+  .nav-link {
     color: #852085 !important; /* Primary link color */
-    font-size: 30px; /* Larger font size */
-    font-weight: 600; /* Bold text */
+    font-size: 24px; /* Reduced font size for better spacing */
+    font-weight: 600;
     position: relative;
     text-decoration: none;
-    padding-bottom: 5px; /* Add padding to make room for underline */
-}
-
-.nav-link::after {
+    padding-bottom: 5px;
+  }
+  
+  .nav-link::after {
     content: "";
     position: absolute;
     width: 0;
     height: 2px;
-    background-color: #fd851d; /* Underline color */
+    background-color: #fd851d;
     left: 0;
     bottom: -5px;
     transition: width 0.3s ease-in-out;
-}
-
-.nav-link:hover::after {
-    width: 100%; /* Expand underline on hover */
-}
-
-.nav-link:hover {
-    color: #fd851d !important; /* Match underline color on hover */
-}
-
-/* Dropdown Styling */
-.dropdown-custom .dropdown-toggle {
-    color: hsl(300, 61%, 32%) !important; /* Custom dropdown text color */
-    font-size: 30px; /* Same font size as nav links */
-    font-weight: 600; /* Bold */
-    background: transparent !important; /* Remove default background */
-    border: none !important; /* Remove default border */
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .nav-link:hover {
+    color: #fd851d !important;
+  }
+  
+  .dropdown-custom .dropdown-toggle {
+    color: hsl(300, 61%, 32%) !important;
+    font-size: 24px; /* Match nav link font size */
+    font-weight: 600;
+    background: transparent !important;
+    border: none !important;
+    padding-bottom: 5px;
+  }
+  
+  .dropdown-custom .dropdown-menu {
+    font-size: 18px; /* Adjust dropdown item size for readability */
+  }
+  
+  .btn-custom {
+    background-color: #852085;
+    border-color: #4CAF50;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 8px 16px;
     position: relative;
-    padding-bottom: 5px; /* Add padding for underline */
-}
-
-.dropdown-custom .dropdown-toggle::after {
-    content: "";
-    position: absolute;
-    margin-left: 0.3rem; /* Space between text and arrow */
-    vertical-align: 0.15rem; /* Adjust vertical alignment */
-    border: 0.1rem solid transparent; /* Adjust arrow size */
-    border-top-color: #fd851d; /* Arrow color */
-}
-
-.dropdown-custom:hover .dropdown-toggle::after {
-    width: 100%; /* Expand underline on hover */
-}
-
-.dropdown-custom .dropdown-toggle:hover {
-    color: #fd851d !important; /* Change text color on hover */
-}
-
-/* Button Styling */
-.btn-custom {
-    background-color: #852085; /* Initial button color */
-    border-color: #4CAF50; /* Button border color */
-    color: #ffffff; /* Text color */
-    font-size: 16px; /* Button font size */
-    font-weight: 600; /* Bold */
-    border-radius: 15px; /* Rounded corners */
-    padding: 10px 20px; /* Button padding */
-    transition: background-color 0.8s ease, transform 0.2s ease; /* Smooth hover transition */
-    position: absolute; /* Make the button positioned absolutely */
-  /* Distance from the top */
-    right: 20px; /* Distance from the right */
-     /* Ensure the button stays on top */
-}
-
-.btn-custom:hover {
-    background-color: #fd851d; /* Change background on hover */
-    border-color: #45a049; /* Change border color on hover */
-    transform: scale(1.10); /* Slight enlargement on hover */
-}
-
-/* Logo Adjustments */
-.logo {
-    height: 150px; /* Normal logo size */
-    transition: transform 0.6s ease, filter 0.3s ease; /* Smooth hover transition */
-    margin-left: -100px; /* Adjust logo positioning */
-}
-
-.logo:hover {
-    transform: scale(1.25); /* Slightly enlarge logo on hover */
-}
-
-
-/* Logo Adjustments */
-.logo {
-    height: 150px; /* Normal logo size */
-    transition: transform 0.6s ease, filter 0.3s ease; /* Smooth hover transition */
-    margin-right: -100px; /* Adjust logo positioning */
-}
-
-.logo:hover {
-    transform: scale(1.25); /* Slightly enlarge logo on hover */
-}
+    right: 0;
+    top: 0;
+    transition: background-color 0.8s ease, transform 0.2s ease;
+  }
+  
+  .btn-custom:hover {
+    background-color: #fd851d;
+    border-color: #45a049;
+    transform: scale(1.1);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: center;
+    }
+  
+    .navbar-brand .logo {
+      max-height: 60px; /* Reduce logo size on smaller screens */
+      margin-bottom: 10px; /* Add spacing below the logo */
+    }
+  
+    .nav-link {
+      font-size: 18px; /* Reduce font size for smaller screens */
+      padding: 5px 0; /* Compact padding */
+    }
+  
+    .dropdown-custom .dropdown-toggle {
+      font-size: 18px; /* Reduce dropdown font size */
+    }
+  
+    .btn-custom {
+      font-size: 12px; /* Reduce button size for smaller screens */
+      padding: 6px 12px;
+      top: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 5px 10px; /* Further reduce navbar padding */
+    }
+  
+    .navbar-brand .logo {
+      max-height: 50px; /* Smaller logo for very small screens */
+    }
+  
+    .nav-link {
+      font-size: 16px; /* Further reduce font size */
+    }
+  
+    .dropdown-custom .dropdown-toggle {
+      font-size: 16px;
+    }
+  
+    .btn-custom {
+      font-size: 10px; /* Compact button size */
+      padding: 4px 8px;
+    }
+  }
+  /* Remove underline and arrow for the SERVICES dropdown */
+.dropdown-custom .dropdown-toggle {
+    color: hsl(300, 61%, 32%) !important; /* Custom text color */
+    font-size: 24px; /* Font size matches other nav links */
+    font-weight: 600; /* Bold text */
+    background: transparent !important; /* Transparent background */
+    border: none !important; /* No border */
+    position: relative;
+    padding-bottom: 0; /* Remove padding for underline */
+  }
+  
+  .dropdown-custom .dropdown-toggle::after {
+    content: none; /* Remove arrow */
+  }
+  

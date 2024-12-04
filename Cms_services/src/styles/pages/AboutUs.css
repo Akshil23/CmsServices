@@ -12,7 +12,7 @@
   }
   
   .page-header .heading {
-    color: #007bff;
+    color: #1d3b8f;
     font-size: 2rem; /* Made heading slightly larger */
     font-weight: bold;
   }
@@ -20,7 +20,7 @@
   .section-header {
     font-size: 1.8rem; /* Adjusted for hierarchy */
     margin-bottom: 15px;
-    color: #0056b3; /* Slightly darker shade for contrast */
+    color: #1d3b8f; /* Slightly darker shade for contrast */
   }
   
   .content-wrapper {
@@ -45,14 +45,14 @@
   }
   
   ul.contact-info-list a {
-    color: #007bff;
+    color: #1d3b8f;
     text-decoration: none;
     font-weight: bold;
   }
   
   ul.contact-info-list a:hover {
     text-decoration: underline;
-    color: #0056b3; /* Darker color on hover */
+    color: #1d3b8f; /* Darker color on hover */
   }
   
   .why-choose-us-section ul {

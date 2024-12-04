@@ -1,75 +1,103 @@
 .footer {
-  color: #2e5173;
-  background-color: #ffffff;
-  padding: 5px;
-  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa; /* Light background color */
+  padding: 10px 15px; /* Reduced padding for a compact design */
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  border-top: 1px solid #ddd;
+  font-size: 14px; /* Smaller font size for a compact look */
 }
 
 .footer-content {
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
+  display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
+  gap: 10px; /* Space between columns for better layout */
 }
 
 .footer-column {
   flex: 1;
-  padding: 5px;
-  text-align: center;
+  padding: 5px; /* Reduced padding */
+  margin: 5px; /* Reduced margin */
+  text-align: center; /* Center-align text in each column */
 }
 
-.footer-logo-container {
-  text-align: left;
-}
-
-.footer-logo {
-  width: 220px; /* Adjust size as needed */
-  max-width: 100%;
-}
-
-.footer-contact a {
-  color: #007bff;
+.footer-column a {
+  color: #333; /* Dark color for the text */
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Compact spacing between icon and text */
+  font-size: 14px; /* Adjust font size for compactness */
+}
+
+.footer-column a:hover {
+  color: #007bff; /* Highlight color on hover */
+}
+
+.footer-column span {
+  margin-left: 5px; /* Compact spacing for icons */
+}
+
+.footer-social-link {
+  color: #333; /* Dark color for social icon links */
+  margin-right: 10px;
+  font-size: 20px; /* Reduced font size for compact design */
   transition: color 0.3s ease;
 }
 
-.footer-contact a:hover {
-  color: #0056b3;
+.footer-social-link:hover {
+  color: #007bff; /* Highlight icon color on hover */
 }
 
-.footer-info {
-  text-align: right;
+.footer-column p {
+  margin: 3px 0; /* Compact spacing for text */
+  color: #333; /* Dark color for text */
 }
 
-.footer-info strong {
-  font-weight: bold;
+.footer-info a {
+  color: #333; /* Color for links */
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  color: #007bff; /* Change color for links on hover */
 }
 
 @media (max-width: 768px) {
   .footer-content {
-    flex-direction: column;
+    flex-direction: column; /* Stack columns vertically on smaller screens */
     text-align: center;
+    gap: 15px; /* Add space between stacked items */
   }
 
   .footer-column {
-    text-align: center;
-    padding: 5px 0;
+    flex: 1 1 100%; /* Make each column take up full width on mobile */
+    margin: 0; /* Remove extra margin for compactness */
+    padding: 5px 0; /* Narrow padding for mobile */
   }
 
-  .footer-logo-container {
-    text-align: center;
+  .footer {
+    padding: 10px; /* Compact padding for smaller screens */
+    font-size: 12px; /* Smaller font size on mobile */
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding: 15px 20px; /* Slightly more padding for larger screens */
+    font-size: 16px; /* Increase font size for better readability on laptops */
   }
 
-  .footer-info {
-    text-align: center;
+  .footer-column a {
+    font-size: 16px; /* Larger text for laptop view */
+  }
+
+  .footer-social-link {
+    font-size: 22px; /* Larger icons for larger screens */
   }
 }

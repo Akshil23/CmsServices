@@ -19,7 +19,7 @@
   
   .description {
     font-size: 1.3rem;
-    color: #333333; /* Darker text for better contrast */
+    color: #000000; /* Darker text for better contrast */
     margin-bottom: 20px;
     text-align: justify;
     line-height: 1.6;
@@ -56,7 +56,7 @@
   
   .price {
     font-size: 1.3rem;
-    color: #e7542c;
+    color: #1d3b8f;
     font-weight: 700;
   }
   
@@ -152,7 +152,7 @@
   
   .calculator-section .calculator-container input:focus,
   .calculator-section .calculator-container select:focus {
-    border-color: #4caf50;
+    border-color: #1d3b8f;
     outline: none;
     background-color: #fff;
   }
