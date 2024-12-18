@@ -1,5 +1,5 @@
 .hero {
-    background: url('./background1.jpg') no-repeat center center/cover;
+    background: url('/background1.jpg') no-repeat center center/cover;
     height: 650px; 
     position: relative;
   }
@@ -16,7 +16,7 @@
   
   .hero-content {
     position: relative;.hero {
-      background: url('./background1,jpg') no-repeat center center/cover;
+      background: url('/background1,jpg') no-repeat center center/cover;
       height: 700px; 
       position: relative;
     }
