@@ -1,218 +1,243 @@
-/* Main Page Styling */
-.tax-filing-page {
-  background-image: url("/Cms_services/public/Cms_logo.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 15%; /* Adjusted logo size */
-  background-attachment: fixed;
-  background-color: #ffffff; /* Fallback color */
-  color: #000000;
-  padding: 40px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
-  line-height: 1.7; /* Better readability */
-  position: relative;
-  min-height: 100vh;
-  text-align: center;
+.detailed-immigration-services {
+  padding: 60px 20px;
+  background-color: #eef2f9; /* Softer background for a professional look */
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #2d2d2d;
 }
 
-.page-header{
-
-  color:#1d3b8f;
-}
-/* Content Wrapper - Box for the main content */
-.content-wrapper {
-  background-color: rgba(255, 255, 255, 0.9); /* Light translucent background */
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+.container {
   max-width: 1100px;
   margin: 0 auto;
+  padding: 20px;
 }
 
-/* Header Styling */
-.page-header h1 {
-  font-size: 2.8rem;
-  color: #1d3b8f; /* Purple for main header */
-  margin-bottom: 15px;
-}
-
-.page-header .heading {
-  color: #1d3b8f; /* Matching purple color */
-  font-weight: bold;
-}
-
-.page-header p {
-  font-size: 1.25rem;
-  color: #d92d2d; /* Red for emphasis */
-  margin-top: 15px;
-}
-
-/* Navigation Links */
-.nav-links ul {
-  list-style-type: none;
-  padding: 0;
+.page-title {
+  font-size: 3rem;
+  color: #003f8f; /* Rich blue for professionalism */
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 
-.nav-links ul li {
-  display: inline;
-  margin-right: 15px;
+.description {
+  font-size: 1.5rem;
+  color: #2d2d2d;
+  margin-bottom: 30px;
+  text-align: justify;
+  line-height: 1.8;
 }
 
-.nav-links ul li a {
-  font-size: 1.1rem;
-  color: #1d3b8f;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.services-list {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+  gap: 25px;
 }
 
-.nav-links ul li a:hover {
-  color: #d92d2d;
-}
-
-/* Pricing and Newcomer Benefits - Separate Box Styling */
-.pricing-newcomer-benefits {
-  margin-bottom: 40px;
-}
-
-.box-container {
-  display: block; /* Stacks the boxes vertically */
-  margin-top: 20px;
-}
-
-.pricing-box, .benefits-box, .investment-box {
-  background-color: rgba(255, 255, 255, 0.9); /* Light background */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  margin-bottom: 30px; /* Spacing between the boxes */
-}
-
-.pricing-box .price {
-  color: #1d3b8f; /* Green for pricing */
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.benefits-box ul, .investment-box ul {
-  list-style-type: none;
-  padding: 0;
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.benefits-box ul li, .investment-box ul li {
-  margin-bottom: 10px;
-}
-
-/* Section Styling - Boxes with subtle shadow */
-.why-choose-us, .special-offers, .ready-to-file {
-  background-color: rgba(255, 255, 255, 0.9); /* Light background */
+.service-item {
+  background-color: #ffffff;
   padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Section Titles - Styling for the headers of sections */
-.why-choose-us h2, .special-offers h2, .ready-to-file h2 {
-  font-size: 2rem;
-  color: rgb(154, 50, 168); /* Purple color for section titles */
-  margin-bottom: 15px;
+.service-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
-/* Lists - Bullet style and indentation */
-.why-choose-us ul, .special-offers ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.why-choose-us ul li, .special-offers ul li {
+.service-item h2 {
+  font-size: 1.8rem;
+  color: #003f8f;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
-/* WhatsApp Button - CTA with hover effect */
-.ready-to-file a.whatsapp-button {
+.service-item p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.price {
+  font-size: 1.3rem;
+  color: #004bbd;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.select-service-button {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
-  background-color: #25d366; /* WhatsApp green */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
+  padding: 12px 28px;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: #ffffff;
+  background-color: #003f8f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.ready-to-file a.whatsapp-button:hover {
-  background-color: #1ebe57; /* Darker green on hover */
-  transform: translateY(-3px); /* Slight movement effect */
+.select-service-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
 }
 
-/* User Info Form - Form fields and buttons styling */
 .user-info-form {
-  margin-top: 30px;
+  margin-top: 40px;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.user-info-form input, 
-.user-info-form select, 
+.user-info-form input,
 .user-info-form textarea {
   width: 100%;
   padding: 12px;
-  margin: 10px 0;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-/* Focus Effect - Border color change on focus */
-.user-info-form input:focus, 
-.user-info-form select:focus, 
-.user-info-form textarea:focus {
-  border-color: #1d3b8f; /* Green border on focus */
-  outline: none;
-}
-
-/* Textarea Resizing - Enable vertical resizing */
-.user-info-form textarea {
-  resize: vertical;
-}
-
-/* Submit Button - Action button with hover effects */
-.user-info-form button {
-  padding: 12px 20px;
-  background-color: #1e964a; /* Green for submit button */
-  color: white;
+  border-radius: 6px;
   font-size: 1.1rem;
+}
+
+.user-info-form input:focus,
+.user-info-form textarea:focus {
+  border-color: #003f8f;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 63, 143, 0.5);
+}
+
+.whatsapp-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1.3rem;
+  color: #ffffff;
+  background-color: #2548d3;
   border: none;
-  border-radius: 5px;
+  border-radius: 100px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  text-align: center; margin-left: 50px;
+
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.user-info-form button:hover {
-  background-color: #186d34; /* Darker green on hover */
+.whatsapp-button:hover {
+  background-color: #20b954;
+  transform: translateY(-3px);
 }
 
-/* Service Selection Button - For choosing services */
-.service-selection button {
-  margin: 10px;
-  padding: 12px 20px;
-  background-color: #1e964a; /* Green for selection button */
-  color: white;
-  border: none;
-  border-radius: 5px;
+.info-sections {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.info-item {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-item h2 {
+  font-size: 1.8rem;
+  color: #003f8f;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.info-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-item ul li {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.user-info-form h2 {
+  color: #003f8f;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.user-info-form p {
+  color: #2d2d2d;
   font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.service-selection button:hover {
-  background-color: #186d34; /* Darker green on hover */
+.next-page-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.next-page-button {
+  background-color: #003f8f;
+  color: #ffffff;
+  padding: 12px 28px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.next-page-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+/* Force light mode across the site */
+html, body {
+  color-scheme: light; /* Ensures the site uses light mode styles regardless of system preferences */
+  background-color: #eef2f9; /* Set a light background color */
+  color: #2d2d2d; /* Set a default text color */
+}
+
+/* Ensure buttons remain styled consistently */
+button,
+input[type="button"],
+input[type="submit"] {
+  background-color: #003f8f; /* Default button background */
+  color: #ffffff; /* Default button text color */
+  border: none; /* Remove borders for consistency */
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Hover background */
+  color: #ffffff; /* Ensure text remains visible */
+}
+
+.service-item {
+  background-color: #ffffff; /* Ensure service items have a light background */
+  color: #2d2d2d; /* Default text color */
+}
+
+.user-info-form {
+  background-color: #ffffff; /* Consistent light background for forms */
+}
+
+.info-item {
+  background-color: #ffffff; /* Keep info items light */
+  color: #2d2d2d; /* Text remains visible */
+}
+
+/* Prevent system-level color changes on other elements */
+* {
+  color: inherit; /* Explicitly inherit text colors to prevent unwanted changes */
+  background-color: transparent; /* Default transparent unless overridden */
 }

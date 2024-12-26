@@ -1,12 +1,12 @@
 .footer {
-  background-color: #f8f9fa; /* Light background color */
-  padding: 10px 15px; /* Reduced padding for a compact design */
+  background-color: #431d8f; /* Rich blue background */
+  padding: 20px 30px; /* Generous padding for a spacious look */
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-top: 1px solid #ddd;
-  font-size: 14px; /* Smaller font size for a compact look */
+  color: #ffffff; /* White text for contrast */
+ 
 }
 
 .footer-content {
@@ -15,28 +15,36 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 10px; /* Space between columns for better layout */
+  gap: 20px; /* Increased gap for a clean layout */
 }
 
 .footer-column {
   flex: 1;
-  padding: 5px; /* Reduced padding */
-  margin: 5px; /* Reduced margin */
-  text-align: center; /* Center-align text in each column */
+  padding: 10px; /* Consistent padding */
+  margin: 5px;
+  text-align: center; /* Center-align content */
+}
+
+.footer-column h4 {
+  font-size: 1.5rem; /* Highlighted heading size */
+  font-weight: bold;
+  color: #fd851d; /* Orange for section headings */
+  margin-bottom: 10px;
+  text-transform: uppercase; /* Emphasis on headings */
 }
 
 .footer-column a {
-  color: #333; /* Dark color for the text */
+  color: #ffffff; /* White text for contrast */
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px; /* Compact spacing between icon and text */
-  font-size: 14px; /* Adjust font size for compactness */
+  gap: 10px; /* Spacing between icon and text */
+  font-size: 1rem; /* Readable font size */
 }
 
 .footer-column a:hover {
-  color: #007bff; /* Highlight color on hover */
+  color: #fd851d; /* Hover effect with orange highlight */
 }
 
 .footer-column span {
@@ -44,60 +52,64 @@
 }
 
 .footer-social-link {
-  color: #333; /* Dark color for social icon links */
+  color: #ffffff; /* White for social icons */
   margin-right: 10px;
-  font-size: 20px; /* Reduced font size for compact design */
+  font-size: 1.5rem; /* Icon size */
   transition: color 0.3s ease;
 }
 
 .footer-social-link:hover {
-  color: #007bff; /* Highlight icon color on hover */
+  color: #fd851d; /* Orange highlight on hover */
 }
 
 .footer-column p {
-  margin: 3px 0; /* Compact spacing for text */
-  color: #333; /* Dark color for text */
+  margin: 5px 0; /* Clean spacing for text */
+  font-size: 0.9rem; /* Slightly smaller text */
 }
 
 .footer-info a {
-  color: #333; /* Color for links */
+  color: #ffffff; /* White links */
   text-decoration: none;
 }
 
 .footer-info a:hover {
-  color: #007bff; /* Change color for links on hover */
+  color: #fd851d; /* Hover effect for links */
 }
 
 @media (max-width: 768px) {
   .footer-content {
-    flex-direction: column; /* Stack columns vertically on smaller screens */
+    flex-direction: column; /* Stack columns on smaller screens */
     text-align: center;
-    gap: 15px; /* Add space between stacked items */
+    gap: 20px; /* Spacing between stacked items */
   }
 
   .footer-column {
-    flex: 1 1 100%; /* Make each column take up full width on mobile */
-    margin: 0; /* Remove extra margin for compactness */
-    padding: 5px 0; /* Narrow padding for mobile */
+    flex: 1 1 100%; /* Full width for each column */
+    margin: 0;
+    padding: 10px 0; /* Compact padding for mobile */
   }
 
   .footer {
-    padding: 10px; /* Compact padding for smaller screens */
-    font-size: 12px; /* Smaller font size on mobile */
+    padding: 15px; /* Compact padding */
+    font-size: 14px; /* Adjust font size for mobile */
+  }
+
+  .footer-social-link {
+    font-size: 1.2rem; /* Smaller icon size on mobile */
   }
 }
 
 @media (min-width: 1024px) {
   .footer {
-    padding: 15px 20px; /* Slightly more padding for larger screens */
-    font-size: 16px; /* Increase font size for better readability on laptops */
+    padding: 25px 40px; /* Spacious padding for larger screens */
+    font-size: 1rem; /* Larger text for readability */
   }
 
   .footer-column a {
-    font-size: 16px; /* Larger text for laptop view */
+    font-size: 1.1rem; /* Larger links on larger screens */
   }
 
   .footer-social-link {
-    font-size: 22px; /* Larger icons for larger screens */
+    font-size: 1.8rem; /* Larger icons for desktops */
   }
 }

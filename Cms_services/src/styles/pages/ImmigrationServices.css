@@ -1,180 +1,239 @@
-.detailed-immigration-services {
+/* Force light mode across the site */
+html, body {
+    color-scheme: light; /* Enforce light mode styles */
+    background-color: #eef2f9; /* Light background */
+    color: #2d2d2d; /* Default text color */
+}
+
+/* General Page Styling */
+.newcomer-benefit {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f9; /* Consistent light background */
     padding: 60px 20px;
-    background-color: #f7f8fa;
-  }
-  
-  .container {
-    max-width: 1100px; /* Narrower container */
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .page-title {
-    font-size: 2.8rem;
-    color: #1d3b8f;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  
-  .description {
-    font-size: 1.3rem;
-    color: #000000; /* Darker text for better contrast */
-    margin-bottom: 20px;
-    text-align: justify;
-    line-height: 1.6;
-  }
-  
-  .services-list {
-    margin-top: 20px;
-  }
-  
-  .service-item {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .service-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .service-item h2 {
-    font-size: 1.8rem;
-    color: #1d3b8f;
-    font-weight: 600;
-  }
-  
-  .service-item p {
-    font-size: 1.2rem;
-    color: #333333; /* Dark color for readability */
-  }
-  
-  .price {
-    font-size: 1.3rem;
-    color: #1d3b8f;
-    font-weight: 700;
-  }
-  
-  .user-info-form {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user-info-form input,
-  .user-info-form select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #683939;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .whatsapp-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 12px 24px;
-    font-size: 1.3rem;
-    color: #ffffff;
-    background-color: #25d366;
-    border: none;
     border-radius: 8px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .whatsapp-button:hover {
-    background-color: #1da851;
-    transform: translateY(-3px);
-  }
-  
-  .whatsapp-button svg {
-    margin-right: 10px;
-  }
-  
-  .calculator-section {
-    background-color: #f8f8f8;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .calculator-section h2 {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .calculator-section .calculator-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .calculator-section .calculator-container h1 {
-    font-size: 2rem;
-    text-align: center;
-    color: #333;
-  }
-  
-  .calculator-section .calculator-container label {
-    font-size: 1.2rem;
-    color: #333;
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  .calculator-section .calculator-container input,
-  .calculator-section .calculator-container select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 20px auto;
     box-sizing: border-box;
-  }
-  
-  .calculator-section .calculator-container input:focus,
-  .calculator-section .calculator-container select:focus {
-    border-color: #1d3b8f;
-    outline: none;
-    background-color: #fff;
-  }
-  
-  .calculator-section .calculator-container button {
-    background-color: #4caf50;
-    color: white;
+    color: #2d2d2d; /* Ensure consistent text color */
+}
+
+.page-title {
+    font-size: 3rem;
+    color: #003f8f; /* Rich blue for professionalism */
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-box {
+    background: #ffffff; /* Consistent white background */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #2d2d2d; /* Text color */
+}
+
+.info-box h3 {
+    font-size: 1.8rem;
+    color: #003f8f; /* Rich blue for headings */
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.info-box h4 {
+    font-size: 1.5rem;
+    color: #555; /* Subtle gray for subheadings */
+    margin-top: 20px;
+}
+
+.info-box ol,
+.info-box ul {
+    padding-left: 20px;
+}
+
+.info-box li {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333; /* Consistent text color */
+}
+
+.info-box a {
+    color: #007bff; /* Default link color */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.info-box a:hover {
+    color: #0056b3; /* Hover link color */
+}
+
+.blockquote {
+    margin: 16px 0;
+    padding: 16px;
+    background: #fff8e1; /* Light yellow background */
+    border-left: 5px solid #ffc107;
+    font-style: italic;
+    color: #555;
+    border-radius: 8px;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.step-box {
+    flex: 1;
+    padding: 25px;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #333; /* Default text color */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.step-box h4 {
+    font-size: 1.8rem;
+    color: #003f8f; /* Consistent heading color */
+    margin-bottom: 10px;
+}
+
+.step-box p {
+    font-size: 1.2rem;
+    color: #555; /* Subtle gray for paragraph text */
+    line-height: 1.6;
+}
+
+.or-divider {
+    flex: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+}
+
+.navigate-button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
     padding: 12px 20px;
     font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
+    color: #ffffff; /* Button text color */
+    background-color: #004bbd; /* Consistent button background */
     border: none;
-    margin-top: 10px;
-  }
-  
-  .calculator-section .calculator-container button:hover {
-    background-color: #45a049;
-  }
-  
-  .calculator-section .calculator-container input::placeholder,
-  .calculator-section .calculator-container select {
-    color: #888;
-  }
-  
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.navigate-button:hover {
+    background-color: #003f8f; /* Hover effect for button */
+    transform: translateY(-3px);
+}
+
+.navigate-button:focus {
+    outline: 2px solid #003f8f; /* Focus outline for accessibility */
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .steps-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .or-divider {
+        display: none;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .info-box h3 {
+        font-size: 1.6rem;
+    }
+
+    .info-box h4 {
+        font-size: 1.4rem;
+    }
+
+    .info-box li {
+        font-size: 1rem;
+    }
+
+    .navigate-button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+button,
+input[type="button"],
+input[type="submit"],
+.navigate-button {
+  background-color: #004bbd !important; /* Force light button background */
+  color: #ffffff !important; /* Force light text color */
+  border: none !important; /* Remove borders that might appear in dark mode */
+  box-shadow: none !important; /* Remove any shadow that might darken the button */
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.navigate-button:hover {
+  background-color: #003f8f !important; /* Ensure hover background is consistent */
+  color: #ffffff !important; /* Ensure text remains visible */
+}
+
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+.navigate-button:focus {
+  background-color: #003f8f !important; /* Consistent focus state */
+  color: #ffffff !important; /* Ensure focus text is visible */
+  outline: 2px solid #003f8f !important; /* Visible focus outline */
+  outline-offset: 2px;
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled {
+  background-color: #cccccc !important; /* Disable state background */
+  color: #666666 !important; /* Disabled state text color */
+  cursor: not-allowed;
+}
+
+.navigate-button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}

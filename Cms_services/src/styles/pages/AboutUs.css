@@ -1,69 +1,108 @@
 .about-us-page {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.8; /* Increased for better readability */
-    color: #333;
-    padding: 20px;
-    background-color: #f9f9f9; /* Added light background for contrast */
-  }
-  
-  .page-header {
-    text-align: center;
-    margin-bottom: 30px; /* Slightly increased spacing for visual clarity */
-  }
-  
-  .page-header .heading {
-    color: #1d3b8f;
-    font-size: 2rem; /* Made heading slightly larger */
-    font-weight: bold;
-  }
-  
-  .section-header {
-    font-size: 1.8rem; /* Adjusted for hierarchy */
-    margin-bottom: 15px;
-    color: #1d3b8f; /* Slightly darker shade for contrast */
-  }
-  
-  .content-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 10px; /* Added padding for inner spacing */
-    background-color: #ffffff; /* Added white background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
-  
-  ul.contact-info-list {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px; /* Added margin for spacing */
-  }
-  
-  ul.contact-info-list li {
-    margin: 15px 0; /* Increased spacing between items */
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  ul.contact-info-list a {
-    color: #1d3b8f;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  ul.contact-info-list a:hover {
-    text-decoration: underline;
-    color: #1d3b8f; /* Darker color on hover */
-  }
-  
-  .why-choose-us-section ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    line-height: 1.8; /* Better spacing for bullet points */
-  }
-  
-  .why-choose-us-section ul li {
-    margin-bottom: 10px; /* Spaced bullet points for readability */
-    font-size: 1rem;
-    color: #444; /* Softer color for less emphasis */
-  }
-  
+  font-family: 'Arial', sans-serif;
+  line-height: 1.8; /* Comfortable line spacing for readability */
+  color: #333;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 30px; /* Spacing for clear separation */
+}
+
+.page-header .heading {
+  color: #1d3b8f;
+  font-size: 2.5rem; /* Larger for prominence */
+  font-weight: bold;
+  text-transform: uppercase; /* Adds emphasis */
+}
+
+.google-map-container {
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.google-map-container iframe {
+  border: none;
+  width: 100%;
+  height: 400px;
+}
+
+.section-header {
+  font-size: 2rem; /* Larger for section hierarchy */
+  margin-bottom: 20px;
+  color: #003f8f; /* Professional dark blue */
+  text-align: center;
+  font-weight: bold;
+}
+
+.content-wrapper {
+  max-width: 900px; /* Wider for more content */
+  margin: 20px auto; /* Center content with spacing */
+  padding: 20px; /* Comfortable inner spacing */
+  background-color: #ffffff; /* Clean white background */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+ul.contact-info-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px; /* Consistent spacing */
+}
+
+ul.contact-info-list li {
+  margin: 15px 0; /* Increased spacing for readability */
+  font-size: 1.1rem; /* Slightly larger font for clarity */
+  display: flex; /* Align icon and text horizontally */
+  align-items: center;
+}
+
+ul.contact-info-list li .contact-icon {
+  font-size: 1.5rem; /* Icon size for emphasis */
+  color: #003f8f; /* Match overall theme */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+ul.contact-info-list a {
+  color: #003f8f; /* Professional dark blue */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth hover */
+}
+
+ul.contact-info-list a:hover {
+  text-decoration: underline;
+  color: #fd851d; /* Contrasting orange hover effect */
+}
+
+.why-choose-us-section ul {
+  list-style-type: disc; /* Distinct bullet points */
+  margin-left: 20px; /* Proper alignment for bullets */
+  line-height: 1.8; /* Better spacing for readability */
+}
+
+.why-choose-us-section ul li {
+  margin-bottom: 15px; /* Generous spacing between items */
+  font-size: 1.1rem; /* Larger font for visibility */
+  color: #444; /* Softer text color for balance */
+}
+
+.why-choose-us-section h2 {
+  font-size: 2rem;
+  color: #1d3b8f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-note {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}

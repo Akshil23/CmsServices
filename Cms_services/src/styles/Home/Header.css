@@ -4,7 +4,7 @@
   }
   
   .navbar-brand .logo {
-    max-height: 80px; /* Limit logo size */
+    max-height: 150px; /* Limit logo size */
     transition: transform 0.6s ease; /* Smooth hover effect */
     margin: 0; /* Remove negative margins */
   }
@@ -42,12 +42,13 @@
   }
   
   .dropdown-custom .dropdown-toggle {
+    box-shadow: none;
     color: hsl(300, 61%, 32%) !important;
     font-size: 24px; /* Match nav link font size */
     font-weight: 600;
     background: transparent !important;
     border: none !important;
-    padding-bottom: 5px;
+    
   }
   
   .dropdown-custom .dropdown-menu {
@@ -57,11 +58,10 @@
   .btn-custom {
     background-color: #852085;
     border-color: #4CAF50;
-    color: #ffffff;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     border-radius: 15px;
-    padding: 8px 16px;
+    box-shadow: none;
     position: relative;
     right: 0;
     top: 0;
@@ -97,7 +97,7 @@
   
     .btn-custom {
       font-size: 12px; /* Reduce button size for smaller screens */
-      padding: 6px 12px;
+      
       top: 5px;
     }
   }
@@ -121,19 +121,11 @@
   
     .btn-custom {
       font-size: 10px; /* Compact button size */
-      padding: 4px 8px;
+     
     }
   }
   /* Remove underline and arrow for the SERVICES dropdown */
-.dropdown-custom .dropdown-toggle {
-    color: hsl(300, 61%, 32%) !important; /* Custom text color */
-    font-size: 24px; /* Font size matches other nav links */
-    font-weight: 600; /* Bold text */
-    background: transparent !important; /* Transparent background */
-    border: none !important; /* No border */
-    position: relative;
-    padding-bottom: 0; /* Remove padding for underline */
-  }
+
   
   .dropdown-custom .dropdown-toggle::after {
     content: none; /* Remove arrow */
