@@ -6,8 +6,8 @@ const Calculator: React.FC = () => {
     entryDate: "",
     maritalStatus: "",
     province: "",
-    annualIncome: "", // For GST/HST credit and OTB calculation
-    isRural: false, // For rural supplement
+    annualIncome: "",
+    isRural: false,
   });
 
   const [calculatedBenefits, setCalculatedBenefits] = useState<string | null>(null);
@@ -28,45 +28,65 @@ const Calculator: React.FC = () => {
     }
   };
 
-  // Calculate Newcomer Bonus
-  const calculateNewcomerBonus = (entryDate: string): number => {
-    const entryMonth = new Date(entryDate).getMonth() + 1; // Months are 0-based
+  const calculateNewcomerBonus = (entryDate: string, province: string): number => {
+    if (!entryDate || isNaN(new Date(entryDate).getTime())) {
+      return 0;
+    }
 
-    if (entryMonth >= 10 && entryMonth <= 12) return 490; // Oct-Dec
-    if (entryMonth >= 7 && entryMonth < 10) return 835; // Jul-Sep
-    if (entryMonth >= 4 && entryMonth < 7) return 1120; // Apr-Jun
-    if (entryMonth >= 1 && entryMonth < 4) return 1441.25; // Jan-Mar
+    const entryMonth = new Date(entryDate).getMonth() + 1;
 
-    return 0;
-  };
-
-  // Calculate CCR Estimate
-  const calculateCCREstimate = (province: string, isRural: boolean): number => {
-    const ccrAmounts: { [key: string]: { [key: number]: number } } = {
-      Ontario: { 2024: 140, 2025: 161 },
-      Alberta: { 2024: 225, 2025: 258 },
+    const newcomerBonuses: { [province: string]: { [monthRange: string]: number } } = {
+      Ontario: { "1-4": 1120, "5-8": 835, "9-12": 490 },
+      Saskatchewan: { "1-4": 1323.4, "5-8": 945.55, "9-12": 567.7 },
+      "New Brunswick": { "1-4": 925, "5-8": 670, "9-12": 415 },
+      "Nova Scotia": { "1-4": 904, "5-8": 652.25, "9-12": 400.5 },
+      "British Columbia": { "1-4": 718, "5-8": 507, "9-12": 296 },
+      Quebec: { "1-4": 340, "5-8": 255, "9-12": 170 },
+      Alberta: { "1-4": 1015, "5-8": 705, "9-12": 395 },
+      Manitoba: { "1-4": 790, "5-8": 555, "9-12": 320 },
     };
 
-    const ruralSupplement = isRural ? 0.2 : 0; // 20% rural supplement
+    const getBonus = (month: number, bonusData: { [monthRange: string]: number }): number => {
+      if (month >= 1 && month <= 4) return bonusData["1-4"];
+      if (month >= 5 && month <= 8) return bonusData["5-8"];
+      if (month >= 9 && month <= 12) return bonusData["9-12"];
+      return 0;
+    };
 
-    const jan2025 = ccrAmounts[province]?.[2024] || 0;
-    const apr2025 = ccrAmounts[province]?.[2024] || 0;
+    return province in newcomerBonuses ? getBonus(entryMonth, newcomerBonuses[province]) : 0;
+  };
+
+  const calculateCCREstimate = (province: string, isRural: boolean): number => {
+    const ccrAmounts: { [key: string]: { [key: number]: number } } = {
+      Ontario: { 2024: 160, 2025: 159.6 },
+      Alberta: { 2024: 256.5, 2025: 258 },
+      Manitoba: { 2024: 171, 2025: 175 },
+      "British Columbia": { 2024: 142, 2025: 145 },
+      Quebec: { 2024: 0, 2025: 0 },
+      "New Brunswick": { 2024: 108.3, 2025: 110 },
+      "Nova Scotia": { 2024: 117.42, 2025: 120 },
+      Saskatchewan: { 2024: 188, 2025: 190 },
+    };
+
+    const ruralSupplement = isRural ? 0.2 : 0;
+
     const jul2025 = (ccrAmounts[province]?.[2025] || 0) * (1 + ruralSupplement);
     const oct2025 = (ccrAmounts[province]?.[2025] || 0) * (1 + ruralSupplement);
     const jan2026 = (ccrAmounts[province]?.[2025] || 0) * (1 + ruralSupplement);
     const apr2026 = (ccrAmounts[province]?.[2025] || 0) * (1 + ruralSupplement);
 
-    return jan2025 + apr2025 + jul2025 + oct2025 + jan2026 + apr2026;
+    return jul2025 + oct2025 + jan2026 + apr2026;
   };
 
-  // Calculate GST/HST Credit Estimate
+  const calculateProvincialBenefits = (province: string): { ostc: number; oeptcRange: [number, number] } | null => {
+    if (province === "Ontario") {
+      return { ostc: 380, oeptcRange: [140, 550] };
+    }
+    return null;
+  };
+
   const calculateGSTHSTEstimate = (): number => {
-    return 358; // Fixed estimate for the given scenario
-  };
-
-  // Calculate OTB (OEPTC and OSTC) Estimate
-  const calculateOTBEstimate = (): { oeptc: number; ostc: number } => {
-    return { oeptc: 133, ostc: 368 };
+    return 357;
   };
 
   const calculateBenefits = () => {
@@ -77,53 +97,43 @@ const Calculator: React.FC = () => {
       return;
     }
 
-    const entryYear = new Date(entryDate).getFullYear();
-
-    if (!["Ontario", "Alberta"].includes(province)) {
+    if (maritalStatus === "married") {
       setCalculatedBenefits(
-        `This calculator is currently only available for specific provinces. Please contact us for more information.`
+        `To get an accurate calculation of your benefits, please contact us on WhatsApp for personalized assistance: 
+        <a href='https://api.whatsapp.com/message/HOXWXFRQRQYCB1?autoload=1&app_absent=0' target='_blank'> Click here to chat with us</a>`
       );
       return;
     }
 
-    if (entryYear === 2023) {
-      const hasFiledTaxes = window.confirm(
-        "Have you previously filed taxes in Canada?\nSelect 'Ok' if 'Yes' or 'Cancel' if 'No'."
-      );
-
-      if (hasFiledTaxes) {
-        setCalculatedBenefits(
-          `To get more details about your benefits, please contact us on WhatsApp for personalized assistance: 
-          <a href='https://api.whatsapp.com/message/HOXWXFRQRQYCB1?autoload=1&app_absent=0' target='_blank'> Click here to chat with us</a>`
-        );
-        return;
-      } else {
-        setCalculatedBenefits(
-          `Congratulations! You are eligible to claim benefits for both 2023 and 2024. You may be entitled to a refund of more than $3,500! 
-          Contact us for a detailed breakdown and personalized assistance: 
-          <a href='https://api.whatsapp.com/message/HOXWXFRQRQYCB1?autoload=1&app_absent=0' target='_blank'> Click here to chat with us</a>`
-        );
-        return;
-      }
-    }
-
-    // Calculate all benefits
-    const newcomerBonus = calculateNewcomerBonus(entryDate);
+    const newcomerBonus = calculateNewcomerBonus(entryDate, province);
     const ccrEstimate = calculateCCREstimate(province, isRural);
     const gstHstEstimate = calculateGSTHSTEstimate();
-    const { oeptc, ostc } = calculateOTBEstimate();
+    const provincialBenefits = calculateProvincialBenefits(province);
 
-    // Total Benefits
-    const totalBenefits = newcomerBonus + ccrEstimate + gstHstEstimate + oeptc + ostc;
+    const ostc = provincialBenefits?.ostc || 0;
+    const oeptcLow = provincialBenefits?.oeptcRange[0] || 0;
+    const oeptcHigh = provincialBenefits?.oeptcRange[1] || 0;
+
+    const totalBenefitsLow = newcomerBonus + ccrEstimate + gstHstEstimate + ostc + (province === "Ontario" ? oeptcLow : 0);
+    const totalBenefitsHigh = newcomerBonus + ccrEstimate + gstHstEstimate + ostc + (province === "Ontario" ? oeptcHigh : 0);
 
     const benefits = `
+      <p><strong>Total Benefits:</strong> ${
+        province === "Ontario"
+          ? `$${totalBenefitsLow.toFixed(2)} - $${totalBenefitsHigh.toFixed(2)}`
+          : `$${totalBenefitsLow.toFixed(2)}`
+      }</p>
+      ${
+        province === "Ontario"
+          ? `<p>This range is due to the variable amount of the Ontario Energy and Property Tax Credit (OEPTC), which depends on your rent, energy costs, and income.</p>`
+          : ""
+      }
       <p><strong>Newcomer Bonus:</strong> $${newcomerBonus.toFixed(2)}</p>
-      <p><strong>Canada Carbon Rebate (CCR) Estimate:</strong> $${ccrEstimate.toFixed(2)}</p>
+      <p><strong>Canada Carbon Rebate (CCR):</strong> $${ccrEstimate.toFixed(2)}</p>
       <p><strong>GST/HST Credit Estimate:</strong> $${gstHstEstimate.toFixed(2)}</p>
-      <p><strong>Ontario Energy and Property Tax Credit (OEPTC):</strong> $${oeptc.toFixed(2)}</p>
-      <p><strong>Ontario Sales Tax Credit (OSTC):</strong> $${ostc.toFixed(2)}</p>
-      <p><strong>Total Benefits:</strong> $${totalBenefits.toFixed(2)}</p>
+      ${province === "Ontario" ? `<p><strong>OSTC:</strong> $${ostc}</p>` : ""}
     `;
+
     setCalculatedBenefits(benefits);
   };
 
@@ -151,6 +161,12 @@ const Calculator: React.FC = () => {
           <option value="">Select</option>
           <option value="Ontario">Ontario</option>
           <option value="Alberta">Alberta</option>
+          <option value="British Columbia">British Columbia</option>
+          <option value="Saskatchewan">Saskatchewan</option>
+          <option value="Nova Scotia">Nova Scotia</option>
+          <option value="Quebec">Quebec</option>
+          <option value="New Brunswick">New Brunswick</option>
+          <option value="Manitoba">Manitoba</option>
         </select>
       </div>
       <div className="form-group">
@@ -166,16 +182,28 @@ const Calculator: React.FC = () => {
           <option value="married">Married</option>
         </select>
       </div>
-      <div className="form-group">
-        <label htmlFor="isRural">Do you live in a rural area?</label>
-        <input
-          type="checkbox"
-          id="isRural"
-          name="isRural"
-          checked={formData.isRural}
-          onChange={handleInputChange}
-        />
-      </div>
+      {["Ontario", "Alberta", "Saskatchewan", "Manitoba", "New Brunswick", "Nova Scotia"].includes(formData.province) && (
+        <div className="form-group">
+          <label htmlFor="isRural">Do you live in a rural area?</label>
+          <input
+            type="checkbox"
+            id="isRural"
+            name="isRural"
+            checked={formData.isRural}
+            onChange={handleInputChange}
+          />
+          <p>
+            To check if your location qualifies for the rural supplement,{" "}
+            <a
+              href="https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-carbon-rebate/qualify-for-the-supplement.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              click here
+            </a>.
+          </p>
+        </div>
+      )}
       <button onClick={calculateBenefits}>Calculate Benefits</button>
       {calculatedBenefits && <div className="result" dangerouslySetInnerHTML={{ __html: calculatedBenefits }}></div>}
     </div>

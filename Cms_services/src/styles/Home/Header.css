@@ -1,133 +1,172 @@
 /* General Styling */
 .navbar {
-    padding: 10px 20px; /* Compact padding for the navbar */
-  }
-  
-  .navbar-brand .logo {
-    max-height: 150px; /* Limit logo size */
-    transition: transform 0.6s ease; /* Smooth hover effect */
-    margin: 0; /* Remove negative margins */
-  }
-  
-  .navbar-brand .logo:hover {
-    transform: scale(1.2); /* Enlarge logo slightly on hover */
-  }
-  
-  .nav-link {
-    color: #852085 !important; /* Primary link color */
-    font-size: 24px; /* Reduced font size for better spacing */
-    font-weight: 600;
-    position: relative;
-    text-decoration: none;
-    padding-bottom: 5px;
-  }
-  
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #fd851d;
-    left: 0;
-    bottom: -5px;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  
-  .nav-link:hover {
-    color: #fd851d !important;
-  }
-  
-  .dropdown-custom .dropdown-toggle {
-    box-shadow: none;
-    color: hsl(300, 61%, 32%) !important;
-    font-size: 24px; /* Match nav link font size */
-    font-weight: 600;
-    background: transparent !important;
-    border: none !important;
-    
-  }
-  
-  .dropdown-custom .dropdown-menu {
-    font-size: 18px; /* Adjust dropdown item size for readability */
-  }
-  
-  .btn-custom {
-    background-color: #852085;
-    border-color: #4CAF50;
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: 15px;
-    box-shadow: none;
-    position: relative;
-    right: 0;
-    top: 0;
-    transition: background-color 0.8s ease, transform 0.2s ease;
-  }
-  
-  .btn-custom:hover {
-    background-color: #fd851d;
-    border-color: #45a049;
-    transform: scale(1.1);
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column; /* Stack elements vertically */
-      align-items: center;
-    }
-  
-    .navbar-brand .logo {
-      max-height: 60px; /* Reduce logo size on smaller screens */
-      margin-bottom: 10px; /* Add spacing below the logo */
-    }
-  
-    .nav-link {
-      font-size: 18px; /* Reduce font size for smaller screens */
-      padding: 5px 0; /* Compact padding */
-    }
-  
-    .dropdown-custom .dropdown-toggle {
-      font-size: 18px; /* Reduce dropdown font size */
-    }
-  
-    .btn-custom {
-      font-size: 12px; /* Reduce button size for smaller screens */
-      
-      top: 5px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .navbar {
-      padding: 5px 10px; /* Further reduce navbar padding */
-    }
-  
-    .navbar-brand .logo {
-      max-height: 50px; /* Smaller logo for very small screens */
-    }
-  
-    .nav-link {
-      font-size: 16px; /* Further reduce font size */
-    }
-  
-    .dropdown-custom .dropdown-toggle {
-      font-size: 16px;
-    }
-  
-    .btn-custom {
-      font-size: 10px; /* Compact button size */
-     
-    }
-  }
-  /* Remove underline and arrow for the SERVICES dropdown */
+  padding: 10px 20px; /* Compact padding */
+  background-color: white; /* Light background */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
 
-  
-  .dropdown-custom .dropdown-toggle::after {
-    content: none; /* Remove arrow */
+.navbar-brand .logo {
+  max-height: 150px; /* Limit logo size */
+  transition: transform 0.6s ease; /* Smooth hover effect */
+  margin: 0; /* No extra margin */
+}
+
+.navbar-brand .logo:hover {
+  transform: scale(1.2); /* Enlarge logo slightly on hover */
+}
+
+.nav-link {
+  color: #852085 !important; /* Primary link color */
+  font-size: 24px; /* Font size */
+  font-weight: 600;
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 5px;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #fd851d;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #fd851d !important; /* Hover color */
+}
+
+.dropdown-custom .dropdown-toggle {
+  color: hsl(300, 61%, 32%) !important; /* Link color */
+  font-size: 24px; /* Match nav link font size */
+  font-weight: 600;
+  background: transparent !important;
+  border: none !important;
+}
+
+.dropdown-custom .dropdown-menu {
+  font-size: 18px; /* Dropdown item size */
+  padding: 10px; /* Adjust padding */
+}
+
+.dropdown-custom .dropdown-toggle::after {
+  content: none; /* Remove dropdown arrow */
+}
+
+/* Custom Toggler Icon */
+.navbar-toggler {
+  border: none; /* Remove default border */
+  padding: 5px; /* Add padding */
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 30px; /* Width of the lines */
+  height: 2px; /* Thickness of each line */
+  background-color: white; /* Color of the lines */
+  position: relative; /* Position for stacking */
+  box-shadow: none;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  display: block;
+  width: 30px; /* Match the main line width */
+  height: 2px; /* Match the main line thickness */
+  background-color: white; /* Match the main line color */
+  position: absolute; /* Stack the lines */
+  left: 0; /* Align with the main line */
+  transition: all 0.3s ease; /* Smooth transition for toggling */
+  box-shadow: none;
+}
+
+.navbar-toggler-icon::before {
+  top: -8px; /* Position the top line */
+  box-shadow: none;
+}
+
+.navbar-toggler-icon::after {
+  top: 8px; /* Position the bottom line */
+}
+
+/* When the navbar is expanded */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  background-color: transparent; /* Hide the middle line */
+  box-shadow: none;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+  transform: rotate(45deg); /* Top line becomes part of X */
+  top: 0; /* Move to center */
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  transform: rotate(-45deg); /* Bottom line becomes part of X */
+  top: 0; /* Move to center */
+}
+
+/* Button Customization */
+.btn-custom {
+  background-color: #852085;
+  border-color: #4CAF50;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 15px;
+  box-shadow: none;
+  position: relative;
+  transition: background-color 0.8s ease, transform 0.2s ease;
+}
+
+.btn-custom:hover {
+  background-color: #fd851d;
+  border-color: #45a049;
+  transform: scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px; /* Reduce padding */
+    background-color: white; /* Ensure light background */
   }
-  
+
+  .nav-link {
+    font-size: 18px; /* Adjusted font size */
+    padding: 5px 0; /* Compact padding */
+  }
+
+  .dropdown-custom .dropdown-toggle {
+    font-size: 18px; /* Adjust dropdown font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 5px 10px; /* Further reduce padding */
+    background-color: white; /* Ensure light background */
+  }
+
+  .navbar-brand .logo {
+    max-height: 50px; /* Reduce logo size */
+  }
+
+  .nav-link {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .dropdown-custom .dropdown-toggle {
+    font-size: 16px; /* Adjust dropdown font size */
+  }
+
+  .btn-custom {
+    font-size: 10px; /* Compact button size */
+  }
+}

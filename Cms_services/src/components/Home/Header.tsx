@@ -27,7 +27,7 @@ const Header: React.FC = () => {
               </Dropdown.Menu>
             </Dropdown>
             <Nav.Link href="/about-us" className="mx-3 nav-link">ABOUT US</Nav.Link>
-            <Nav.Link href="/benefits-calculator" className="mx-3 nav-link">BENEFITS CALCULATOR</Nav.Link> {/* New Link */}
+            <Nav.Link href="/benefits-calculator" className="mx-3 nav-link">BENEFITS CALCULATOR</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

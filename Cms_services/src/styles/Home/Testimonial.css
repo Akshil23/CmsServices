@@ -1,0 +1,209 @@
+/* General Body Background */
+body {
+    background-color: #f7f7f7; /* Light gray background similar to cmsservice23 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for testimonials */
+.testimonial-container {
+    padding: 40px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #ffffff; /* White background for the testimonial section */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow for better distinction */
+}
+
+/* Heading */
+.testimonial-heading {
+    font-family: "Arizonia", sans-serif;
+    font-style: italic;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1d3b8f;
+}
+
+/* Button for opening the review modal */
+.testimonial-button {
+    margin: auto;
+    padding: 12px 24px;
+    max-width: 300px;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.testimonial-button:hover {
+    background-color: #0056b3;
+}
+
+/* Modal styles */
+.review-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.review-modal-content {
+    color: #1d3b8f;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: left;
+    position: relative;
+}
+
+.close-button {
+    font-size: 1.5rem;
+    color: #e63c3c;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    color: #000;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: vertical;
+    background-color: #f1f1f1;  /* Ensures contrast with text */
+    color: #333; /* Text color inside textarea */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+textarea:focus {
+    background-color: #ffffff; /* Light background when focused */
+    color: #000; /* Dark text on focus for better visibility */
+    outline: none;
+}
+
+/* Submit button */
+.submit-button {
+    padding: 12px 24px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+/* Reviews display section */
+.reviews-section {
+    margin-top: 40px;
+}
+
+.testimonial-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.testimonial-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.testimonial-rating {
+    font-size: 2rem;
+    color: #ffcc00;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Ensures long text wraps */
+    max-height: 200px; /* Limit the height for long reviews */
+    overflow-y: auto; /* Adds scroll to longer reviews */
+}
+
+/* Google Reviews Button */
+.google-reviews-button {
+    background-color: #1d3b8f;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.google-reviews-button:hover {
+    background-color: #0c2961;
+}
