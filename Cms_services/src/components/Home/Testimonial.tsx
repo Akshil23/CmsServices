@@ -3,25 +3,29 @@ import '/Users/ak/Cms_services/Cms_services/src/styles/Home/Testimonial.css';
 
 const ReviewComponent: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [reviews, setReviews] = useState<any[]>([]);
   const [name, setName] = useState('');
   const [rating, setRating] = useState(1);
   const [reviewText, setReviewText] = useState('');
   const reviewsContainerRef = useRef<HTMLDivElement | null>(null);
 
-  // Load reviews from local storage on component mount
+  // Load reviews from the server on component mount
   useEffect(() => {
-    const savedReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
-    setReviews(savedReviews);
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch('https://cmsservice23.com/api/reviews.php');
+        const data = await response.json();
+        setReviews(data);
+      } catch (error) {
+        console.error('Failed to fetch reviews:', error);
+      }
+    };
+    fetchReviews();
   }, []);
 
-  // Save reviews to local storage whenever reviews change
-  useEffect(() => {
-    localStorage.setItem('reviews', JSON.stringify(reviews));
-  }, [reviews]);
-
   // Handle the review form submission
-  const handleSubmitReview = (e: React.FormEvent) => {
+  const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newReview = {
@@ -30,7 +34,35 @@ const ReviewComponent: React.FC = () => {
       text: reviewText,
     };
 
-    setReviews((prevReviews) => [...prevReviews, newReview]);
+    // Send review data to the server
+    try {
+      const response = await fetch('https://cmsservice23.com/api/reviews.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newReview),
+      });
+
+      if (response.ok) {
+        // After successfully posting the review, fetch the updated list of reviews
+        const fetchReviews = async () => {
+          try {
+            const res = await fetch('https://cmsservice23.com/api/reviews.php');
+            const data = await res.json();
+            setReviews(data); // Update the reviews state with the new list
+          } catch (error) {
+            console.error('Failed to fetch reviews:', error);
+          }
+        };
+
+        fetchReviews(); // Fetch updated reviews after submission
+      } else {
+        console.error('Failed to save review:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error submitting review:', error);
+    }
 
     // Reset form
     setName('');
@@ -43,15 +75,15 @@ const ReviewComponent: React.FC = () => {
   const scrollReviewsAutomatically = () => {
     if (reviewsContainerRef.current) {
       reviewsContainerRef.current.scrollBy({
-        top: 50, // Amount of scrolling (increase for faster scroll)
-        behavior: 'smooth', // Smooth scrolling
+        top: 50,
+        behavior: 'smooth',
       });
     }
   };
 
   // Add event listener for scroll to trigger automatic scroll
   useEffect(() => {
-    const interval = setInterval(scrollReviewsAutomatically, 3000); // Scroll every 3 seconds
+    const interval = setInterval(scrollReviewsAutomatically, 3000);
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
 
