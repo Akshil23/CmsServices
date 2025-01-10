@@ -1,16 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import '/Users/ak/Cms_services/Cms_services/src/styles/Home/Testimonial.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const ReviewComponent: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [reviews, setReviews] = useState<any[]>([]);
   const [name, setName] = useState('');
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState('');
-  const reviewsContainerRef = useRef<HTMLDivElement | null>(null);
 
-  // Load reviews from the server on component mount
+  // Fetch reviews from the server
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -24,7 +27,7 @@ const ReviewComponent: React.FC = () => {
     fetchReviews();
   }, []);
 
-  // Handle the review form submission
+  // Handle review submission
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -34,7 +37,6 @@ const ReviewComponent: React.FC = () => {
       text: reviewText,
     };
 
-    // Send review data to the server
     try {
       const response = await fetch('https://cmsservice23.com/api/reviews.php', {
         method: 'POST',
@@ -45,18 +47,9 @@ const ReviewComponent: React.FC = () => {
       });
 
       if (response.ok) {
-        // After successfully posting the review, fetch the updated list of reviews
-        const fetchReviews = async () => {
-          try {
-            const res = await fetch('https://cmsservice23.com/api/reviews.php');
-            const data = await res.json();
-            setReviews(data); // Update the reviews state with the new list
-          } catch (error) {
-            console.error('Failed to fetch reviews:', error);
-          }
-        };
-
-        fetchReviews(); // Fetch updated reviews after submission
+        const updatedReviews = await fetch('https://cmsservice23.com/api/reviews.php');
+        const data = await updatedReviews.json();
+        setReviews(data);
       } else {
         console.error('Failed to save review:', response.statusText);
       }
@@ -64,38 +57,22 @@ const ReviewComponent: React.FC = () => {
       console.error('Error submitting review:', error);
     }
 
-    // Reset form
     setName('');
     setRating(5);
     setReviewText('');
     setIsModalOpen(false);
   };
 
-  // Scroll the reviews container automatically
-  const scrollReviewsAutomatically = () => {
-    if (reviewsContainerRef.current) {
-      reviewsContainerRef.current.scrollBy({
-        top: 50,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  // Add event listener for scroll to trigger automatic scroll
-  useEffect(() => {
-    const interval = setInterval(scrollReviewsAutomatically, 3000);
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
-  }, []);
-
   return (
-    <div className="testimonial-container">
+    <div className="testimonial-container" data-aos="fade-down"
+>
       <h2 className="testimonial-heading">Testimonials</h2>
       
       <button onClick={() => setIsModalOpen(true)} className="testimonial-button">
         Leave a Review
       </button>
 
-      {/* Modal for review form */}
+      {/* Modal for submitting reviews */}
       {isModalOpen && (
         <div className="review-modal">
           <div className="review-modal-content">
@@ -146,14 +123,26 @@ const ReviewComponent: React.FC = () => {
         </div>
       )}
 
-      {/* Display the reviews */}
-      <div className="reviews-section" ref={reviewsContainerRef}>
-        {reviews.length === 0 ? (
-          <p>No reviews yet. Be the first to leave a review!</p>
-        ) : (
-          <div className="testimonial-cards">
-            {reviews.map((review, index) => (
-              <div key={index} className="testimonial-card">
+      {/* Swiper for displaying reviews */}
+      {reviews.length === 0 ? (
+        <p>No reviews yet. Be the first to leave a review!</p>
+      ) : (
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          slidesPerView={3}
+          spaceBetween={20}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          breakpoints={{
+            768: { slidesPerView: 1 },
+            1024: { slidesPerView: 2 },
+          }}
+          className="testimonial-swiper"
+        >
+          {reviews.map((review, index) => (
+            <SwiperSlide key={index}>
+              <div className="testimonial-card">
                 <div className="testimonial-card-header">
                   <span className="testimonial-name">{review.name}</span>
                   <div className="testimonial-rating">
@@ -163,10 +152,10 @@ const ReviewComponent: React.FC = () => {
                 </div>
                 <p className="testimonial-text">{review.text}</p>
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
 
       {/* Google Reviews Button */}
       <div className="google-reviews-section">

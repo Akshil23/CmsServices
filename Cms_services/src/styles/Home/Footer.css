@@ -1,12 +1,20 @@
 .footer {
   background-color: #431d8f; /* Rich blue background */
-  padding: 20px 30px; /* Generous padding for a spacious look */
+  padding: 2px 3px; /* Generous padding for a spacious look */
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   color: #ffffff; /* White text for contrast */
  
+}
+
+.footer-column.footer-copyright {
+  text-align: center; /* Center-align the text */
+  width: 100%; /* Take up full width of the footer */
+  position: absolute; /* Ensure it respects other footer content */
+  bottom: 0; /* Position it at the bottom */
+  margin-top: 10px; /* Add spacing from other footer elements */
 }
 
 .footer-content {
@@ -20,15 +28,15 @@
 
 .footer-column {
   flex: 1;
-  padding: 10px; /* Consistent padding */
-  margin: 5px;
+  padding: 1px; /* Consistent padding */
+  margin: 2px;
   text-align: center; /* Center-align content */
 }
 
 .footer-column h4 {
   font-size: 1.5rem; /* Highlighted heading size */
   font-weight: bold;
-  color: #fd851d; /* Orange for section headings */
+  color: #ffffff; /* Orange for section headings */
   margin-bottom: 10px;
   text-transform: uppercase; /* Emphasis on headings */
 }
@@ -44,7 +52,7 @@
 }
 
 .footer-column a:hover {
-  color: #fd851d; /* Hover effect with orange highlight */
+  color: #ffffff; /* Hover effect with orange highlight */
 }
 
 .footer-column span {
@@ -59,7 +67,7 @@
 }
 
 .footer-social-link:hover {
-  color: #fd851d; /* Orange highlight on hover */
+  color: #ffffff; /* Orange highlight on hover */
 }
 
 .footer-column p {
@@ -80,13 +88,13 @@
   .footer-content {
     flex-direction: column; /* Stack columns on smaller screens */
     text-align: center;
-    gap: 20px; /* Spacing between stacked items */
+    gap: 1px; /* Spacing between stacked items */
   }
 
   .footer-column {
     flex: 1 1 100%; /* Full width for each column */
     margin: 0;
-    padding: 10px 0; /* Compact padding for mobile */
+    padding: 1px 0; /* Compact padding for mobile */
   }
 
   .footer {

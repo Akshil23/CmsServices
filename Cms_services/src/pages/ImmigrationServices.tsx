@@ -40,14 +40,14 @@ const DetailedImmigrationServices: React.FC = () => {
   };
 
   return (
-    <section className="detailed-immigration-services">
-      <div className="container">
-        <h1 className="page-title">Immigration Services - Detailed Information</h1>
-        <p className="description">
+    <section className="detailed-immigration-services" data-dao="fade-up">
+      <div className="container" data-dao="fade-up">
+        <h1 className="page-title" data-aos="fade-up">Immigration Services - Detailed Information</h1>
+        <p className="description" data-aos="fade-up">
           Explore our wide range of immigration services tailored to meet your needs.
         </p>
 
-        <div className="services-list">
+        <div className="services-list" data-aos="fade-up">
           {/* Service 1: Study Permit Extension */}
           <div className="service-item">
             <h2><strong>Study Permit Extension</strong><br /></h2>
@@ -181,7 +181,7 @@ const DetailedImmigrationServices: React.FC = () => {
             </p>
           </div>
         {/* User Info Form */}
-        <div className="user-info-form" ref={formRef}>
+        <div className="user-info-form" data-aos="zoom-in" ref={formRef}>
           <h2>Contact Us</h2>
           <p>Fill out your details and reach out to us via WhatsApp for quick assistance.</p>
           <input

@@ -1,42 +1,53 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Home/Header";
-import Home from "./pages/Home";
-import WelcomeSection from "./components/Home/WelcomeSection";
 import Footer from "./components/Home/Footer";
+import Home from "./pages/Home";
 import TaxFilingPage from "./pages/TaxFiling"; // Updated Import for Tax Filing Page
 import ImmigrationServices from "./pages/ImmigrationServices";
 import AboutUs from "./pages/AboutUs";
 import BenefitsCalculator from "./pages/Calculator"; // New Component
 import NewcomerBenefit from "./pages/NewcomerBenefit";
+import Aos from "aos";
+import "aos/dist/aos.css"; // Import AOS CSS for animations
 
 const App: React.FC = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, // Animation duration
+      easing: "ease-in-out", // Easing style
+      once: false,
+       // Play animation only once
+    });
+  }, []);
+
   return (
-    <Router>
-      <div className="app-container">
-        <Header />
-        
-        <div className="content">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Home />
-                  <WelcomeSection />
-                </>
-              }
-            />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/tax-filing" element={<TaxFilingPage />} /> {/* Updated Route */}
-            <Route path="/immigration-services" element={<ImmigrationServices />} />
-            <Route path="/benefits-calculator" element={<BenefitsCalculator />} /> {/* New Route */}
-            <Route path="/newcomer-benefits" element={<NewcomerBenefit />} />
-          </Routes>
-        </div>
-        <Footer />
+    <div className="app-container">
+      {/* Header Component */}
+      <Header />
+
+      {/* Main Content */}
+      <div className="content">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+              </>
+            }
+          />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/tax-filing" element={<TaxFilingPage />} />
+          <Route path="/immigration-services" element={<ImmigrationServices />} />
+          <Route path="/benefits-calculator" element={<BenefitsCalculator />} />
+          <Route path="/newcomer-benefits" element={<NewcomerBenefit />} />
+        </Routes>
       </div>
-    </Router>
+
+      {/* Footer Component */}
+      <Footer />
+    </div>
   );
 };
 

@@ -4,7 +4,8 @@ import "../../styles/Home/Header.css";
 
 const Header: React.FC = () => {
   return (
-    <Navbar bg="white" expand="lg" className="header">
+    <Navbar bg="white" expand="lg" className="header"
+>
       <Container>
         <Navbar.Brand href="/" className="logo-container">
           <img

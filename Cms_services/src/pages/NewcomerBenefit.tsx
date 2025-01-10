@@ -8,11 +8,11 @@ const NewcomerBenefit: React.FC = () => {
   
 
   return (
-    <div className="newcomer-benefit">
+    <div className="newcomer-benefit" data-dao="zoom-in">
       <h1 className="page-title">Apply for Newcomer Benefits</h1>
 
       {/* Note and Tax Filing Button */}
-      <div className="note-container">
+      <div className="note-container" data-dao="zoom-in">
         <p className="note-text">
           <strong>Note:</strong> To apply for benefits, you must ensure that you have already filed your taxes.
         </p>

@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #8824c6, #f07800, #401dee);
+    background: white;
+    
     background-size: 400% 400%; /* Creates a smooth animated effect */
     animation: gradientShift 10s ease infinite; /* Smooth animation */
     color: #ffffff; /* White text for contrast */
@@ -24,7 +25,7 @@ body {
     max-width: 600px;
     margin: 50px auto;
     padding: 25px;
-    background-color: rgba(255, 255, 255, 0.9); /* Transparent white */
+    background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     color: #333;

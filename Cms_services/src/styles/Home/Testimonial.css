@@ -1,50 +1,52 @@
-/* General Body Background */
+/* General Body Styling */
 body {
-    background-color: #f7f7f7; /* Light gray background similar to cmsservice23 */
+    background-color: #f7f7f7; /* Light gray background */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Container for testimonials */
+/* Testimonial Container */
 .testimonial-container {
-    padding: 40px;
-    margin: 0 auto;
+    padding: 40px 20px;
+    margin: 20px auto;
     text-align: center;
-    background-color: #ffffff; /* White background for the testimonial section */
+    background-color: #ffffff; /* White background */
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow for better distinction */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    max-width: 1000px;
+    overflow-x: hidden; /* Prevent overflow */
 }
 
-/* Heading */
+/* Heading Styling */
 .testimonial-heading {
-    font-family: "Arizonia", sans-serif;
-    font-style: italic;
+    font-family: "Arizonia", cursive;
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #1d3b8f;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Button for opening the review modal */
+/* Testimonial Button */
 .testimonial-button {
-    margin: auto;
     padding: 12px 24px;
-    max-width: 300px;
+    width: 300px;
+    margin: auto;
     text-align: center;
     font-size: 1.2rem;
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     border: none;
-    cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .testimonial-button:hover {
     background-color: #0056b3;
 }
 
-/* Modal styles */
+/* Modal Styles */
 .review-modal {
     position: fixed;
     top: 0;
@@ -59,13 +61,12 @@ body {
 }
 
 .review-modal-content {
-    color: #1d3b8f;
     background-color: #fff;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 400px;
-    text-align: left;
     position: relative;
+    text-align: left;
 }
 
 .close-button {
@@ -77,7 +78,7 @@ body {
     right: 10px;
 }
 
-/* Form styles */
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
@@ -96,7 +97,6 @@ input,
 select,
 textarea {
     width: 100%;
-    color: #000;
     padding: 10px;
     font-size: 1rem;
     margin-top: 5px;
@@ -106,18 +106,9 @@ textarea {
 
 textarea {
     resize: vertical;
-    background-color: #f1f1f1;  /* Ensures contrast with text */
-    color: #333; /* Text color inside textarea */
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-textarea:focus {
-    background-color: #ffffff; /* Light background when focused */
-    color: #000; /* Dark text on focus for better visibility */
-    outline: none;
-}
-
-/* Submit button */
+/* Submit Button */
 .submit-button {
     padding: 12px 24px;
     background-color: #28a745;
@@ -133,34 +124,30 @@ textarea:focus {
     background-color: #218838;
 }
 
-/* Reviews display section */
+/* Reviews Section */
 .reviews-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Default grid layout */
+    gap: 20px; /* Space between cards */
     margin-top: 40px;
-}
-
-.testimonial-cards {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    align-items: stretch;
 }
 
+/* Testimonial Card */
 .testimonial-card {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 100%;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 300px; /* Consistent card width */
+    margin: 0 auto; /* Center the card horizontally */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .testimonial-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .testimonial-card-header {
@@ -177,7 +164,7 @@ textarea:focus {
 }
 
 .testimonial-rating {
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: #ffcc00;
 }
 
@@ -185,25 +172,46 @@ textarea:focus {
     font-size: 1rem;
     color: #555;
     line-height: 1.5;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    white-space: pre-wrap; /* Ensures long text wraps */
-    max-height: 200px; /* Limit the height for long reviews */
-    overflow-y: auto; /* Adds scroll to longer reviews */
+    max-height: 150px; /* Limit the height for long reviews */
+    overflow-y: auto;
+    text-align: left;
 }
 
 /* Google Reviews Button */
 .google-reviews-button {
     background-color: #1d3b8f;
     color: white;
-    padding: 12px 20px;
+    padding: 12px 24px;
     font-size: 1rem;
     border-radius: 5px;
     text-decoration: none;
-    display: inline-block;
+    transition: background-color 0.3s ease-in-out;
     margin-top: 20px;
+    display: inline-block;
 }
 
 .google-reviews-button:hover {
     background-color: #0c2961;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    /* Maximum of 2 cards per row */
+    .reviews-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Maximum of 2 cards per row */
+    .reviews-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Single-column layout */
+    .reviews-section {
+        grid-template-columns: 1fr;
+    }
 }

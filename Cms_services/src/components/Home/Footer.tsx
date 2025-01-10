@@ -3,7 +3,8 @@ import { FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" data-aos="fade-in"
+>
       <div className="footer-content">
         
         {/* Email Column */}

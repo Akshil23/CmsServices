@@ -7,7 +7,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 const AboutUs: React.FC = () => {
   return (
-    <div className="about-us-page">
+    <div className="about-us-page" data-aos="fade-up"
+>
       <div className="content-wrapper">
         {/* Page Header */}
         <header className="page-header">

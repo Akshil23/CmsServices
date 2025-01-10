@@ -16,7 +16,8 @@ const WelcomeSection: React.FC = () => {
   };
 
   return (
-    <section className="welcome-section">
+    <section className="welcome-section" data-aos="fade-up"
+>
       <div className="container">
         {/* Welcome Title and Text */}
         <h1 className="welcome-title">Welcome to CMS Services</h1>
@@ -31,15 +32,15 @@ const WelcomeSection: React.FC = () => {
           <div className="services-column">
   <h2>Tax Filing Services</h2>
   <ul>
-    <li><b>Personal Tax Returns</b>: Maximize your refund and ensure compliance with all tax regulations.</li>
-    <li><b>Family Tax Returns</b>: File for your entire family and claim eligible credits and deductions.</li>
-    <li><b>Student Tuition Tax Credits</b>: Ensure you’re getting the most out of your education expenses with tuition tax credits.</li>
-    <li><b>Newcomer Tax Benefits</b>: We help newcomers claim special tax benefits in their first year.</li>
-    <li><b>Tax Benefits for Seniors</b>: Get assistance with pension income splitting and other benefits for retirees.</li>
-    <li><b>Provincial Benefits</b>: Claim additional benefits specific to your province, such as provincial tax credits and rebates.</li>
-    <li><b>Canada Carbon Rebate</b>: Receive a rebate for carbon tax paid, aimed at helping offset environmental costs.</li>
-    <li><b>GST/HST Credit</b>: We help you qualify for the Goods and Services Tax (GST) / Harmonized Sales Tax (HST) credit, providing extra financial support.</li>
-  </ul>
+    <li><b>Newcomer Benefits</b>: If you arrived on or before 31st December 2024, you are entitled to a refund of about $2,200 to $3,500, even if you were not working.</li>
+    <li><b>GST/HST Credit</b>: Receive $360 to $530 as part of the Goods and Services Tax (GST) / Harmonized Sales Tax (HST) credit.</li>
+    <li><b>Canada Carbon Rebate</b>: Get a rebate of $600 to $950, aimed at offsetting environmental costs.</li>
+    <li><b>Ontario Trillium Benefit (OTB)</b>: Receive up to $900 as part of Ontario-specific benefits.</li>
+    <li><b>Newcomer Bonus (Welcome to Canada Bonus)</b>: A special bonus of $500 to $1,300 for newcomers.</li>
+    <li><b>Provincial Benefits</b>: Access various provincial benefits such as the Saskatchewan Low-Income Credit ($380) and more tailored to your province of residence.</li>
+    <li><b>Tuition Tax Credit</b>: Claim 15% of your tuition fees as a tax credit, which can be used to reclaim taxes paid while working.</li>
+</ul>
+
   <button className="btn btn-primary" onClick={handleTaxFilingClick}>Learn More About Tax Filing</button>
 </div>
 

@@ -2,7 +2,7 @@
 .navbar {
   padding: 10px 20px; /* Compact padding */
   background-color: white; /* Light background */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+ box-shadow: none;
 }
 
 .navbar-brand .logo {
@@ -45,7 +45,7 @@
 
 .dropdown-custom .dropdown-toggle {
   color: hsl(300, 61%, 32%) !important; /* Link color */
-  font-size: 24px; /* Match nav link font size */
+  font-size: 20px; /* Match nav link font size */
   font-weight: 600;
   background: transparent !important;
   border: none !important;
@@ -53,7 +53,7 @@
 
 .dropdown-custom .dropdown-menu {
   font-size: 18px; /* Dropdown item size */
-  padding: 10px; /* Adjust padding */
+  padding: 4px; /* Adjust padding */
 }
 
 .dropdown-custom .dropdown-toggle::after {
@@ -63,15 +63,19 @@
 /* Custom Toggler Icon */
 .navbar-toggler {
   border: none; /* Remove default border */
-  padding: 5px; /* Add padding */
+  padding: 5px; 
+  box-shadow: none;/* Add padding */
 }
 
 .navbar-toggler-icon {
+  all:unset;
   display: inline-block;
+  color: aliceblue!important;
   width: 30px; /* Width of the lines */
   height: 2px; /* Thickness of each line */
   background-color: white; /* Color of the lines */
-  position: relative; /* Position for stacking */
+  margin-bottom: 5px;
+  position:relative; /* Position for stacking */
   box-shadow: none;
 }
 
@@ -99,13 +103,15 @@
 
 /* When the navbar is expanded */
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-  background-color: transparent; /* Hide the middle line */
+  background-color: white; /* Hide the middle line */
   box-shadow: none;
+  border-color: aliceblue;
 }
 
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
   transform: rotate(45deg); /* Top line becomes part of X */
   top: 0; /* Move to center */
+  box-shadow: none;
 }
 
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
@@ -134,8 +140,10 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .navbar {
-    padding: 10px 15px; /* Reduce padding */
+    padding: 15px 15px; /* Reduce padding */
     background-color: white; /* Ensure light background */
+    box-shadow: none;
+    border: white;
   }
 
   .nav-link {
@@ -152,14 +160,18 @@
   .navbar {
     padding: 5px 10px; /* Further reduce padding */
     background-color: white; /* Ensure light background */
+    box-shadow: none;
   }
 
   .navbar-brand .logo {
     max-height: 50px; /* Reduce logo size */
   }
 
+
   .nav-link {
     font-size: 16px; /* Smaller font size */
+    box-shadow: none;
+    background-color: aliceblue;
   }
 
   .dropdown-custom .dropdown-toggle {

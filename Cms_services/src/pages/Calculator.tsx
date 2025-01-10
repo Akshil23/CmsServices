@@ -138,7 +138,7 @@ const Calculator: React.FC = () => {
   };
 
   return (
-    <div className="calculator">
+    <div className="calculator" data-aos="zoom-in">
       <h1>Calculate Your Newcomer Benefits</h1>
       <div className="form-group">
         <label htmlFor="entryDate">Date of Entry to Canada:</label>

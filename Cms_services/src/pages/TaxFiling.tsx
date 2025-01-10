@@ -36,8 +36,8 @@ const TaxFilingPage: React.FC = () => {
   };
 
   return (
-    <div className="detailed-immigration-services">
-      <div className="container">
+    <div className="detailed-immigration-services" data-dao="fade-up">
+      <div className="container" data-aos="fade-up">
         {/* Page Title */}
         <h1 className="page-title">Tax Filing Services</h1>
         <p className="description">
@@ -152,7 +152,7 @@ const TaxFilingPage: React.FC = () => {
         </div>
 
         {/* Form */}
-        <form className="user-info-form" onSubmit={handleSubmit}>
+        <form className="user-info-form" data-aos="zoom-in" onSubmit={handleSubmit}>
           <h2 id="ready-to-file">Ready To File?</h2>
           <p>Fill out your details and reach out to us via WhatsApp for assistance.</p>
           <input
