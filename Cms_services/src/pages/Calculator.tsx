@@ -58,13 +58,13 @@ const Calculator: React.FC = () => {
 
   const calculateCCREstimate = (province: string, isRural: boolean): number => {
     const ccrAmounts: { [key: string]: { [key: number]: number } } = {
-      Ontario: { 2024: 160, 2025: 159.6 },
-      Alberta: { 2024: 256.5, 2025: 258 },
-      Manitoba: { 2024: 171, 2025: 175 },
-      "British Columbia": { 2024: 142, 2025: 145 },
+      Ontario: { 2024: 140, 2025: 140 },
+      Alberta: { 2024: 225, 2025: 258 },
+      Manitoba: { 2024: 150, 2025: 175 },
+      "British Columbia": { 2024: 140, 2025: 145 },
       Quebec: { 2024: 0, 2025: 0 },
-      "New Brunswick": { 2024: 108.3, 2025: 110 },
-      "Nova Scotia": { 2024: 117.42, 2025: 120 },
+      "New Brunswick": { 2024: 95, 2025: 110 },
+      "Nova Scotia": { 2024: 103, 2025: 120 },
       Saskatchewan: { 2024: 188, 2025: 190 },
     };
 
@@ -80,13 +80,13 @@ const Calculator: React.FC = () => {
 
   const calculateProvincialBenefits = (province: string): { ostc: number; oeptcRange: [number, number] } | null => {
     if (province === "Ontario") {
-      return { ostc: 380, oeptcRange: [140, 550] };
+      return { ostc: 370, oeptcRange: [140, 550] };
     }
     return null;
   };
 
   const calculateGSTHSTEstimate = (): number => {
-    return 357;
+    return 350;
   };
 
   const calculateBenefits = () => {
@@ -104,6 +104,17 @@ const Calculator: React.FC = () => {
       );
       return;
     }
+
+    const entryYear = new Date(formData.entryDate).getFullYear();
+if (entryYear !== 2024) {
+  setCalculatedBenefits(
+    `If your year of entry to canada is other than 2024, please contact us on WhatsApp for assistance: 
+    <a href='https://api.whatsapp.com/message/HOXWXFRQRQYCB1?autoload=1&app_absent=0' target='_blank'> Click here to chat with us</a>`
+  );
+  return;
+}
+
+    
 
     const newcomerBonus = calculateNewcomerBonus(entryDate, province);
     const ccrEstimate = calculateCCREstimate(province, isRural);
