@@ -1,22 +1,29 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../styles/Home/HeroSection.css';
+import "../../styles/HomeStyles.css";
 
 const HeroSection = () => {
-  return (
-    <section
-      className="hero d-flex align-items-center justify-content-center text-center text-white"
-      data-aos="fade-out"
-    >
-      <div className="hero-content">
-        <h1 className="display-5"><b>ALLOW PROFESSIONALS TO GUIDE YOU</b></h1>
-        <br />
-        {/* Call Us Now Button */}
-        <a href="tel:+16474469738" className="btn btn-primary mt-3 call-us-button">
-          Call Us Now
-        </a>
-      </div>
-    </section>
-  );
+	return (
+		<section className="hero-section">
+			<div className="hero-overlay"></div>
+			<div className="hero-content">
+				{/* SEO: H1 Keyword Rich */}
+				<h1 className="hero-title">
+					ALLOW <span style={{ color: "#fd851d" }}>PROFESSIONALS</span>
+					<br />
+					TO GUIDE YOU
+				</h1>
+				<p className="hero-subtitle text-white">
+					Expert Tax Filing, Immigration Services, Insurance & Investments.{" "}
+					<br className="d-none d-md-block" />
+					Serving Brampton & All of Canada.
+				</p>
+
+				{/* Call Action Button */}
+				<a href="tel:+16474469738" className="btn-hero">
+					Call For Consultation
+				</a>
+			</div>
+		</section>
+	);
 };
 
 export default HeroSection;

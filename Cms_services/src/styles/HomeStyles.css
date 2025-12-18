@@ -1,0 +1,264 @@
+/* =============================================
+   VARIABLES & GLOBAL
+   ============================================= */
+:root {
+	--brand-purple: #852085;
+	--brand-dark: #3a0e3a;
+	--brand-orange: #fd851d;
+	--brand-orange-hover: #e06d0b;
+	--white: #ffffff;
+	--gray-bg: #f8f9fa;
+}
+
+/* =============================================
+     HERO SECTION
+     ============================================= */
+.hero-section {
+	position: relative;
+	/* Use your actual image path here */
+	background: url("/background1.jpg") no-repeat center center/cover;
+	height: 85vh; /* Takes up 85% of screen height */
+	min-height: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: var(--white);
+	overflow: hidden;
+}
+
+.hero-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* Dark overlay with slight purple tint for branding */
+	background: linear-gradient(135deg, rgba(67, 29, 143, 0.8), rgba(0, 0, 0, 0.6));
+	z-index: 1;
+}
+
+.hero-content {
+	position: relative;
+	z-index: 2;
+	padding: 20px;
+	max-width: 800px;
+}
+
+.hero-title {
+	font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive Font Size */
+	font-weight: 800;
+	margin-bottom: 20px;
+	text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+	line-height: 1.1;
+}
+
+.hero-subtitle {
+	font-size: 1.2rem;
+	margin-bottom: 30px;
+	opacity: 0.9;
+}
+
+.btn-hero {
+	background-color: var(--brand-orange);
+	color: var(--white);
+	padding: 12px 35px;
+	border-radius: 50px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	border: none;
+	box-shadow: 0 4px 15px rgba(253, 133, 29, 0.4);
+	display: inline-block;
+}
+
+.btn-hero:hover {
+	background-color: var(--brand-purple);
+	color: var(--white);
+	transform: translateY(-3px);
+}
+
+/* =============================================
+     WELCOME / SERVICES SECTION
+     ============================================= */
+.section-padding {
+	padding: 80px 0;
+}
+
+.welcome-title {
+	color: var(--brand-purple);
+	font-weight: 800;
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+}
+
+.text-highlight {
+	color: var(--brand-orange);
+}
+
+.service-card {
+	background: var(--white);
+	padding: 30px;
+	border-radius: 15px;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+	height: 100%;
+	transition: transform 0.3s ease;
+	border-top: 5px solid var(--brand-purple);
+}
+
+.service-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px rgba(133, 32, 133, 0.15);
+}
+
+.service-header h2 {
+	color: var(--brand-dark);
+	font-size: 1.8rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #eee;
+}
+
+/* Custom List Bullets */
+.benefits-list {
+	list-style: none;
+	padding: 0;
+	text-align: left;
+}
+
+.benefits-list li {
+	position: relative;
+	padding-left: 25px;
+	margin-bottom: 12px;
+	font-size: 0.95rem;
+	color: #555;
+}
+
+.benefits-list li::before {
+	content: "✓";
+	color: var(--brand-orange);
+	position: absolute;
+	left: 0;
+	font-weight: bold;
+}
+
+.btn-service {
+	margin-top: 15px;
+	background-color: transparent;
+	color: var(--brand-purple);
+	border: 2px solid var(--brand-purple);
+	padding: 8px 20px;
+	border-radius: 30px;
+	font-weight: 600;
+	transition: all 0.3s;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.btn-service:hover {
+	background-color: var(--brand-purple);
+	color: var(--white);
+}
+
+/* =============================================
+     TESTIMONIALS
+     ============================================= */
+.testimonial-section {
+	background-color: var(--gray-bg);
+}
+
+.section-header h2 {
+	color: var(--brand-purple);
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.testimonial-card {
+	background: var(--white);
+	padding: 25px;
+	border-radius: 12px;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+	margin: 10px;
+	border-left: 5px solid var(--brand-orange);
+}
+
+.testimonial-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.client-name {
+	font-weight: bold;
+	color: var(--brand-dark);
+	font-size: 1.1rem;
+}
+
+.stars {
+	color: #ffc107;
+}
+
+.review-text {
+	font-style: italic;
+	color: #666;
+	font-size: 0.95rem;
+}
+
+/* Modal Styling Update */
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 2000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-box {
+	background: var(--white);
+	padding: 30px;
+	border-radius: 10px;
+	width: 90%;
+	max-width: 500px;
+	position: relative;
+}
+
+.form-control-custom {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.btn-submit {
+	background: var(--brand-purple);
+	color: white;
+	width: 100%;
+	padding: 12px;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.hero-section {
+		height: 70vh; /* Shorter on mobile */
+	}
+
+	.section-padding {
+		padding: 50px 0;
+	}
+
+	.welcome-title {
+		font-size: 2rem;
+	}
+}

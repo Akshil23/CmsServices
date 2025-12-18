@@ -1,39 +1,53 @@
-import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, Dropdown, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/Home/Header.css";
+import { FaChevronDown } from "react-icons/fa";
 
 const Header: React.FC = () => {
-  return (
-    <Navbar bg="white" expand="lg" className="header"
->
-      <Container>
-        <Navbar.Brand href="/" className="logo-container">
-          <img
-            src="/Cms_logo.png"
-            alt="Logo"
-            className="logo"
-          />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
-          <Nav className="mx-auto nav-center">
-            <Nav.Link href="/" className="mx-3 nav-link">HOME</Nav.Link>
-            <Dropdown className="mx-3 dropdown-custom">
-              <Dropdown.Toggle variant="link" id="dropdown-services" className="nav-link">
-                SERVICES
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="/tax-filing">Tax Filing</Dropdown.Item>
-                <Dropdown.Item href="/immigration-services">Immigration Services</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Nav.Link href="/about-us" className="mx-3 nav-link">ABOUT US</Nav.Link>
-            <Nav.Link href="/benefits-calculator" className="mx-3 nav-link">BENEFITS CALCULATOR</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
+	return (
+		<Navbar expand="lg" className="header-navbar" sticky="top">
+			<Container>
+				{/* LOGO */}
+				<Navbar.Brand href="/" className="logo-container">
+					<img src="/Cms_logo.png" alt="CMS Logo" className="logo" />
+				</Navbar.Brand>
+
+				{/* COMPACT TOGGLER */}
+				<Navbar.Toggle aria-controls="main-navbar" className="custom-toggler" />
+
+				{/* NAV */}
+				<Navbar.Collapse id="main-navbar">
+					<Nav className="mx-auto align-items-lg-center nav-links">
+						<Nav.Link href="/">Home</Nav.Link>
+
+						{/* SERVICES DROPDOWN */}
+						<Dropdown className="dropdown-custom">
+							<Dropdown.Toggle as={Nav.Link} className="services-toggle">
+								Services <FaChevronDown className="dropdown-icon" />
+							</Dropdown.Toggle>
+
+							<Dropdown.Menu>
+								<Dropdown.Item href="/tax-filing">Tax Filing</Dropdown.Item>
+								<Dropdown.Item href="/immigration-services">
+									Immigration Services
+								</Dropdown.Item>
+								<Dropdown.Divider />
+								<Dropdown.Item href="/insurance">Insurance</Dropdown.Item>
+								<Dropdown.Item href="/investments">Investments</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
+
+						<Nav.Link href="/about-us">About Us</Nav.Link>
+						<Nav.Link href="/benefits-calculator">Benefits Calculator</Nav.Link>
+
+						<Button href="/contact" className="btn-custom">
+							Book Consultation
+						</Button>
+					</Nav>
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
+	);
 };
 
 export default Header;

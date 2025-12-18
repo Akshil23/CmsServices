@@ -1,175 +1,191 @@
-import React, { useState, useEffect } from 'react';
-import '/Users/ak/Cms_services/Cms_services/src/styles/Home/Testimonial.css';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import React, { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { FaGoogle, FaStar, FaTimes } from "react-icons/fa";
+
+// Import CSS & Swiper Styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../../styles/HomeStyles.css";
 
 const ReviewComponent: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [reviews, setReviews] = useState<any[]>([]);
-  const [name, setName] = useState('');
-  const [rating, setRating] = useState(5);
-  const [reviewText, setReviewText] = useState('');
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const [reviews, setReviews] = useState<any[]>([]);
+	const [name, setName] = useState("");
+	const [rating, setRating] = useState(5);
+	const [reviewText, setReviewText] = useState("");
 
-  // Fetch reviews from the server
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await fetch('https://cmsservice23.com/api/reviews.php');
-        const data = await response.json();
-        setReviews(data);
-      } catch (error) {
-        console.error('Failed to fetch reviews:', error);
-      }
-    };
-    fetchReviews();
-  }, []);
+	// Fetch Reviews
+	useEffect(() => {
+		const fetchReviews = async () => {
+			try {
+				const response = await fetch("https://cmsservice23.com/api/reviews.php");
+				const data = await response.json();
+				// If data is array set it, otherwise empty
+				setReviews(Array.isArray(data) ? data : []);
+			} catch (error) {
+				console.error("Failed to fetch reviews:", error);
+			}
+		};
+		fetchReviews();
+	}, []);
 
-  // Handle review submission
-  const handleSubmitReview = async (e: React.FormEvent) => {
-    e.preventDefault();
+	const handleSubmitReview = async (e: React.FormEvent) => {
+		e.preventDefault();
+		const newReview = { name, rating, text: reviewText };
 
-    const newReview = {
-      name,
-      rating,
-      text: reviewText,
-    };
+		try {
+			const response = await fetch("https://cmsservice23.com/api/reviews.php", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(newReview),
+			});
 
-    try {
-      const response = await fetch('https://cmsservice23.com/api/reviews.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newReview),
-      });
+			if (response.ok) {
+				alert("Review Submitted! Thank you.");
+				// Re-fetch to show new review instantly
+				const updatedReviews = await fetch("https://cmsservice23.com/api/reviews.php");
+				const data = await updatedReviews.json();
+				setReviews(Array.isArray(data) ? data : []);
+			}
+		} catch (error) {
+			console.error("Error submitting review:", error);
+		}
+		// Reset Form
+		setName("");
+		setRating(5);
+		setReviewText("");
+		setIsModalOpen(false);
+	};
 
-      if (response.ok) {
-        const updatedReviews = await fetch('https://cmsservice23.com/api/reviews.php');
-        const data = await updatedReviews.json();
-        setReviews(data);
-      } else {
-        console.error('Failed to save review:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error submitting review:', error);
-    }
+	return (
+		<section className="section-padding testimonial-section">
+			<Container className="text-center">
+				<div className="section-header mb-5">
+					<h2>Client Success Stories</h2>
+					<p className="text-muted">
+						See what people from Brampton and across Canada say about us
+					</p>
+				</div>
 
-    setName('');
-    setRating(5);
-    setReviewText('');
-    setIsModalOpen(false);
-  };
+				{/* Buttons Row */}
+				<div className="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+					<button onClick={() => setIsModalOpen(true)} className="btn-service">
+						<span style={{ color: "inherit" }}>Write a Review</span>
+					</button>
 
-  return (
-    <div className="testimonial-container" data-aos="fade-down"
->
-      <h2 className="testimonial-heading">Testimonials</h2>
-      
-      <button onClick={() => setIsModalOpen(true)} className="testimonial-button">
-        Leave a Review
-      </button>
+					<a
+						href="https://g.page/cms-services-brampton"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="btn-hero d-flex align-items-center gap-2"
+					>
+						<FaGoogle /> Read Google Reviews
+					</a>
+				</div>
 
-      {/* Modal for submitting reviews */}
-      {isModalOpen && (
-        <div className="review-modal">
-          <div className="review-modal-content">
-            <span className="close-button" onClick={() => setIsModalOpen(false)}>
-              &times;
-            </span>
-            <h3>Write Your Review</h3>
-            <form onSubmit={handleSubmitReview}>
-              <div className="form-group">
-                <label htmlFor="name">Your Name:</label>
-                <input
-                  type="text"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="rating">Rating:</label>
-                <select
-                  id="rating"
-                  value={rating}
-                  onChange={(e) => setRating(Number(e.target.value))}
-                  required
-                >
-                  {[1, 2, 3, 4, 5].map((rate) => (
-                    <option key={rate} value={rate}>
-                      {rate}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="reviewText">Review:</label>
-                <textarea
-                  id="reviewText"
-                  value={reviewText}
-                  onChange={(e) => setReviewText(e.target.value)}
-                  required
-                />
-              </div>
-              <button type="submit" className="submit-button">
-                Submit Review
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+				{/* SWIPER CAROUSEL */}
+				<Swiper
+					modules={[Navigation, Pagination, Autoplay]}
+					spaceBetween={30}
+					slidesPerView={1}
+					navigation
+					pagination={{ clickable: true }}
+					autoplay={{ delay: 4000, disableOnInteraction: false }}
+					breakpoints={{
+						768: { slidesPerView: 2 },
+						1024: { slidesPerView: 3 },
+					}}
+					style={{ paddingBottom: "40px" }} // Space for pagination dots
+				>
+					{reviews.length > 0 ? (
+						reviews.map((review, index) => (
+							<SwiperSlide key={index}>
+								<div className="testimonial-card">
+									<div className="testimonial-header">
+										<span className="client-name">{review.name || "Client"}</span>
+										<div className="stars">
+											{[...Array(5)].map((_, i) => (
+												<FaStar
+													key={i}
+													color={i < review.rating ? "#ffc107" : "#e4e5e9"}
+												/>
+											))}
+										</div>
+									</div>
+									<p className="review-text">"{review.text}"</p>
+								</div>
+							</SwiperSlide>
+						))
+					) : (
+						<p>Loading reviews...</p>
+					)}
+				</Swiper>
+			</Container>
 
-      {/* Swiper for displaying reviews */}
-      {reviews.length === 0 ? (
-        <p>No reviews yet. Be the first to leave a review!</p>
-      ) : (
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          slidesPerView={3}
-          spaceBetween={20}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          breakpoints={{
-            768: { slidesPerView: 1 },
-            1024: { slidesPerView: 2 },
-          }}
-          className="testimonial-swiper"
-        >
-          {reviews.map((review, index) => (
-            <SwiperSlide key={index}>
-              <div className="testimonial-card">
-                <div className="testimonial-card-header">
-                  <span className="testimonial-name">{review.name}</span>
-                  <div className="testimonial-rating">
-                    {'★'.repeat(review.rating)}
-                    {'☆'.repeat(5 - review.rating)}
-                  </div>
-                </div>
-                <p className="testimonial-text">{review.text}</p>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+			{/* MODAL */}
+			{isModalOpen && (
+				<div className="modal-overlay">
+					<div className="modal-box">
+						<button
+							onClick={() => setIsModalOpen(false)}
+							style={{
+								position: "absolute",
+								top: 10,
+								right: 10,
+								background: "none",
+								border: "none",
+								fontSize: "20px",
+							}}
+						>
+							<FaTimes />
+						</button>
+						<h3 className="mb-3 text-center" style={{ color: "#852085" }}>
+							Leave Your Feedback
+						</h3>
+						<form onSubmit={handleSubmitReview}>
+							<label>Name</label>
+							<input
+								className="form-control-custom"
+								value={name}
+								onChange={e => setName(e.target.value)}
+								required
+							/>
 
-      {/* Google Reviews Button */}
-      <div className="google-reviews-section">
-        <a
-          href="https://www.google.com/search?q=cms+Services+Brampton&rlz=1C5CHFA_enCA1003CA1003&oq=cms+Services+Brampton&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigAdIBCDQ5NzZqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x882b15c99c9fdd25:0x5b58d42a35669154,1,,,,"  // Replace with your actual Google review link
-          target="_blank"
-          rel="noopener noreferrer"
-          className="google-reviews-button"
-        >
-          See Reviews on Google
-        </a>
-      </div>
-    </div>
-  );
+							<label>Rating</label>
+							<select
+								className="form-control-custom"
+								value={rating}
+								onChange={e => setRating(Number(e.target.value))}
+							>
+								<option value="5">5 - Excellent</option>
+								<option value="4">4 - Very Good</option>
+								<option value="3">3 - Good</option>
+								<option value="2">2 - Fair</option>
+								<option value="1">1 - Poor</option>
+							</select>
+
+							<label>Review</label>
+							<textarea
+								className="form-control-custom"
+								rows={4}
+								value={reviewText}
+								onChange={e => setReviewText(e.target.value)}
+								required
+							/>
+
+							<button type="submit" className="btn-submit">
+								Post Review
+							</button>
+						</form>
+					</div>
+				</div>
+			)}
+		</section>
+	);
 };
 
 export default ReviewComponent;

@@ -1,184 +1,143 @@
-/* General Styling */
-.navbar {
-  padding: 10px 20px; /* Compact padding */
-  background-color: white; /* Light background */
- box-shadow: none;
+/* ===============================
+   BASE
+================================ */
+.header-navbar {
+	background: #fff;
+	padding: 10px 16px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
 }
 
-.navbar-brand .logo {
-  max-height: 150px; /* Limit logo size */
-  transition: transform 0.6s ease; /* Smooth hover effect */
-  margin: 0; /* No extra margin */
+.logo {
+	height: 58px;
+	transition: transform 0.3s ease;
 }
 
-.navbar-brand .logo:hover {
-  transform: scale(1.2); /* Enlarge logo slightly on hover */
+.logo:hover {
+	transform: scale(1.05); /* Subtle, modern */
 }
 
-.nav-link {
-  color: #852085 !important; /* Primary link color */
-  font-size: 24px; /* Font size */
-  font-weight: 600;
-  position: relative;
-  text-decoration: none;
-  padding-bottom: 5px;
+/* ===============================
+   NAV LINKS
+================================ */
+.nav-links .nav-link {
+	color: #852085 !important;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin: 0 14px;
+	position: relative;
+	padding-bottom: 4px;
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #fd851d;
-  left: 0;
-  bottom: -5px;
-  transition: width 0.3s ease-in-out;
+.nav-links .nav-link::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -4px;
+	width: 0;
+	height: 2px;
+	background: #fd851d;
+	transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
-  width: 100%;
+.nav-links .nav-link:hover::after {
+	width: 100%;
 }
 
-.nav-link:hover {
-  color: #fd851d !important; /* Hover color */
+.nav-links .nav-link:hover {
+	color: #fd851d !important;
 }
 
-.dropdown-custom .dropdown-toggle {
-  color: hsl(300, 61%, 32%) !important; /* Link color */
-  font-size: 20px; /* Match nav link font size */
-  font-weight: 600;
-  background: transparent !important;
-  border: none !important;
-}
-
-.dropdown-custom .dropdown-menu {
-  font-size: 18px; /* Dropdown item size */
-  padding: 4px; /* Adjust padding */
-}
-
+/* ===============================
+   DROPDOWN
+================================ */
 .dropdown-custom .dropdown-toggle::after {
-  content: none; /* Remove dropdown arrow */
+	display: none;
 }
 
-/* Custom Toggler Icon */
-.navbar-toggler {
-  border: none; /* Remove default border */
-  padding: 5px; 
-  box-shadow: none;/* Add padding */
+.dropdown-menu {
+	border-radius: 12px;
+	border: none;
+	padding: 8px 0;
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.navbar-toggler-icon {
-  all:unset;
-  display: inline-block;
-  color: aliceblue!important;
-  width: 30px; /* Width of the lines */
-  height: 2px; /* Thickness of each line */
-  background-color: white; /* Color of the lines */
-  margin-bottom: 5px;
-  position:relative; /* Position for stacking */
-  box-shadow: none;
+.dropdown-item {
+	font-size: 14px;
+	padding: 10px 20px;
 }
 
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-  content: '';
-  display: block;
-  width: 30px; /* Match the main line width */
-  height: 2px; /* Match the main line thickness */
-  background-color: white; /* Match the main line color */
-  position: absolute; /* Stack the lines */
-  left: 0; /* Align with the main line */
-  transition: all 0.3s ease; /* Smooth transition for toggling */
-  box-shadow: none;
+.dropdown-item:hover {
+	background: #f8f8f8;
+	color: #852085;
 }
 
-.navbar-toggler-icon::before {
-  top: -8px; /* Position the top line */
-  box-shadow: none;
-}
-
-.navbar-toggler-icon::after {
-  top: 8px; /* Position the bottom line */
-}
-
-/* When the navbar is expanded */
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-  background-color: white; /* Hide the middle line */
-  box-shadow: none;
-  border-color: aliceblue;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
-  transform: rotate(45deg); /* Top line becomes part of X */
-  top: 0; /* Move to center */
-  box-shadow: none;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
-  transform: rotate(-45deg); /* Bottom line becomes part of X */
-  top: 0; /* Move to center */
-}
-
-/* Button Customization */
+/* ===============================
+   CTA BUTTON
+================================ */
 .btn-custom {
-  background-color: #852085;
-  border-color: #4CAF50;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 15px;
-  box-shadow: none;
-  position: relative;
-  transition: background-color 0.8s ease, transform 0.2s ease;
+	margin-left: 16px;
+	background: #852085;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 10px 18px;
+	border-radius: 20px;
+	border: none;
+	white-space: nowrap;
+	transition: all 0.3s ease;
 }
 
 .btn-custom:hover {
-  background-color: #fd851d;
-  border-color: #45a049;
-  transform: scale(1.1);
+	background: #fd851d;
+	transform: translateY(-1px);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 15px 15px; /* Reduce padding */
-    background-color: white; /* Ensure light background */
-    box-shadow: none;
-    border: white;
-  }
-
-  .nav-link {
-    font-size: 18px; /* Adjusted font size */
-    padding: 5px 0; /* Compact padding */
-  }
-
-  .dropdown-custom .dropdown-toggle {
-    font-size: 18px; /* Adjust dropdown font size */
-  }
+/* ===============================
+   TOGGLER (FIXED SIZE)
+================================ */
+.custom-toggler {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: none;
+	background: rgba(133, 32, 133, 0.08);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-@media (max-width: 480px) {
-  .navbar {
-    padding: 5px 10px; /* Further reduce padding */
-    background-color: white; /* Ensure light background */
-    box-shadow: none;
-  }
+.custom-toggler:focus {
+	box-shadow: none;
+}
 
-  .navbar-brand .logo {
-    max-height: auto; /* Reduce logo size */
-  }
+/* ===============================
+   MOBILE MENU
+================================ */
+@media (max-width: 991px) {
+	.logo {
+		height: 44px;
+	}
 
+	.navbar-collapse {
+		background: #fff;
+		margin-top: 10px;
+		padding: 20px;
+		border-radius: 0 0 20px 20px;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+	}
 
-  .nav-link {
-    font-size: 16px; /* Smaller font size */
-    box-shadow: none;
-    background-color: aliceblue;
-  }
+	.nav-links {
+		align-items: flex-start !important;
+	}
 
-  .dropdown-custom .dropdown-toggle {
-    font-size: 16px; /* Adjust dropdown font size */
-  }
+	.nav-links .nav-link {
+		font-size: 15px;
+		margin: 10px 0;
+	}
 
-  .btn-custom {
-    font-size: 10px; /* Compact button size */
-  }
+	.btn-custom {
+		width: 100%;
+		margin: 16px 0 0;
+	}
 }
