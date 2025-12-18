@@ -14,7 +14,6 @@ const HeroSection = () => {
 				<p className="hero-subtitle text-white">
 					Expert Tax Filing, Immigration Services, Insurance & Investments.{" "}
 					<br className="d-none d-md-block" />
-					Serving Brampton & All of Canada.
 				</p>
 
 				{/* Call Action Button */}

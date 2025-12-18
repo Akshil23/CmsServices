@@ -1,62 +1,67 @@
-/* =============================================
-   VARIABLES & SETTINGS
-   ============================================= */
 :root {
-	--brand-purple-dark: #3a0e3a; /* Deep purple background */
-	--brand-orange: #fd851d;
+	--purple-dark: #2b0a2b;
+	--purple-mid: #3a0e3a;
+	--orange: #fd851d;
 	--text-light: #e0e0e0;
-	--text-white: #ffffff;
+	--white: #ffffff;
 }
 
+/* ===============================
+   FOOTER BASE
+================================ */
 .site-footer {
-	background-color: var(--brand-purple-dark); /* Solid Deep Purple */
+	background: linear-gradient(180deg, var(--purple-mid), var(--purple-dark));
 	color: var(--text-light);
-	padding-top: 60px;
+	padding: 70px 0 0;
 	font-family: "Segoe UI", sans-serif;
-	overflow: hidden;
 }
 
-/* =============================================
-   TYPOGRAPHY
-   ============================================= */
+/* ===============================
+   SECTIONS
+================================ */
+.footer-section {
+	margin-bottom: 40px;
+}
+
 .brand-title {
-	color: var(--text-white);
+	color: var(--white);
 	font-weight: 800;
 	letter-spacing: 1px;
-	margin-bottom: 15px;
-}
-
-.section-title {
-	color: var(--text-white);
-	font-size: 18px;
-	font-weight: 700;
-	text-transform: uppercase;
-	margin-bottom: 20px;
-	position: relative;
-	display: inline-block;
-}
-
-/* Orange underline effect */
-.section-title::after {
-	content: "";
-	display: block;
-	width: 40px;
-	height: 3px;
-	background-color: var(--brand-orange);
-	margin-top: 5px;
-	border-radius: 2px;
+	margin-bottom: 16px;
 }
 
 .brand-desc {
 	font-size: 14px;
-	line-height: 1.6;
-	opacity: 0.8;
-	max-width: 350px; /* Readability limit */
+	line-height: 1.7;
+	opacity: 0.85;
+	max-width: 360px;
 }
 
-/* =============================================
-   LINK LISTS
-   ============================================= */
+/* ===============================
+   HEADINGS
+================================ */
+.section-title {
+	color: var(--white);
+	font-size: 17px;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 18px;
+	position: relative;
+}
+
+.section-title::after {
+	content: "";
+	width: 36px;
+	height: 3px;
+	background: var(--orange);
+	display: block;
+	margin-top: 6px;
+	border-radius: 3px;
+}
+
+/* ===============================
+   SERVICE LINKS
+================================ */
 .footer-list {
 	list-style: none;
 	padding: 0;
@@ -69,133 +74,115 @@
 
 .footer-list a {
 	color: var(--text-light);
-	text-decoration: none;
 	font-size: 15px;
-	transition: all 0.3s ease;
+	text-decoration: none;
 	display: flex;
 	align-items: center;
-}
-
-.footer-list .bullet {
-	font-size: 10px;
-	color: var(--brand-orange);
-	margin-right: 10px;
-	transition: transform 0.3s ease;
+	gap: 10px;
+	transition: all 0.3s ease;
 }
 
 .footer-list a:hover {
-	color: var(--brand-orange);
-	padding-left: 5px; /* Slide effect */
+	color: var(--orange);
+	transform: translateX(4px);
 }
 
-.footer-list a:hover .bullet {
-	transform: translateX(3px);
-}
-
-/* =============================================
-   CONTACT & SOCIALS
-   ============================================= */
+/* ===============================
+   CONTACT
+================================ */
 .contact-details {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 16px;
 }
 
 .contact-row {
 	display: flex;
-	align-items: flex-start; /* Aligns icon with top line of text */
-	text-decoration: none;
+	align-items: flex-start;
+	gap: 14px;
 	color: var(--text-light);
+	text-decoration: none;
 	font-size: 15px;
-	transition: 0.3s;
+	transition: all 0.3s ease;
 }
 
-.icon-main {
-	color: var(--brand-orange);
-	margin-right: 15px;
+.contact-row svg {
+	color: var(--orange);
 	font-size: 18px;
-	margin-top: 3px;
-	flex-shrink: 0; /* Prevents icon squishing on small screens */
+	margin-top: 2px;
 }
 
 .contact-row:hover {
-	color: var(--brand-orange);
+	color: var(--orange);
+	transform: translateX(3px);
 }
 
+/* ===============================
+   SOCIAL ICONS
+================================ */
 .social-icons {
-	margin-top: 20px;
+	margin-top: 22px;
 	display: flex;
-	gap: 15px;
+	gap: 14px;
 }
 
 .social-icons a {
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.12);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.1);
-	color: var(--text-white);
-	transition: all 0.3s;
-	text-decoration: none;
+	color: var(--white);
+	transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-	background: var(--brand-orange);
+	background: var(--orange);
 	transform: translateY(-3px);
 }
 
-/* =============================================
+/* ===============================
    COPYRIGHT
-   ============================================= */
-.copyright-bar {
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
+================================ */
+copyright-bar {
 	margin-top: 40px;
-	padding: 20px 0;
-	background-color: rgba(0, 0, 0, 0.1); /* Slightly darker shade */
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+	padding: 18px 0;
+	background: rgba(0, 0, 0, 0.15);
+	text-align: center;
 }
 
-.copyright-bar p {
+copyright-bar p {
 	margin: 0;
 	font-size: 13px;
 	opacity: 0.6;
 }
 
-/* =============================================
-   MOBILE OPTIMIZATIONS
-   ============================================= */
+/* ===============================
+   MOBILE
+================================ */
 @media (max-width: 768px) {
 	.site-footer {
-		padding-top: 40px;
-		text-align: center; /* Center align on mobile */
-	}
-
-	/* Center the orange underlines */
-	.section-title {
-		display: inline-block;
-	}
-	.section-title::after {
-		margin: 5px auto 0 auto; /* Centered margin */
-	}
-
-	/* Center the social icons container */
-	.social-icons {
-		justify-content: center;
+		text-align: center;
+		padding-top: 50px;
 	}
 
 	.brand-desc {
-		margin: 0 auto 20px auto;
+		margin: 0 auto;
 	}
 
-	/* Re-align Flex items for Center Alignment */
+	.section-title::after {
+		margin: 6px auto 0;
+	}
+
 	.footer-list a,
 	.contact-row {
-		justify-content: center; /* Centers content horizontally */
-		align-items: center;
+		justify-content: center;
 	}
 
-	.icon-main {
-		margin-right: 8px; /* Tighter spacing on mobile */
+	.social-icons {
+		justify-content: center;
 	}
 }

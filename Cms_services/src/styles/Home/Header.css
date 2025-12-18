@@ -1,143 +1,242 @@
+:root {
+	--purple: #852085;
+	--purple-light: rgba(133, 32, 133, 0.05);
+	--orange: #fd851d;
+	--white: #ffffff;
+}
+
 /* ===============================
-   BASE
+   HEADER BASE
 ================================ */
 .header-navbar {
-	background: #fff;
-	padding: 10px 16px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+	background: var(--white);
+	padding: 8px 16px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	transition: all 0.3s ease;
+}
+
+/* ===============================
+   LOGO
+================================ */
+.logo-container {
+	display: flex;
+	align-items: center;
 }
 
 .logo {
-	height: 58px;
+	height: 55px; /* Slightly adjusted for better mobile fit */
 	transition: transform 0.3s ease;
 }
 
 .logo:hover {
-	transform: scale(1.05); /* Subtle, modern */
+	transform: scale(1.03);
 }
 
 /* ===============================
    NAV LINKS
 ================================ */
+.nav-links {
+	margin-right: 0 !important;
+}
+
 .nav-links .nav-link {
-	color: #852085 !important;
+	color: var(--purple) !important;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: 700; /* Bolder text for clarity */
 	text-transform: uppercase;
-	margin: 0 14px;
+	letter-spacing: 0.5px;
+	margin: 0 10px;
 	position: relative;
-	padding-bottom: 4px;
+	transition: color 0.3s ease;
 }
 
 .nav-links .nav-link::after {
 	content: "";
 	position: absolute;
 	left: 0;
-	bottom: -4px;
+	bottom: 5px;
 	width: 0;
 	height: 2px;
-	background: #fd851d;
+	background: var(--orange);
 	transition: width 0.3s ease;
+}
+
+.nav-links .nav-link:hover,
+.nav-links .nav-link:focus {
+	color: var(--orange) !important;
 }
 
 .nav-links .nav-link:hover::after {
 	width: 100%;
 }
 
-.nav-links .nav-link:hover {
-	color: #fd851d !important;
-}
-
 /* ===============================
-   DROPDOWN
+   DROPDOWN CUSTOMIZATION
 ================================ */
 .dropdown-custom .dropdown-toggle::after {
 	display: none;
 }
 
+.dropdown-icon {
+	margin-left: 6px;
+	font-size: 10px;
+	color: var(--orange);
+	transition: transform 0.3s ease;
+}
+
+/* Rotate chevron on hover */
+.dropdown-custom:hover .dropdown-icon {
+	transform: rotate(180deg);
+}
+
 .dropdown-menu {
 	border-radius: 12px;
 	border: none;
+	border-top: 3px solid var(--orange); /* Accent top border */
 	padding: 8px 0;
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+	margin-top: 15px; /* Space from header */
 }
 
 .dropdown-item {
 	font-size: 14px;
-	padding: 10px 20px;
+	font-weight: 500;
+	color: #333;
+	padding: 10px 24px;
 }
 
 .dropdown-item:hover {
-	background: #f8f8f8;
-	color: #852085;
+	background: #fff8f2; /* Very light orange tint */
+	color: var(--purple);
+	padding-left: 28px; /* Slide animation */
+	transition: 0.2s;
 }
 
 /* ===============================
    CTA BUTTON
 ================================ */
 .btn-custom {
-	margin-left: 16px;
-	background: #852085;
-	color: #fff;
+	margin-left: 20px;
+	background: var(--purple);
+	color: var(--white);
 	font-size: 12px;
-	font-weight: 700;
-	padding: 10px 18px;
-	border-radius: 20px;
+	font-weight: 800;
+	letter-spacing: 0.5px;
+	padding: 10px 24px;
+	border-radius: 30px;
 	border: none;
 	white-space: nowrap;
-	transition: all 0.3s ease;
+	box-shadow: 0 4px 10px rgba(133, 32, 133, 0.3);
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .btn-custom:hover {
-	background: #fd851d;
-	transform: translateY(-1px);
+	background: var(--orange);
+	color: white;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 15px rgba(253, 133, 29, 0.4);
 }
 
 /* ===============================
-   TOGGLER (FIXED SIZE)
+   CUSTOM HAMBURGER TOGGLE
+   (Clean, Sharp, Blends in)
 ================================ */
 .custom-toggler {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	border: none;
-	background: rgba(133, 32, 133, 0.08);
+	width: 44px;
+	height: 44px;
+	border: none !important;
+	background-color: transparent;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
+	padding: 0;
+	border-radius: 50%; /* Circle shape */
+	transition: background-color 0.3s;
 }
 
+/* Slight background on hover for "blend in" feel */
+.custom-toggler:hover,
 .custom-toggler:focus {
+	background-color: var(--purple-light);
+}
+
+/* The Three Bars */
+.icon-bar {
+	display: block;
+	width: 24px; /* Length of line */
+	height: 2px; /* Thickness */
+	background-color: var(--purple); /* The Exact Brand Color */
+	margin: 2.5px 0;
+	border-radius: 2px;
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	transform-origin: center;
+}
+
+/* Toggler ACTIVE State (When menu is open) -> Transform to X */
+.navbar-toggler[aria-expanded="true"] .top-bar {
+	transform: translateY(7px) rotate(45deg);
+	background-color: var(--orange); /* Change to Orange on active */
+}
+
+.navbar-toggler[aria-expanded="true"] .middle-bar {
+	opacity: 0;
+	transform: translateX(10px);
+}
+
+.navbar-toggler[aria-expanded="true"] .bottom-bar {
+	transform: translateY(-7px) rotate(-45deg);
+	background-color: var(--orange);
+}
+
+/* Remove default focus outline ring */
+.navbar-toggler:focus {
 	box-shadow: none;
 }
 
 /* ===============================
-   MOBILE MENU
+   MOBILE RESPONSIVENESS
 ================================ */
 @media (max-width: 991px) {
 	.logo {
-		height: 44px;
+		height: 48px;
+	}
+
+	/* Make header compact on mobile */
+	.header-navbar {
+		padding: 10px 14px;
 	}
 
 	.navbar-collapse {
-		background: #fff;
-		margin-top: 10px;
-		padding: 20px;
-		border-radius: 0 0 20px 20px;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-	}
-
-	.nav-links {
-		align-items: flex-start !important;
+		background: var(--white);
+		margin-top: 15px;
+		padding: 10px 20px 20px;
+		border-radius: 8px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+		border-top: 2px solid var(--purple); /* Accent line */
 	}
 
 	.nav-links .nav-link {
 		font-size: 15px;
-		margin: 10px 0;
+		margin: 8px 0;
+		padding: 10px 0;
+		border-bottom: 1px solid #f9f9f9;
+	}
+
+	/* Dropdown behavior for mobile */
+	.dropdown-menu {
+		border: none;
+		box-shadow: none;
+		background: #fafafa;
+		margin-top: 5px;
+		padding-left: 10px;
+		border-left: 2px solid var(--orange);
 	}
 
 	.btn-custom {
 		width: 100%;
-		margin: 16px 0 0;
+		margin: 20px 0 0;
+		text-align: center;
 	}
 }

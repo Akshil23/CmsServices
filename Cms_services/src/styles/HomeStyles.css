@@ -25,6 +25,7 @@
 	text-align: center;
 	color: var(--white);
 	overflow: hidden;
+	padding-top: 100px;
 }
 
 .hero-overlay {
