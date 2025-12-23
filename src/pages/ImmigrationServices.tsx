@@ -1,225 +1,243 @@
-import React, { useState, useRef } from 'react';
-import '../styles/pages/ImmigrationServices.css'; // Custom CSS for consistency
-import { FaWhatsapp } from 'react-icons/fa'; // Icon for WhatsApp
+import React, { useState, useRef } from "react";
+import { Container, Button, Row, Col } from "react-bootstrap";
+import { FaWhatsapp } from "react-icons/fa";
+import "../styles/pages/ImmigrationServices.css"; // Make sure this path is correct
 
 const DetailedImmigrationServices: React.FC = () => {
-  const whatsappNumber = "+16474469738"; // Replace with your WhatsApp number
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    service: "",
-    customQuery: "", // For custom queries
-  });
+	const whatsappNumber = "16474469738"; // Standardize format without '+' for API link
+	const [userInfo, setUserInfo] = useState({
+		name: "",
+		email: "",
+		service: "",
+		customQuery: "",
+	});
 
-  const formRef = useRef<HTMLDivElement>(null); // Reference to the form
+	const formRef = useRef<HTMLDivElement>(null);
 
-  // Handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setUserInfo((prev) => ({ ...prev, [name]: value }));
-  };
+	// Handle input change
+	const handleInputChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+	) => {
+		const { name, value } = e.target;
+		setUserInfo(prev => ({ ...prev, [name]: value }));
+	};
 
-  // Handle service button click
-  const handleServiceSelection = (service: string) => {
-    setUserInfo((prev) => ({ ...prev, service }));
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" }); // Scroll to the form
-    }
-  };
+	// Handle service button click
+	const handleServiceSelection = (service: string) => {
+		setUserInfo(prev => ({ ...prev, service }));
+		if (formRef.current) {
+			formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+		}
+	};
 
-  // Construct WhatsApp message link, including custom query only if present
-  const constructWhatsAppLink = () => {
-    let message = `Name: ${userInfo.name}%0AEmail: ${userInfo.email}%0AService: ${userInfo.service}`;
+	// Submit via WhatsApp
+	const handleWhatsAppSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		let message = `*Immigration Service Inquiry*%0A%0A*Name:* ${userInfo.name}%0A*Email:* ${userInfo.email}%0A*Selected Service:* ${userInfo.service}`;
 
-    // Append custom query only if the user entered one
-    if (userInfo.customQuery) {
-      message += `%0AQuery: ${userInfo.customQuery}`;
-    }
+		if (userInfo.customQuery) {
+			message += `%0A*Additional Query:* ${userInfo.customQuery}`;
+		}
 
-    return `https://wa.me/${whatsappNumber}?text=${message}`;
-  };
+		const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+		window.open(whatsappLink, "_blank");
+	};
 
-  return (
-    <section className="detailed-immigration-services" data-dao="fade-up">
-      <div className="container" data-dao="fade-up">
-        <h1 className="page-title" data-aos="fade-up">Immigration Services - Detailed Information</h1>
-        <p className="description" data-aos="fade-up">
-          Explore our wide range of immigration services tailored to meet your needs.
-        </p>
+	return (
+		<div className="immigration-page-wrapper">
+			<Container className="py-5">
+				{/* HEADER SECTION */}
+				<div className="text-center mb-5" data-aos="fade-up">
+					<h1 className="page-title">Immigration Services</h1>
+					<p className="page-subtitle">
+						Expert guidance for your Canadian journey. Choose a service below to get
+						started.
+					</p>
+				</div>
 
-        <div className="services-list" data-aos="fade-up">
-          {/* Service 1: Study Permit Extension */}
-          <div className="service-item">
-            <h2><strong>Study Permit Extension</strong><br /></h2>
-            <p className="price">
-              Extend your study permit seamlessly and avoid interruptions to your studies.<br />
-              Application Fees: $40
-            </p>
-            <button onClick={() => handleServiceSelection("Study Permit Extension")}>Select This Service</button>
-            <p className="detailed-description">
-              If you are studying in Canada and your study permit is about to expire, you must apply for a study permit extension to continue your education without interruption.
-            </p>
-          </div>
+				{/* SERVICES GRID */}
+				<div className="services-grid" data-aos="fade-up">
+					{/* List of Services */}
+					{[
+						{
+							title: "Study Permit Extension",
+							price: "$40",
+							desc: "Extend your study permit seamlessly and avoid interruptions to your education. Ideal if your permit is expiring soon.",
+							value: "Study Permit Extension",
+						},
+						{
+							title: "Temporary Resident Visa (TRV)",
+							price: "$35",
+							desc: "Apply for a TRV to extend your stay as a visitor, worker, or student. We ensure accurate documentation.",
+							value: "Temporary Resident Visa",
+						},
+						{
+							title: "Work Permit Application",
+							price: "$40",
+							desc: "Get the right work permit for your professional needs. We support PGWP, Spousal Open Work Permits, and more.",
+							value: "Work Permit Application",
+						},
+						{
+							title: "U.S. Visa Application",
+							price: "$40",
+							desc: "Full guidance on B1/B2 visas for travel to the USA. We assist with DS-160 forms and appointment booking.",
+							value: "U.S. Visa Application",
+						},
+						{
+							title: "Passport Renewal",
+							price: "$100",
+							desc: "Timely passport renewal services for all countries. Avoid travel delays with our professional help.",
+							value: "Passport Renewal",
+						},
+						{
+							title: "SIN Number Application",
+							price: "$20",
+							desc: "Essential for working in Canada. We help you apply for your Social Insurance Number quickly and correctly.",
+							value: "SIN Number Application",
+						},
+						{
+							title: "Baby Passport Application",
+							price: "$30",
+							desc: "Complete assistance for new parents applying for their baby's first passport, ensuring all strict requirements are met.",
+							value: "Application for Baby Passport",
+						},
+						{
+							title: "PR Card Renewal",
+							price: "$30",
+							desc: "Apply for or renew your Permanent Resident card. We help with residency obligation calculations and forms.",
+							value: "PR Card Application",
+						},
+						{
+							title: "PGWP (2+2 Strategy)",
+							price: "$40",
+							desc: "Assistance obtaining a 3-Year Post-Grad Work Permit for students who completed two 1-year programs.",
+							value: "PGWP for Two One-Year Courses",
+						},
+						{
+							title: "Custom Immigration Service",
+							price: "From $50",
+							desc: "Unique case? We offer personalized solutions for specific immigration requirements not listed here.",
+							value: "Custom Immigration Service",
+						},
+					].map((item, index) => (
+						<div className="service-card" key={index}>
+							<div className="card-content">
+								<h3>{item.title}</h3>
+								<p className="card-desc">{item.desc}</p>
+							</div>
+							<div className="card-footer">
+								<div className="price-tag">Fee: {item.price}</div>
+								<Button
+									className="select-btn"
+									onClick={() => handleServiceSelection(item.value)}
+								>
+									Select Service
+								</Button>
+							</div>
+						</div>
+					))}
+				</div>
 
-          {/* Service 2: Temporary Resident Visa (TRV) */}
-          <div className="service-item">
-            <h2><strong>Temporary Resident Visa (TRV) Application</strong><br /></h2>
-            <p className="price">
-              Apply for a TRV to extend your stay for work, study, or visit.<br />
-              Application Fee: $35
-            </p>
-            <button onClick={() => handleServiceSelection("Temporary Resident Visa")}>Select This Service</button>
-            <p className="detailed-description">
-              A Temporary Resident Visa (TRV) allows foreign nationals to stay in Canada for a short duration, whether for tourism, business, or family visits.
-            </p>
-          </div>
+				{/* CONTACT FORM */}
+				<div className="form-container" ref={formRef} data-aos="zoom-in">
+					<Row className="justify-content-center">
+						<Col lg={8} md={10}>
+							<div className="contact-card">
+								<h2>Start Your Application</h2>
+								<p className="form-desc">
+									Selected Service:{" "}
+									<strong>{userInfo.service || "Please select a service above"}</strong>
+								</p>
 
-          {/* Service 3: Work Permit Application */}
-          <div className="service-item">
-            <h2><strong>Work Permit Application</strong><br /></h2>
-            <p className="price">
-              Get assistance with the correct work permit application for your professional needs.<br />
-              Application Fee: $40
-            </p>
-            <button onClick={() => handleServiceSelection("Work Permit Application")}>Select This Service</button>
-            <p className="detailed-description">
-              A work permit is required for foreign nationals who wish to work in Canada. We assist you in choosing the correct work permit based on your job offer and skills.
-            </p>
-          </div>
+								<form onSubmit={handleWhatsAppSubmit}>
+									<div className="form-group">
+										<label>Full Name</label>
+										<input
+											type="text"
+											name="name"
+											placeholder="Enter your name"
+											className="form-control-custom"
+											value={userInfo.name}
+											onChange={handleInputChange}
+											required
+										/>
+									</div>
 
-          {/* Service 4: U.S. Visa Application */}
-          <div className="service-item">
-            <h2><strong>U.S. Visa Application</strong><br /></h2>
-            <p className="price">
-              Guidance on obtaining the appropriate U.S. visa, including B1/B2 visas for travel.<br />
-              Application Fee: $40
-            </p>
-            <button onClick={() => handleServiceSelection("U.S. Visa Application")}>Select This Service</button>
-            <p className="detailed-description">
-              If you plan to travel to the United States, you may need a U.S. visa. We assist with the application and document submission.
-            </p>
-          </div>
+									<div className="form-group">
+										<label>Email Address</label>
+										<input
+											type="email"
+											name="email"
+											placeholder="name@example.com"
+											className="form-control-custom"
+											value={userInfo.email}
+											onChange={handleInputChange}
+											required
+										/>
+									</div>
 
-          {/* Service 5: Passport Renewal */}
-          <div className="service-item">
-            <h2><strong>Passport Renewal for All Countries</strong><br /></h2>
-            <p className="price">
-              Ensure timely passport renewal without the hassle.<br />
-              Application Fee: $100
-            </p>
-            <button onClick={() => handleServiceSelection("Passport Renewal")}>Select This Service</button>
-            <p className="detailed-description">
-              Passport renewal is essential for maintaining your ability to travel. We assist you with the entire passport renewal process.
-            </p>
-          </div>
+									<div className="form-group">
+										<label>Service Type</label>
+										<select
+											name="service"
+											className="form-control-custom select-custom"
+											value={userInfo.service}
+											onChange={handleInputChange}
+											required
+										>
+											<option value="" disabled>
+												Select a Service...
+											</option>
+											<option value="Study Permit Extension">
+												Study Permit Extension
+											</option>
+											<option value="Temporary Resident Visa">
+												Temporary Resident Visa
+											</option>
+											<option value="Work Permit Application">
+												Work Permit Application
+											</option>
+											<option value="U.S. Visa Application">U.S. Visa Application</option>
+											<option value="Passport Renewal">Passport Renewal</option>
+											<option value="SIN Number Application">
+												SIN Number Application
+											</option>
+											<option value="Application for Baby Passport">
+												Application for Baby Passport
+											</option>
+											<option value="PR Card Application">PR Card Application</option>
+											<option value="PGWP for Two One-Year Courses">
+												PGWP (2-Year Strategy)
+											</option>
+											<option value="Custom Immigration Service">
+												Custom Immigration Service
+											</option>
+										</select>
+									</div>
 
-  
+									<div className="form-group">
+										<label>Additional Questions (Optional)</label>
+										<textarea
+											name="customQuery"
+											rows={3}
+											placeholder="Any specific details about your case?"
+											className="form-control-custom"
+											value={userInfo.customQuery}
+											onChange={handleInputChange}
+										/>
+									</div>
 
-          {/* Service 7: Application for Baby Passport */}
-          <div className="service-item">
-            <h2><strong>Application for Baby Passport</strong><br /></h2>
-            <p className="price">
-              Get help applying for a new passport for your baby.<br />
-              Application Fee: $30
-            </p>
-            <button onClick={() => handleServiceSelection("Application for Baby Passport")}>Select This Service</button>
-            <p className="detailed-description">
-              We assist in the application process for obtaining a passport for your newborn baby, ensuring all documentation is correct and submitted on time.
-            </p>
-          </div>
-
-          {/* Service 8: PR Card Application */}
-          <div className="service-item">
-            <h2><strong>PR Card Application</strong><br /></h2>
-            <p className="price">
-              Assistance with applying for or renewing your Permanent Resident (PR) card.<br />
-              Application Fee: $30
-            </p>
-            <button onClick={() => handleServiceSelection("PR Card Application")}>Select This Service</button>
-            <p className="detailed-description">
-              We help you apply for or renew your PR card, ensuring a smooth process and timely submission of all necessary documents.
-            </p>
-          </div>
-
-          {/* Service 9: Post-Graduation Work Permit (PGWP) for Two One-Year Courses */}
-          <div className="service-item">
-            <h2><strong>PGWP for Two One-Year Courses</strong><br /></h2>
-            <p className="price">
-              Assistance in obtaining a Post-Graduation Work Permit for students who completed two one-year programs.<br />
-              Application Fee: $40
-            </p>
-            <button onClick={() => handleServiceSelection("PGWP for Two One-Year Courses")}>Select This Service</button>
-            <p className="detailed-description">
-              Students completing two one-year academic programs in Canada may qualify for a three-year PGWP. We assist with eligibility and the application process.
-            </p>
-          </div>
-
-          {/* Service 10: Custom Immigration Service */}
-          <div className="service-item">
-            <h2><strong>Custom Immigration Service</strong><br /></h2>
-            <p className="price">
-              Tailored solutions for unique immigration needs.<br />
-              Starting at: $50
-            </p>
-            <button onClick={() => handleServiceSelection("Custom Immigration Service")}>Select This Service</button>
-            <p className="detailed-description">
-              Do you have specific immigration requirements not covered by standard services? We offer personalized assistance to address your unique situation, ensuring your needs are met efficiently.
-            </p>
-          </div>
-        </div>
-
- {/* Service 6: SIN Number Application */}
- <div className="service-item">
-            <h2><strong>SIN Number Application</strong><br /></h2>
-            <p className="price">
-              Assistance with applying for your Social Insurance Number (SIN).<br />
-              Application Fee: $20
-            </p>
-            <button onClick={() => handleServiceSelection("SIN Number Application")}>Select This Service</button>
-            <p className="detailed-description">
-              A Social Insurance Number (SIN) is essential for working in Canada and accessing government services. We provide guidance and support to ensure your application process is smooth and successful.
-            </p>
-          </div>
-        {/* User Info Form */}
-        <div className="user-info-form" data-aos="zoom-in" ref={formRef}>
-          <h2>Contact Us</h2>
-          <p>Fill out your details and reach out to us via WhatsApp for quick assistance.</p>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={userInfo.name}
-            onChange={handleInputChange}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={userInfo.email}
-            onChange={handleInputChange}
-          />
-          <select name="service" value={userInfo.service} onChange={handleInputChange}>
-            <option value="">Select a Service</option>
-            <option value="Study Permit Extension">Study Permit Extension</option>
-            <option value="Temporary Resident Visa">Temporary Resident Visa</option>
-            <option value="Work Permit Application">Work Permit Application</option>
-            <option value="U.S. Visa Application">U.S. Visa Application</option>
-            <option value="Passport Renewal">Passport Renewal</option>
-            <option value="SIN Number Application">SIN Number Application</option>
-            <option value="Application for Baby Passport">Application for Baby Passport</option>
-            <option value="PR Card Application">PR Card Application</option>
-            <option value="PGWP for Two One-Year Courses">PGWP for Two One-Year Courses</option>
-            <option value="Custom Immigration Service">Custom Immigration Service</option>
-          </select>
-          <a href={constructWhatsAppLink()} className="whatsapp-button" target="_blank" rel="noopener noreferrer">
-            <FaWhatsapp /> Chat with Us on WhatsApp
-          </a>
-        </div>
-      </div>
-
-     
-    </section>
-  );
+									<Button type="submit" className="submit-btn-whatsapp">
+										<FaWhatsapp className="icon" /> Request via WhatsApp
+									</Button>
+								</form>
+							</div>
+						</Col>
+					</Row>
+				</div>
+			</Container>
+		</div>
+	);
 };
 
 export default DetailedImmigrationServices;

@@ -1,0 +1,290 @@
+/* =============================================
+   VARIABLES
+   ============================================= */
+:root {
+	--brand-purple: #852085;
+	--brand-orange: #fd851d;
+	--brand-orange-hover: #e06d0b;
+	--bg-page: #fdfdfd;
+	--white: #ffffff;
+	--text-main: #333;
+	--text-muted: #666;
+	--card-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+	--border-color: #eee;
+}
+
+/* =============================================
+     PAGE SETUP
+     ============================================= */
+body {
+	background-color: var(--bg-page);
+	color: var(--text-main);
+}
+
+.insurance-page-wrapper {
+	/* Push down below header */
+	padding-top: 130px;
+	padding-bottom: 50px;
+}
+
+@media (max-width: 991px) {
+	.insurance-page-wrapper {
+		padding-top: 90px;
+	}
+}
+
+.page-title {
+	color: var(--brand-purple);
+	font-weight: 800;
+	font-size: clamp(2rem, 4vw, 3.2rem);
+	text-transform: uppercase;
+	position: relative;
+	display: inline-block;
+}
+
+/* Orange Underline */
+.page-title::after {
+	content: "";
+	display: block;
+	width: 80px;
+	height: 5px;
+	background-color: var(--brand-orange);
+	margin: 8px auto 0;
+	border-radius: 4px;
+}
+
+.page-subtitle {
+	font-size: 1.2rem;
+	color: var(--text-muted);
+	max-width: 700px;
+	margin: 20px auto 0;
+}
+
+/* =============================================
+     SERVICES GRID
+     ============================================= */
+.insurance-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 30px;
+	margin-bottom: 60px;
+}
+
+.insure-card {
+	background: var(--white);
+	border-radius: 15px;
+	padding: 30px;
+	box-shadow: var(--card-shadow);
+	border: 1px solid var(--border-color);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border-top: 4px solid var(--brand-orange);
+	display: flex;
+	flex-direction: column;
+}
+
+.insure-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 15px 40px rgba(133, 32, 133, 0.1);
+}
+
+.card-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 20px;
+}
+
+.icon-box {
+	font-size: 2rem;
+	color: var(--brand-purple);
+	background: rgba(133, 32, 133, 0.1);
+	padding: 10px;
+	border-radius: 12px;
+}
+
+.service-tag {
+	background: #fff3e0;
+	color: #e65100;
+	font-size: 0.75rem;
+	font-weight: 700;
+	padding: 4px 10px;
+	border-radius: 20px;
+	text-transform: uppercase;
+}
+
+.insure-card h3 {
+	font-size: 1.4rem;
+	font-weight: 700;
+	margin-bottom: 10px;
+	color: #222;
+}
+
+.insure-desc {
+	color: var(--text-muted);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-bottom: 25px;
+	flex-grow: 1; /* Pushes button to bottom */
+}
+
+.insure-btn {
+	width: 100%;
+	background-color: transparent !important;
+	border: 2px solid var(--brand-purple) !important;
+	color: var(--brand-purple) !important;
+	font-weight: 700 !important;
+	padding: 10px !important;
+	border-radius: 8px !important;
+	transition: 0.3s !important;
+}
+
+.insure-btn:hover {
+	background-color: var(--brand-purple) !important;
+	color: white !important;
+}
+
+/* =============================================
+     WHY CHOOSE US & PROCESS
+     ============================================= */
+.info-panel {
+	background: var(--white);
+	padding: 40px;
+	border-radius: 15px;
+	height: 100%;
+	box-shadow: var(--card-shadow);
+}
+
+.highlight-panel {
+	background: #faf4fa; /* Very light purple tint */
+	border: 1px solid rgba(133, 32, 133, 0.1);
+}
+
+.info-panel h2 {
+	color: var(--brand-purple);
+	font-weight: 700;
+	margin-bottom: 25px;
+	font-size: 1.6rem;
+}
+
+/* Check List */
+.check-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.check-list li {
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	font-size: 1.05rem;
+	color: #333;
+}
+.check-icon {
+	color: var(--brand-orange);
+	margin-right: 12px;
+	font-size: 1.2rem;
+	flex-shrink: 0;
+}
+
+/* Steps */
+.step-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.step-num {
+	width: 35px;
+	height: 35px;
+	background: var(--brand-purple);
+	color: white;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	margin-right: 15px;
+	flex-shrink: 0;
+}
+.step-item p {
+	margin: 0;
+	font-size: 1rem;
+	color: #444;
+}
+
+/* =============================================
+     FORM STYLING
+     ============================================= */
+.contact-form-card {
+	background: var(--white);
+	padding: 50px;
+	border-radius: 20px;
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--border-color);
+}
+
+.contact-form-card h2 {
+	color: var(--brand-purple);
+	font-weight: 800;
+}
+
+.form-label {
+	font-weight: 600;
+	font-size: 0.9rem;
+	color: #222;
+}
+
+.form-control-styled {
+	width: 100%;
+	padding: 12px 15px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background: #fdfdfd;
+	font-size: 1rem;
+}
+
+.form-control-styled:focus {
+	outline: none;
+	border-color: var(--brand-purple);
+	background: white;
+}
+
+.submit-btn-whatsapp-large {
+	width: 100%;
+	background-color: #25d366 !important;
+	border: none !important;
+	font-size: 1.2rem !important;
+	font-weight: 700 !important;
+	padding: 15px !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+	border-radius: 8px !important;
+}
+
+.submit-btn-whatsapp-large:hover {
+	background-color: #1ebc57 !important;
+	transform: translateY(-2px);
+}
+
+/* =============================================
+     MOBILE
+     ============================================= */
+@media (max-width: 768px) {
+	.page-title {
+		font-size: 1.8rem;
+	}
+	.insurance-grid {
+		grid-template-columns: 1fr;
+	}
+	.insure-card {
+		padding: 25px;
+	}
+	.contact-form-card {
+		padding: 25px;
+	}
+	.info-panel {
+		padding: 25px;
+	}
+}

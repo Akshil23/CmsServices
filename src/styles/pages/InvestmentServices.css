@@ -1,0 +1,279 @@
+/* =============================================
+   VARIABLES & SETUP
+   ============================================= */
+:root {
+	--brand-purple: #852085;
+	--brand-orange: #fd851d;
+	--brand-orange-hover: #e06d0b;
+	--text-dark: #333333;
+	--text-gray: #555555;
+	--bg-color: #f8f9fa;
+	--white: #ffffff;
+	--card-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+	--border-radius: 12px;
+}
+
+body,
+html {
+	background-color: var(--bg-color);
+	color: var(--text-dark);
+}
+
+.investment-page-wrapper {
+	background-color: var(--bg-color);
+	min-height: 100vh;
+	/* Push down below header */
+	padding-top: 130px;
+}
+
+@media (max-width: 991px) {
+	.investment-page-wrapper {
+		padding-top: 90px;
+	}
+}
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+.page-title {
+	color: var(--brand-purple);
+	font-weight: 800;
+	font-size: clamp(2rem, 4vw, 3rem);
+	text-transform: uppercase;
+	margin-bottom: 20px;
+	position: relative;
+	display: inline-block;
+}
+
+.page-title::after {
+	content: "";
+	display: block;
+	width: 70px;
+	height: 4px;
+	background-color: var(--brand-orange);
+	margin: 10px auto 0;
+	border-radius: 2px;
+}
+
+.page-subtitle {
+	color: var(--text-gray);
+	font-size: 1.15rem;
+	max-width: 800px;
+	margin: 0 auto;
+	line-height: 1.6;
+}
+
+/* =============================================
+   INTRO CARD
+   ============================================= */
+.intro-card {
+	background: var(--white);
+	padding: 40px;
+	border-radius: 15px;
+	box-shadow: var(--card-shadow);
+	border-left: 5px solid var(--brand-purple);
+}
+
+.intro-card h3 {
+	color: var(--brand-purple);
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+.intro-card p {
+	font-size: 1.1rem;
+	color: var(--text-dark);
+	margin: 0;
+}
+
+/* =============================================
+   GRID LAYOUT
+   ============================================= */
+.investment-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+	gap: 30px;
+	margin-bottom: 70px;
+}
+
+/* SERVICE CARD STYLE */
+.invest-card {
+	background: var(--white);
+	border-radius: 16px;
+	padding: 30px;
+	box-shadow: var(--card-shadow);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+}
+
+.invest-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 15px 35px rgba(133, 32, 133, 0.1);
+}
+
+/* Decorative top bar */
+.invest-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 6px;
+	background: linear-gradient(90deg, var(--brand-orange), var(--brand-purple));
+}
+
+.icon-wrapper {
+	font-size: 2.5rem;
+	color: var(--brand-orange);
+	margin-bottom: 20px;
+	background: rgba(253, 133, 29, 0.1); /* Light Orange Circle */
+	width: 70px;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+}
+
+.card-content h3 {
+	color: var(--brand-purple);
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+
+.badge-subtitle {
+	display: inline-block;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: #555;
+	background: #f0f0f0;
+	padding: 4px 10px;
+	border-radius: 4px;
+	margin-bottom: 15px;
+}
+
+.card-desc {
+	color: var(--text-gray);
+	line-height: 1.6;
+	font-size: 0.95rem;
+	flex-grow: 1; /* Pushes button to bottom */
+	margin-bottom: 25px;
+}
+
+.invest-select-btn {
+	background: transparent !important;
+	color: var(--brand-purple) !important;
+	border: 2px solid var(--brand-purple) !important;
+	padding: 10px 0 !important;
+	border-radius: 8px !important;
+	font-weight: 700 !important;
+	width: 100%;
+	transition: all 0.3s ease !important;
+}
+
+.invest-select-btn:hover {
+	background: var(--brand-purple) !important;
+	color: var(--white) !important;
+	transform: translateY(-2px);
+}
+
+/* =============================================
+   CONTACT FORM
+   ============================================= */
+.form-container {
+	margin-bottom: 50px;
+}
+
+.contact-card {
+	background: var(--white);
+	padding: 40px;
+	border-radius: 20px;
+	box-shadow: var(--card-shadow);
+	border: 1px solid #eee;
+}
+
+.contact-card h2 {
+	color: var(--brand-purple);
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.form-desc {
+	text-align: center;
+	margin-bottom: 30px;
+	color: var(--text-gray);
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-group label {
+	font-weight: 600;
+	font-size: 0.9rem;
+	margin-bottom: 8px;
+	display: block;
+}
+
+.form-control-custom {
+	width: 100%;
+	padding: 12px 16px;
+	border-radius: 8px;
+	border: 1px solid #dcdcdc;
+	font-size: 1rem;
+	background-color: #fafafa;
+}
+
+.form-control-custom:focus {
+	outline: none;
+	border-color: var(--brand-purple);
+	background-color: #fff;
+	box-shadow: 0 0 0 4px rgba(133, 32, 133, 0.1);
+}
+
+/* WhatsApp Button */
+.submit-btn-whatsapp {
+	width: 100%;
+	padding: 14px;
+	font-size: 1.1rem !important;
+	font-weight: 700 !important;
+	background-color: #25d366 !important; /* Official WhatsApp Color */
+	border: none !important;
+	border-radius: 8px !important;
+	color: white !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 10px;
+	box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.submit-btn-whatsapp:hover {
+	background-color: #1ebc57 !important;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+	.page-title {
+		font-size: 2rem;
+	}
+	.investment-grid {
+		grid-template-columns: 1fr;
+	}
+	.invest-card {
+		padding: 25px;
+	}
+	.contact-card {
+		padding: 25px;
+	}
+}

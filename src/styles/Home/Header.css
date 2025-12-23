@@ -1,6 +1,6 @@
 :root {
 	--purple: #852085;
-	--purple-light: rgba(133, 32, 133, 0.05);
+	--purple-light: rgba(133, 32, 133, 0.08);
 	--orange: #fd851d;
 	--white: #ffffff;
 }
@@ -9,32 +9,28 @@
    HEADER BASE
 ================================ */
 .header-navbar {
-	background: var(--white);
+	background: rgba(255, 255, 255, 0.98); /* Slight glass opaqueness */
 	padding: 8px 16px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+	z-index: 1050; /* Above Hero content */
 	transition: all 0.3s ease;
 }
 
 /* ===============================
    LOGO
 ================================ */
-.logo-container {
-	display: flex;
-	align-items: center;
-}
-
 .logo {
-	height: 55px; /* Slightly adjusted for better mobile fit */
+	height: 55px;
+	width: auto;
 	transition: transform 0.3s ease;
 }
 
 .logo:hover {
-	transform: scale(1.03);
+	transform: scale(1.05);
 }
 
 /* ===============================
-   NAV LINKS
+   NAV LINKS (Desktop)
 ================================ */
 .nav-links {
 	margin-right: 0 !important;
@@ -43,19 +39,18 @@
 .nav-links .nav-link {
 	color: var(--purple) !important;
 	font-size: 14px;
-	font-weight: 700; /* Bolder text for clarity */
+	font-weight: 700;
 	text-transform: uppercase;
-	letter-spacing: 0.5px;
 	margin: 0 10px;
 	position: relative;
-	transition: color 0.3s ease;
+	transition: color 0.3s;
 }
 
 .nav-links .nav-link::after {
 	content: "";
 	position: absolute;
 	left: 0;
-	bottom: 5px;
+	bottom: 4px;
 	width: 0;
 	height: 2px;
 	background: var(--orange);
@@ -72,7 +67,7 @@
 }
 
 /* ===============================
-   DROPDOWN CUSTOMIZATION
+   DROPDOWN STYLE
 ================================ */
 .dropdown-custom .dropdown-toggle::after {
 	display: none;
@@ -85,31 +80,30 @@
 	transition: transform 0.3s ease;
 }
 
-/* Rotate chevron on hover */
 .dropdown-custom:hover .dropdown-icon {
 	transform: rotate(180deg);
 }
 
 .dropdown-menu {
-	border-radius: 12px;
+	border-radius: 10px;
 	border: none;
-	border-top: 3px solid var(--orange); /* Accent top border */
+	border-top: 3px solid var(--orange);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+	margin-top: 15px;
 	padding: 8px 0;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-	margin-top: 15px; /* Space from header */
 }
 
 .dropdown-item {
 	font-size: 14px;
 	font-weight: 500;
-	color: #333;
 	padding: 10px 24px;
+	color: #333;
 }
 
 .dropdown-item:hover {
-	background: #fff8f2; /* Very light orange tint */
+	background: #fdfdfd;
 	color: var(--purple);
-	padding-left: 28px; /* Slide animation */
+	padding-left: 28px;
 	transition: 0.2s;
 }
 
@@ -117,126 +111,145 @@
    CTA BUTTON
 ================================ */
 .btn-custom {
-	margin-left: 20px;
+	margin-left: 18px;
 	background: var(--purple);
 	color: var(--white);
 	font-size: 12px;
 	font-weight: 800;
-	letter-spacing: 0.5px;
 	padding: 10px 24px;
-	border-radius: 30px;
+	border-radius: 20px;
 	border: none;
 	white-space: nowrap;
 	box-shadow: 0 4px 10px rgba(133, 32, 133, 0.3);
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	transition: all 0.3s;
 }
 
 .btn-custom:hover {
 	background: var(--orange);
-	color: white;
+	color: var(--white);
 	transform: translateY(-2px);
 	box-shadow: 0 8px 15px rgba(253, 133, 29, 0.4);
 }
 
 /* ===============================
-   CUSTOM HAMBURGER TOGGLE
-   (Clean, Sharp, Blends in)
+   CUSTOM HAMBURGER (Transparent)
 ================================ */
+/* Reset Default Button Styles */
 .custom-toggler {
-	width: 44px;
-	height: 44px;
 	border: none !important;
-	background-color: transparent;
+	box-shadow: none !important;
+	outline: none !important;
+	padding: 6px !important;
+	background: transparent !important;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	padding: 0;
-	border-radius: 50%; /* Circle shape */
-	transition: background-color 0.3s;
+	justify-content: center;
 }
 
-/* Slight background on hover for "blend in" feel */
-.custom-toggler:hover,
+/* Ensure no focus ring */
 .custom-toggler:focus {
-	background-color: var(--purple-light);
-}
-
-/* The Three Bars */
-.icon-bar {
-	display: block;
-	width: 24px; /* Length of line */
-	height: 2px; /* Thickness */
-	background-color: var(--purple); /* The Exact Brand Color */
-	margin: 2.5px 0;
-	border-radius: 2px;
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-	transform-origin: center;
-}
-
-/* Toggler ACTIVE State (When menu is open) -> Transform to X */
-.navbar-toggler[aria-expanded="true"] .top-bar {
-	transform: translateY(7px) rotate(45deg);
-	background-color: var(--orange); /* Change to Orange on active */
-}
-
-.navbar-toggler[aria-expanded="true"] .middle-bar {
-	opacity: 0;
-	transform: translateX(10px);
-}
-
-.navbar-toggler[aria-expanded="true"] .bottom-bar {
-	transform: translateY(-7px) rotate(-45deg);
-	background-color: var(--orange);
-}
-
-/* Remove default focus outline ring */
-.navbar-toggler:focus {
 	box-shadow: none;
 }
 
+.hamburger-lines {
+	width: 28px;
+	height: 20px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/* The Lines */
+.line {
+	display: block;
+	height: 3px;
+	width: 100%;
+	border-radius: 2px;
+	background: var(--purple); /* Your brand purple */
+	transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Animation: When menu is Open (Expanded) */
+.navbar-toggler[aria-expanded="true"] .line-top {
+	transform: rotate(45deg);
+	position: absolute;
+	top: 9px;
+	background: var(--orange); /* Change to orange */
+}
+
+.navbar-toggler[aria-expanded="true"] .line-middle {
+	opacity: 0;
+	transform: translateX(-10px);
+}
+
+.navbar-toggler[aria-expanded="true"] .line-bottom {
+	transform: rotate(-45deg);
+	position: absolute;
+	bottom: 8px;
+	background: var(--orange);
+}
+
 /* ===============================
-   MOBILE RESPONSIVENESS
+   MOBILE OVERLAY & LAYOUT
 ================================ */
 @media (max-width: 991px) {
 	.logo {
 		height: 48px;
 	}
 
-	/* Make header compact on mobile */
 	.header-navbar {
 		padding: 10px 14px;
 	}
 
+	/* Dropdown arrow stays correct color */
+	.navbar-toggler[aria-expanded="true"] ~ .logo-container .logo {
+		/* Optional: Can add logic if logo needs to change, currently untouched */
+	}
+
+	/* CRITICAL: Float Over Content */
 	.navbar-collapse {
-		background: var(--white);
-		margin-top: 15px;
-		padding: 10px 20px 20px;
-		border-radius: 8px;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-		border-top: 2px solid var(--purple); /* Accent line */
+		position: absolute;
+		top: 100%; /* Directly below header */
+		left: 0;
+		right: 0;
+		width: 100%;
+
+		background: #ffffff;
+		border-top: 1px solid rgba(0, 0, 0, 0.05);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+		padding: 20px;
+		z-index: 10000; /* Ensure high priority */
+		max-height: 90vh; /* Allow scroll if screen is small */
+		overflow-y: auto;
 	}
 
 	.nav-links .nav-link {
 		font-size: 15px;
-		margin: 8px 0;
+		margin: 6px 0;
 		padding: 10px 0;
 		border-bottom: 1px solid #f9f9f9;
 	}
 
-	/* Dropdown behavior for mobile */
+	/* Reset hover lines for mobile clean look */
+	.nav-links .nav-link::after {
+		display: none;
+	}
+
 	.dropdown-menu {
 		border: none;
 		box-shadow: none;
-		background: #fafafa;
-		margin-top: 5px;
-		padding-left: 10px;
-		border-left: 2px solid var(--orange);
+		margin-top: 0;
+		padding-left: 15px;
+		background: #fdfdfd;
+		border-left: 3px solid var(--orange); /* Side indicator instead of top */
 	}
 
 	.btn-custom {
+		margin: 20px 0 5px 0;
 		width: 100%;
-		margin: 20px 0 0;
 		text-align: center;
+		padding: 12px;
 	}
 }

@@ -10,45 +10,49 @@ import BenefitsCalculator from "./pages/Calculator"; // New Component
 import NewcomerBenefit from "./pages/NewcomerBenefit";
 import Aos from "aos";
 import "aos/dist/aos.css"; // Import AOS CSS for animations
+import DetailedInvestmentServices from "./pages/InvestmentServices";
+import InsuranceServices from "./pages/InsuranceServices";
 
 const App: React.FC = () => {
-  useEffect(() => {
-    Aos.init({
-      duration: 1000, // Animation duration
-      easing: "ease-in-out", // Easing style
-      once: false,
-       // Play animation only once
-    });
-  }, []);
+	useEffect(() => {
+		Aos.init({
+			duration: 1000, // Animation duration
+			easing: "ease-in-out", // Easing style
+			once: false,
+			// Play animation only once
+		});
+	}, []);
 
-  return (
-    <div className="app-container">
-      {/* Header Component */}
-      <Header />
+	return (
+		<div className="app-container">
+			{/* Header Component */}
+			<Header />
 
-      {/* Main Content */}
-      <div className="content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-              </>
-            }
-          />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/tax-filing" element={<TaxFilingPage />} />
-          <Route path="/immigration-services" element={<ImmigrationServices />} />
-          <Route path="/benefits-calculator" element={<BenefitsCalculator />} />
-          <Route path="/newcomer-benefits" element={<NewcomerBenefit />} />
-        </Routes>
-      </div>
+			{/* Main Content */}
+			<div className="content">
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<>
+								<Home />
+							</>
+						}
+					/>
+					<Route path="/about-us" element={<AboutUs />} />
+					<Route path="/tax-filing" element={<TaxFilingPage />} />
+					<Route path="/immigration-services" element={<ImmigrationServices />} />
+					<Route path="/benefits-calculator" element={<BenefitsCalculator />} />
+					<Route path="/newcomer-benefits" element={<NewcomerBenefit />} />
+					<Route path="/investment-services" element={<DetailedInvestmentServices />} />
+					<Route path="/insurance-services" element={<InsuranceServices />} />
+				</Routes>
+			</div>
 
-      {/* Footer Component */}
-      <Footer />
-    </div>
-  );
+			{/* Footer Component */}
+			<Footer />
+		</div>
+	);
 };
 
 export default App;

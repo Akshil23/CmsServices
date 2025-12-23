@@ -1,3 +1,4 @@
+import React from "react";
 import { Navbar, Nav, Container, Dropdown, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/Home/Header.css";
@@ -12,16 +13,16 @@ const Header: React.FC = () => {
 					<img src="/Cms_logo.png" alt="CMS Logo" className="logo" />
 				</Navbar.Brand>
 
-				{/* CUSTOM HAMBURGER TOGGLER (3 Clean Lines) */}
+				{/* CUSTOM HAMBURGER TOGGLER */}
 				<Navbar.Toggle aria-controls="main-navbar" className="custom-toggler">
-					<div className="hamburger-box">
-						<span className="icon-bar top-bar"></span>
-						<span className="icon-bar middle-bar"></span>
-						<span className="icon-bar bottom-bar"></span>
+					<div className="hamburger-lines">
+						<span className="line line-top"></span>
+						<span className="line line-middle"></span>
+						<span className="line line-bottom"></span>
 					</div>
 				</Navbar.Toggle>
 
-				{/* NAV LINKS */}
+				{/* NAVIGATION CONTENT */}
 				<Navbar.Collapse id="main-navbar">
 					<Nav className="ms-auto align-items-lg-center nav-links">
 						<Nav.Link href="/">Home</Nav.Link>
@@ -41,8 +42,8 @@ const Header: React.FC = () => {
 									Immigration Services
 								</Dropdown.Item>
 								<Dropdown.Divider />
-								<Dropdown.Item href="/insurance">Insurance</Dropdown.Item>
-								<Dropdown.Item href="/investments">Investments</Dropdown.Item>
+								<Dropdown.Item href="/insurance-services">Insurance</Dropdown.Item>
+								<Dropdown.Item href="/investment-services">Investments</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown>
 
