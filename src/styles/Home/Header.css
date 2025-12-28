@@ -10,7 +10,7 @@
 ================================ */
 .header-navbar {
 	background: rgba(255, 255, 255, 0.98); /* Slight glass opaqueness */
-	padding: 8px 16px;
+	padding-left: 50px;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 	z-index: 1050; /* Above Hero content */
 	transition: all 0.3s ease;
@@ -23,6 +23,7 @@
 	height: 55px;
 	width: auto;
 	transition: transform 0.3s ease;
+	align-items: center;
 }
 
 .logo:hover {
@@ -140,6 +141,7 @@
 	box-shadow: none !important;
 	outline: none !important;
 	padding: 6px !important;
+
 	background: transparent !important;
 	display: flex;
 	align-items: center;
@@ -156,6 +158,8 @@
 	height: 20px;
 	position: relative;
 	display: flex;
+	margin-left: auto;
+	
 	flex-direction: column;
 	justify-content: space-between;
 }
@@ -199,12 +203,13 @@
 	}
 
 	.header-navbar {
-		padding: 10px 14px;
+		padding: 10px 10px;
 	}
+
 
 	/* Dropdown arrow stays correct color */
 	.navbar-toggler[aria-expanded="true"] ~ .logo-container .logo {
-		/* Optional: Can add logic if logo needs to change, currently untouched */
+		
 	}
 
 	/* CRITICAL: Float Over Content */
@@ -241,7 +246,7 @@
 		border: none;
 		box-shadow: none;
 		margin-top: 0;
-		padding-left: 15px;
+		padding-left: 10px;
 		background: #fdfdfd;
 		border-left: 3px solid var(--orange); /* Side indicator instead of top */
 	}

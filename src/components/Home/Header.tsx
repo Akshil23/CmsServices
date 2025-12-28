@@ -9,12 +9,13 @@ const Header: React.FC = () => {
 		<Navbar expand="lg" className="header-navbar" fixed="top">
 			<Container>
 				{/* LOGO */}
-				<Navbar.Brand href="/" className="logo-container">
-					<img src="/Cms_logo.png" alt="CMS Logo" className="logo" />
-				</Navbar.Brand>
+				
 
 				{/* CUSTOM HAMBURGER TOGGLER */}
 				<Navbar.Toggle aria-controls="main-navbar" className="custom-toggler">
+					<Navbar.Brand href="/" className="logo-container">
+					<img src="/Cms_logo.png" alt="CMS Logo" className="logo" />
+				</Navbar.Brand>
 					<div className="hamburger-lines">
 						<span className="line line-top"></span>
 						<span className="line line-middle"></span>
