@@ -221,6 +221,132 @@
 	justify-content: center;
 	align-items: center;
 }
+/* ================================
+   TESTIMONIAL SECTION
+================================ */
+.testimonial-section {
+  background: #faf7fb;
+}
+
+.section-header h2 {
+  font-weight: 700;
+  color: #852085;
+}
+
+.section-header p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+/* ================================
+   TESTIMONIAL CARD
+================================ */
+.testimonial-card {
+  background: #aaefff;
+  border-radius: 14px;
+  padding: 28px 24px;
+  height: 100%;
+  box-shadow: 0 12px 30px rgba(41, 8, 8, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: "“";
+  font-size: 70px;
+  color: rgba(133, 32, 133, 0.12);
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  line-height: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================
+   HEADER (NAME + STARS)
+================================ */
+.testimonial-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.client-name {
+  font-weight: 600;
+  font-size: 16px;
+  font-weight: bold;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #000000;
+}
+
+.stars svg {
+  font-size: 15px;
+  margin-right: 3px;
+}
+
+/* ================================
+   REVIEW TEXT
+================================ */
+.review-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #141313;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+
+  /* Prevent very long reviews from breaking layout */
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  line-clamp:7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ================================
+   SWIPER OVERRIDES
+================================ */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #852085;
+}
+
+.swiper-pagination-bullet {
+  background: #ccc;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #852085;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 24px 20px;
+  }
+
+  .review-text {
+    -webkit-line-clamp: 9;
+	line-clamp: 9;
+
+
+  }
+}
+
 
 .modal-box {
 	background: var(--white);
@@ -263,3 +389,100 @@
 		font-size: 2rem;
 	}
 }
+/* ------------------- TESTIMONIAL SECTION ------------------- */
+.testimonial-section {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #852085;
+}
+
+.section-header p {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* ------------------- SWIPER CARD ------------------- */
+.testimonial-card {
+  background-color: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ------------------- PROFILE + STARS ------------------- */
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile-wrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-photo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #852085;
+}
+
+/* Name + Stars next to avatar */
+.client-name {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.stars {
+  display: flex;
+  margin-top: 4px;
+}
+
+.stars svg {
+  margin-right: 3px;
+}
+
+/* ------------------- REVIEW TEXT ------------------- */
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* ------------------- SWIPER PAGINATION & NAV ------------------- */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #852085;
+}
+
+.swiper-pagination-bullet {
+  background: #852085;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
