@@ -1,6 +1,8 @@
+import FaqSection from "../components/Home/faqSection";
 import HeroSection from "../components/Home/HeroSection";
 import Testimonial from "../components/Home/Testimonial";
 import WelcomeSection from "../components/Home/WelcomeSection";
+
 
 
 const Home = () => {
@@ -9,6 +11,7 @@ const Home = () => {
       <HeroSection />
       <WelcomeSection/>
       <Testimonial/>
+      <FaqSection/>
     </main>
   );
 };

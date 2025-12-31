@@ -40,6 +40,7 @@ const App: React.FC = () => {
 							</>
 						}
 					/>
+					
 					<Route path="/about-us" element={<AboutUs />} />
 					<Route path="/tax-filing" element={<TaxFilingPage />} />
 					<Route path="/immigration-services" element={<ImmigrationServices />} />
