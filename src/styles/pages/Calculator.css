@@ -1,111 +1,183 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: white;
-    
-    background-size: 400% 400%; /* Creates a smooth animated effect */
-    animation: gradientShift 10s ease infinite; /* Smooth animation */
-    color: #ffffff; /* White text for contrast */
-  }
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(-45deg, #6a1b9a, #401dee, #25d366, #128c7e);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.calculator {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  color: #333;
+}
+
+.calculator-header {
+  text-align: center;
   
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  .calculator {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    color: #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .calculator h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #6a1b9a; /* Purple for the title */
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #6a1b9a;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: #fff;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group select:focus {
-    border-color: #6a1b9a;
-    box-shadow: 0 0 8px rgba(106, 27, 154, 0.5);
-    outline: none;
-  }
-  
-  button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: #401dee;
-    color: #000000;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  button:hover {
-    background: color(rgb(22, 217, 220));
-    transform: scale(1.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .result {
-    margin-top: 20px;
-    padding: 15px;
-    background: linear-gradient(135deg, #e8f5e9, #d7ffd9);
-    color: #2e7d32;
-    font-weight: bold;
-    text-align: center;
-    border: 2px solid #c8e6c9;
-    border-radius: 8px;
-    font-size: 1.2rem;
-  }
-  
-  .result.error {
-    background: linear-gradient(135deg, #ffe6e6, #ffcdd2);
-    color: #d32f2f;
-    border: 2px solid #ef9a9a;
-  }
-  
+  margin-bottom: 20px;
+}
+
+.header-logo {
+  max-width: 140px;
+  margin: 0 auto;
+}
+
+.tagline {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #c53030;
+  letter-spacing: 1.5px;
+  margin-top: 5px;
+}
+
+.calculator h1 {
+  text-align: center;
+  color: #1a202c;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #edf2f7;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f7fafc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.checkbox-group input { width: auto; }
+
+.calc-btn {
+  width: 100%;
+  padding: 15px;
+  background: #401dee;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.calc-btn:hover {
+  transform: translateY(-2px);
+  background: #3316c7;
+}
+
+.result {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.success-badge {
+  background: #c6f6d5;
+  color: #2f855a;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.benefit-numbers p {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.curiosity-box {
+  background: #fff5f5;
+  border: 2px dashed #feb2b2;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.sales-list {
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.sales-list li:before {
+  content: "→";
+  color: #e53e3e;
+  margin-right: 8px;
+}
+
+.pricing-badge {
+  background: #401dee;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.pricing-badge strong { color: #25d366; font-size: 1.2rem; }
+
+.wa-button-sales {
+  display: block;
+  background: #25d366;
+  color: white !important;
+  padding: 14px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+}
+.eligibility-note {
+  font-size: 0.75rem;
+  color: #718096;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.tip-box {
+  background-color: #f0f7ff;
+  border-left: 4px solid #401dee;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin: 20px 0;
+  text-align: left;
+}

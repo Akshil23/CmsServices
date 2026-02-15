@@ -47,7 +47,7 @@ const AboutUs: React.FC = () => {
     <li>
       <FontAwesomeIcon icon={faPhoneAlt} className="contact-icon" />
       <span>
-        <a href="tel:+16474469738"> ~ +1(647) 446-9738</a>
+        <a href="tel:+17533816665"> ~ +1(753)-381-6665</a>
       </span>
     </li>
     <li>
@@ -64,19 +64,7 @@ const AboutUs: React.FC = () => {
     </li>
   </ul>
 
-  {/* Google Map Embed */}
-  <div className="google-map-container">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.345235839565!2d-79.77623659999999!3d43.661789299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b15c99c9fdd25%3A0x5b58d42a35669154!2sCms%20Services!5e0!3m2!1sen!2sca!4v1734911914526!5m2!1sen!2sca" 
-      width="100%" 
-      height="400" 
-      style={{ border: 0 }} 
-      allowFullScreen 
-      loading="lazy" 
-      referrerPolicy="no-referrer-when-downgrade"
-      title="Google Map Location"
-    ></iframe>
-  </div>
+  
 </section>
         {/* Why Choose Us Section */}
         <section className="why-choose-us-section">
