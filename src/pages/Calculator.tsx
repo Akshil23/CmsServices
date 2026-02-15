@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/pages/Calculator.css";
 // Adjust this path to your actual logo location
-import Logo from "/Users/ak/Cms_services/src/logo.jpg"; 
+import Logo from "../../public/logo.jpg"; 
 
 const Calculator: React.FC = () => {
   const [formData, setFormData] = useState({
