@@ -1,183 +1,299 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(-45deg, #6a1b9a, #401dee, #25d366, #128c7e);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	font-family: "Segoe UI", Arial, sans-serif;
+	background: linear-gradient(-45deg, #6a1b9a, #401dee, #25d366, #128c7e);
+	background-size: 400% 400%;
+	animation: gradientShift 15s ease infinite;
+	min-height: 100vh;
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .calculator {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-  color: #333;
+	max-width: 600px;
+	margin: 40px auto;
+	padding: 30px;
+	background: #ffffff;
+	border-radius: 20px;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	color: #333;
 }
 
 .calculator-header {
-  text-align: center;
-  
-  margin-bottom: 20px;
+	text-align: center;
+
+	margin-bottom: 20px;
 }
 
 .header-logo {
-  max-width: 140px;
-  margin: 0 auto;
+	max-width: 140px;
+	margin: 0 auto;
 }
 
 .tagline {
-  font-size: 0.7rem;
-  font-weight: bold;
-  color: #c53030;
-  letter-spacing: 1.5px;
-  margin-top: 5px;
+	font-size: 0.7rem;
+	font-weight: bold;
+	color: #c53030;
+	letter-spacing: 1.5px;
+	margin-top: 5px;
 }
 
 .calculator h1 {
-  text-align: center;
-  color: #1a202c;
-  font-size: 1.8rem;
-  margin-bottom: 25px;
+	text-align: center;
+	color: #1a202c;
+	font-size: 1.8rem;
+	margin-bottom: 25px;
 }
 
 .form-group {
-  margin-bottom: 18px;
+	margin-bottom: 18px;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #4a5568;
+	display: block;
+	margin-bottom: 6px;
+	font-weight: 600;
+	color: #4a5568;
 }
 
-.form-group input, .form-group select {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #edf2f7;
-  border-radius: 8px;
-  box-sizing: border-box;
+.form-group input,
+.form-group select {
+	width: 100%;
+	padding: 12px;
+	border: 2px solid #edf2f7;
+	border-radius: 8px;
+	box-sizing: border-box;
 }
 
 .checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #f7fafc;
-  padding: 10px;
-  border-radius: 8px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background: #f7fafc;
+	padding: 10px;
+	border-radius: 8px;
 }
 
-.checkbox-group input { width: auto; }
+.checkbox-group input {
+	width: auto;
+}
 
 .calc-btn {
-  width: 100%;
-  padding: 15px;
-  background: #401dee;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+	width: 100%;
+	padding: 15px;
+	background: #401dee;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: 0.3s;
 }
 
 .calc-btn:hover {
-  transform: translateY(-2px);
-  background: #3316c7;
+	transform: translateY(-2px);
+	background: #3316c7;
 }
 
 .result {
-  margin-top: 25px;
-  padding: 20px;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+	margin-top: 25px;
+	padding: 20px;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
 }
 
 .success-badge {
-  background: #c6f6d5;
-  color: #2f855a;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: bold;
+	background: #c6f6d5;
+	color: #2f855a;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 0.7rem;
+	font-weight: bold;
 }
 
 .benefit-numbers p {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #f1f5f9;
-  padding: 8px 0;
-  margin: 0;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #f1f5f9;
+	padding: 8px 0;
+	margin: 0;
 }
 
 .curiosity-box {
-  background: #fff5f5;
-  border: 2px dashed #feb2b2;
-  padding: 15px;
-  border-radius: 10px;
-  margin: 20px 0;
+	background: #fff5f5;
+	border: 2px dashed #feb2b2;
+	padding: 15px;
+	border-radius: 10px;
+	margin: 20px 0;
 }
 
 .sales-list {
-  padding: 0;
-  list-style: none;
-  font-size: 0.85rem;
+	padding: 0;
+	list-style: none;
+	font-size: 0.85rem;
 }
 
 .sales-list li:before {
-  content: "→";
-  color: #e53e3e;
-  margin-right: 8px;
+	content: "→";
+	color: #e53e3e;
+	margin-right: 8px;
 }
 
 .pricing-badge {
-  background: #401dee;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
-  display: inline-block;
+	background: #401dee;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 8px;
+	display: inline-block;
 }
 
-.pricing-badge strong { color: #25d366; font-size: 1.2rem; }
+.pricing-badge strong {
+	color: #25d366;
+	font-size: 1.2rem;
+}
 
 .wa-button-sales {
-  display: block;
-  background: #25d366;
-  color: white !important;
-  padding: 14px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 15px;
-  text-align: center;
+	display: block;
+	background: #25d366;
+	color: white !important;
+	padding: 14px;
+	border-radius: 50px;
+	text-decoration: none;
+	font-weight: bold;
+	margin-top: 15px;
+	text-align: center;
 }
 .eligibility-note {
-  font-size: 0.75rem;
-  color: #718096;
-  font-style: italic;
-  margin-top: -5px;
-  margin-bottom: 10px;
-  text-align: left;
+	font-size: 0.75rem;
+	color: #718096;
+	font-style: italic;
+	margin-top: -5px;
+	margin-bottom: 10px;
+	text-align: left;
 }
 
 .tip-box {
-  background-color: #f0f7ff;
-  border-left: 4px solid #401dee;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  margin: 20px 0;
-  text-align: left;
+	background-color: #f0f7ff;
+	border-left: 4px solid #401dee;
+	padding: 15px;
+	border-radius: 8px;
+	font-size: 0.9rem;
+	margin: 20px 0;
+	text-align: left;
+}
+
+/* --- Complex / Married Status Card --- */
+.complex-view {
+	background: #ffffff;
+	border-radius: 16px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+	border: 1px solid #e0e0e0;
+	overflow: hidden;
+	margin-top: 2rem;
+	animation: slideUp 0.4s ease-out;
+}
+
+/* Header Section */
+.complex-header {
+	background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+	padding: 2rem 1.5rem;
+	text-align: center;
+	border-bottom: 1px solid #ffe082;
+}
+
+.warning-badge {
+	background-color: #ffca28;
+	color: #5d4037;
+	padding: 0.5rem 1rem;
+	border-radius: 50px;
+	font-size: 0.8rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	margin-bottom: 1rem;
+}
+
+.complex-title {
+	color: #5d4037;
+	font-size: 1.3rem;
+	margin: 0;
+	font-weight: 700;
+}
+
+/* Content Body */
+.complex-body {
+	padding: 2rem;
+	color: #4a4a4a;
+	line-height: 1.7;
+	font-size: 1rem;
+	background-color: #fff;
+}
+
+.complex-body strong {
+	color: #2c3e50;
+	font-weight: 600;
+}
+
+/* Footer / CTA Section */
+.complex-footer {
+	background-color: #f8f9fa;
+	padding: 1.5rem 2rem;
+	border-top: 1px solid #eee;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.pricing-badge-complex {
+	font-size: 0.9rem;
+	color: #666;
+	font-weight: 500;
+}
+
+/* WhatsApp Button styling (if not already defined) */
+.wa-button-sales {
+	background-color: #25d366;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 12px 24px;
+	border-radius: 8px;
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+	display: inline-block;
+	box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.wa-button-sales:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
