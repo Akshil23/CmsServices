@@ -13,6 +13,7 @@ import "aos/dist/aos.css"; // Import AOS CSS for animations
 import DetailedInvestmentServices from "./pages/InvestmentServices";
 import InsuranceServices from "./pages/InsuranceServices";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const App: React.FC = () => {
 	useEffect(() => {
@@ -49,6 +50,7 @@ const App: React.FC = () => {
 					<Route path="/investment-services" element={<DetailedInvestmentServices />} />
 					<Route path="/insurance-services" element={<InsuranceServices />} />
 					<Route path="/contact" element={<Contact />} />
+					<Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
 				</Routes>
 			</div>
 
