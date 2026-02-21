@@ -14,6 +14,7 @@ import DetailedInvestmentServices from "./pages/InvestmentServices";
 import InsuranceServices from "./pages/InsuranceServices";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CmsTaxBot from "./pages/CmsTaxBot";
 
 const App: React.FC = () => {
 	useEffect(() => {
@@ -41,7 +42,7 @@ const App: React.FC = () => {
 							</>
 						}
 					/>
-					
+
 					<Route path="/about-us" element={<AboutUs />} />
 					<Route path="/tax-filing" element={<TaxFilingPage />} />
 					<Route path="/immigration-services" element={<ImmigrationServices />} />
@@ -51,6 +52,7 @@ const App: React.FC = () => {
 					<Route path="/insurance-services" element={<InsuranceServices />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+					<Route path="/TaxBot" element={<CmsTaxBot />} />
 				</Routes>
 			</div>
 
