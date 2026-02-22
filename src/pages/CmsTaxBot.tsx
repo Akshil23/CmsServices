@@ -19,7 +19,6 @@ interface FormState {
 	province: string;
 	maritalStatus: "single" | "married" | "";
 	taxfiled: string;
-	student2024: "Yes" | "No";
 	student2025: "Yes" | "No";
 	annualIncome: string;
 	taxWithheld: string;
@@ -33,7 +32,6 @@ const initialForm: FormState = {
 	province: "",
 	maritalStatus: "",
 	taxfiled: "",
-	student2024: "No",
 	student2025: "No",
 	annualIncome: "",
 	taxWithheld: "",
@@ -57,7 +55,7 @@ const CmsTaxBot: React.FC = () => {
 		if (serviceName === "Tax File") {
 			setStep(1);
 		} else {
-			setStep(5); // Redirection Step
+			setStep(5);
 		}
 	};
 
@@ -83,8 +81,6 @@ const CmsTaxBot: React.FC = () => {
 		const withheldNum = parseFloat(form.taxWithheld) || 0;
 		const province = form.province;
 		const entryDate = form.entryDate;
-		const isStudent2024 = form.student2024 === "Yes";
-		const isStudent2025 = form.student2025 === "Yes";
 
 		const bpa2026 = 16452;
 		const fedRate = 0.14;
@@ -109,16 +105,26 @@ const CmsTaxBot: React.FC = () => {
 			"British Columbia": { "1-4": 483, "5-8": 262.5, "9-12": 175 },
 		};
 
+		// UPDATE: Newcomer Benefit logic only for arrivalYear === 2025
 		let nBonus = 0;
-		if (entryDate && bonuses[province]) {
-			const month = new Date(entryDate).getMonth() + 1;
-			const key = month <= 4 ? "1-4" : month <= 8 ? "5-8" : "9-12";
-			nBonus = bonuses[province][key];
+		if (entryDate) {
+			const arrivalYear = new Date(entryDate).getFullYear();
+			if (arrivalYear === 2025 && bonuses[province]) {
+				const month = new Date(entryDate).getMonth() + 1;
+				const key = month <= 4 ? "1-4" : month <= 8 ? "5-8" : "9-12";
+				nBonus = bonuses[province][key];
+			}
 		}
 
 		let cwb = 0;
-		const arrivalYear = new Date(entryDate).getFullYear();
-		if (arrivalYear < 2025 && !isStudent2024 && incomeNum >= 3000 && incomeNum <= 37742) {
+		const arrivalYear = entryDate ? new Date(entryDate).getFullYear() : 0;
+		// CWB is typically for people established in the previous year
+		if (
+			arrivalYear < 2025 &&
+			arrivalYear !== 0 &&
+			incomeNum >= 3000 &&
+			incomeNum <= 37742
+		) {
 			const maxCWB = 1633;
 			if (incomeNum <= 26855) cwb = Math.min(maxCWB, (incomeNum - 3000) * 0.27);
 			else cwb = Math.max(0, maxCWB - (incomeNum - 26855) * (maxCWB / (37742 - 26855)));
@@ -137,19 +143,17 @@ const CmsTaxBot: React.FC = () => {
 				oeptcRange = "$180 – $450";
 				break;
 			case "British Columbia":
-				if (isStudent2025) {
-					renterCreditName = "BC Renter's Tax Credit";
-					renterCreditAmt = Math.max(
-						0,
-						400 - (incomeNum > 66189 ? (incomeNum - 66189) * 0.02 : 0),
-					);
-				}
+				// UPDATE: Renter Credit no longer student dependent
+				renterCreditName = "BC Renter's Tax Credit";
+				renterCreditAmt = Math.max(
+					0,
+					400 - (incomeNum > 66189 ? (incomeNum - 66189) * 0.02 : 0),
+				);
 				break;
 			case "Manitoba":
-				if (isStudent2025) {
-					renterCreditName = "MB Renters Affordability Tax Credit";
-					renterCreditAmt = 625;
-				}
+				// UPDATE: Renter Credit no longer student dependent
+				renterCreditName = "MB Renters Affordability Tax Credit";
+				renterCreditAmt = 625;
 				break;
 			case "Saskatchewan":
 				provName = "SK Low-Income Credit";
@@ -175,7 +179,7 @@ const CmsTaxBot: React.FC = () => {
 			(province === "Ontario" ? 450 : 0);
 
 		const waMsg = encodeURIComponent(
-			`*CMS TAX FILING INQUIRY*\n*Estimate:* $${totalLow.toFixed(0)} - $${totalHigh.toFixed(0)}\n*Province:* ${province}\n*Marital:* ${form.maritalStatus}\n*Refund:* $${estimatedRefund.toFixed(2)}`,
+			`*CMS TAX FILING INQUIRY*\n*Estimate:* $${totalLow.toFixed(0)} - $${totalHigh.toFixed(0)}\n*Province:* ${province}\n*Refund:* $${estimatedRefund.toFixed(2)}`,
 		);
 
 		return {
@@ -211,7 +215,7 @@ const CmsTaxBot: React.FC = () => {
 
 					<Card className="border-0 shadow-lg rounded-4 overflow-hidden">
 						<Card.Body className="p-4 p-md-5">
-							{/* STEP 0: Service Selection */}
+							{/* STEP 0: Selection */}
 							{step === 0 && (
 								<div>
 									<h4 className="fw-bold mb-3 text-center">
@@ -248,13 +252,13 @@ const CmsTaxBot: React.FC = () => {
 								</div>
 							)}
 
-							{/* STEP 5: Redirect Non-Tax Services */}
+							{/* STEP 5: Redirection */}
 							{step === 5 && (
 								<div className="text-center py-4">
 									<h4 className="fw-bold mb-4">Contact CMS Experts</h4>
 									<p className="text-muted mb-4">
-										For <strong>{form.service}</strong>, please click below to connect
-										with our dedicated team on WhatsApp.
+										For <strong>{form.service}</strong>, please connect with our dedicated
+										team on WhatsApp.
 									</p>
 									<Button
 										variant="success"
@@ -280,7 +284,7 @@ const CmsTaxBot: React.FC = () => {
 							{/* STEP 1: Background */}
 							{step === 1 && (
 								<Form>
-									<h3 className="fw-bold mb-4">Background Info</h3>
+									<h3 className="fw-bold mb-4">Tax Estimate (2026)</h3>
 									<Stack gap={3}>
 										<Form.Group>
 											<Form.Label className="small fw-bold text-muted">
@@ -305,12 +309,25 @@ const CmsTaxBot: React.FC = () => {
 												name="entryDate"
 												onChange={handleChange}
 												value={form.entryDate}
+												max="2025-12-31"
 											/>
 										</Form.Group>
+
 										{isLosingBenefits && (
-											<Alert variant="danger" className="fw-bold small">
-												⚠️ You are losing money/benefit as you haven't filed taxes before.
-												Contact us now to claim more tax credits!
+											<Alert variant="danger" className="fw-bold small py-2">
+												⚠️ You are losing money! Because you arrived before 2025 and
+												haven't filed yet, you have unclaimed benefits
+												<p>
+													Please{" "}
+													<a
+														href="https://wa.me/17533816665"
+														target="_blank"
+														rel="noreferrer"
+													>
+														contact us
+													</a>{" "}
+													directly on WhatsApp for this service.
+												</p>
 											</Alert>
 										)}
 										<Form.Group>
@@ -376,11 +393,11 @@ const CmsTaxBot: React.FC = () => {
 							{/* STEP 2: Financials */}
 							{step === 2 && (
 								<Form>
-									<h4 className="fw-bold mb-4">Financials</h4>
+									<h4 className="fw-bold mb-4">Income And Credits</h4>
 									<Stack gap={3}>
 										<Form.Group>
 											<Form.Label className="small fw-bold text-muted">
-												Annual Income (CAD)
+												Total Annual Income (CAD)
 											</Form.Label>
 											<Form.Control
 												type="number"
@@ -392,7 +409,7 @@ const CmsTaxBot: React.FC = () => {
 										</Form.Group>
 										<Form.Group>
 											<Form.Label className="small fw-bold text-muted">
-												Total Tax Paid (Box 22)
+												Total Tax (Box 22 - Total of All T4's)
 											</Form.Label>
 											<Form.Control
 												type="number"
@@ -404,11 +421,8 @@ const CmsTaxBot: React.FC = () => {
 										</Form.Group>
 										<Form.Group>
 											<Form.Label className="small fw-bold text-muted">
-												Full-time student in 2025?
+												Full-time student in 2025 (If you studied more than 13 weeks)?
 											</Form.Label>
-											<div className="text-muted small mb-2">
-												(If you studied more than 13 weeks you are full-time)
-											</div>
 											<Form.Select
 												name="student2025"
 												value={form.student2025}
@@ -421,26 +435,26 @@ const CmsTaxBot: React.FC = () => {
 										<Row>
 											<Col>
 												<Form.Label className="small fw-bold text-muted">
-													Tuition (T2202)
+													Tuition Slip (T2202)
 												</Form.Label>
 												<Form.Control
 													type="number"
 													name="tuitionFees"
 													value={form.tuitionFees}
 													onChange={handleChange}
-													placeholder="0"
+													placeholder="T2202"
 												/>
 											</Col>
 											<Col>
 												<Form.Label className="small fw-bold text-muted">
-													C/F Tuition (NOA)
+													Carry Forward (Last Year Tution Fee)
 												</Form.Label>
 												<Form.Control
 													type="number"
 													name="tuitionCarryForward"
 													value={form.tuitionCarryForward}
 													onChange={handleChange}
-													placeholder="0"
+													placeholder="From NOA"
 												/>
 											</Col>
 										</Row>
@@ -464,27 +478,27 @@ const CmsTaxBot: React.FC = () => {
 							{step === 3 && (
 								<div className="text-center py-3">
 									<h5 className="fw-bold text-warning mb-3">
-										Custom Optimization Required
+										Custom Optimization Needed
 									</h5>
-									<p className="text-muted small mb-4">
-										Married returns allow you to split credits for a higher family refund.
-										This requires an expert manual review.
+									<p className="text-muted small">
+										Family refunds allow spousal credit splits. This requires manual
+										expert review for maximum results.
 									</p>
 									<Button
 										variant="success"
-										className="w-100 py-3 mb-2 fw-bold rounded-pill"
+										className="w-100 py-3 mb-2 rounded-pill fw-bold"
 										onClick={() =>
 											window.open(`https://wa.me/7533816665?text=${results.waMsg}`)
 										}
 									>
-										WhatsApp Benefit Review
+										Request Review
 									</Button>
 									<Button
 										variant="link"
 										className="text-muted small"
 										onClick={handleBack}
 									>
-										Back to edit
+										Edit Info
 									</Button>
 								</div>
 							)}
@@ -499,27 +513,25 @@ const CmsTaxBot: React.FC = () => {
 										<h2 className="fw-bold">
 											${results.totalLow.toFixed(0)} – ${results.totalHigh.toFixed(0)}
 										</h2>
-										<div className="small fw-bold text-muted text-uppercase">
-											Total Potential Benefits
+										<div className="small fw-bold text-muted uppercase">
+											Potential Benefit and Refund Range
 										</div>
 									</div>
 									<Table borderless size="sm">
 										<tbody className="small">
 											<tr className="border-bottom">
-												<td>Federal Tax Refund</td>
+												<td>Federal Tax Refund (CRA)</td>
 												<td className="text-end fw-bold">
 													${results.estimatedRefund.toFixed(2)}
 												</td>
 											</tr>
 											<tr className="border-bottom">
 												<td>GST/HST & Grocery Rebate</td>
-												<td className="text-end fw-bold text-success">
-													$650.00 – $950.00
-												</td>
+												<td className="text-end fw-bold text-success">$650 – $950</td>
 											</tr>
 											{results.nBonus > 0 && (
 												<tr className="border-bottom">
-													<td>Newcomer Arrival Bonus</td>
+													<td>Newcomer Bonus</td>
 													<td className="text-end fw-bold">
 														${results.nBonus.toFixed(2)}
 													</td>
@@ -543,7 +555,7 @@ const CmsTaxBot: React.FC = () => {
 											)}
 											{results.oeptcRange && (
 												<tr className="border-bottom">
-													<td>Ontario (OEPTC)</td>
+													<td>Ontario OEPTC</td>
 													<td className="text-end fw-bold">{results.oeptcRange}</td>
 												</tr>
 											)}
@@ -562,14 +574,14 @@ const CmsTaxBot: React.FC = () => {
 											window.open(`https://wa.me/7533816665?text=${results.waMsg}`)
 										}
 									>
-										Claim Benefits on WhatsApp
+										Claim via WhatsApp
 									</Button>
 									<Button
 										variant="outline-secondary"
 										className="w-100 mt-2 border-0"
 										onClick={handleBack}
 									>
-										Edit My Information
+										Back to edit
 									</Button>
 								</div>
 							)}
