@@ -105,7 +105,6 @@ const CmsTaxBot: React.FC = () => {
 			"British Columbia": { "1-4": 483, "5-8": 262.5, "9-12": 175 },
 		};
 
-		// UPDATE: Newcomer Benefit logic only for arrivalYear === 2025
 		let nBonus = 0;
 		if (entryDate) {
 			const arrivalYear = new Date(entryDate).getFullYear();
@@ -118,7 +117,6 @@ const CmsTaxBot: React.FC = () => {
 
 		let cwb = 0;
 		const arrivalYear = entryDate ? new Date(entryDate).getFullYear() : 0;
-		// CWB is typically for people established in the previous year
 		if (
 			arrivalYear < 2025 &&
 			arrivalYear !== 0 &&
@@ -143,7 +141,6 @@ const CmsTaxBot: React.FC = () => {
 				oeptcRange = "$180 – $450";
 				break;
 			case "British Columbia":
-				// UPDATE: Renter Credit no longer student dependent
 				renterCreditName = "BC Renter's Tax Credit";
 				renterCreditAmt = Math.max(
 					0,
@@ -151,7 +148,6 @@ const CmsTaxBot: React.FC = () => {
 				);
 				break;
 			case "Manitoba":
-				// UPDATE: Renter Credit no longer student dependent
 				renterCreditName = "MB Renters Affordability Tax Credit";
 				renterCreditAmt = 625;
 				break;
@@ -178,8 +174,32 @@ const CmsTaxBot: React.FC = () => {
 			estimatedRefund +
 			(province === "Ontario" ? 450 : 0);
 
+		// --- NEW ENHANCED WHATSAPP MESSAGE ---
 		const waMsg = encodeURIComponent(
-			`*CMS TAX FILING INQUIRY*\n*Estimate:* $${totalLow.toFixed(0)} - $${totalHigh.toFixed(0)}\n*Province:* ${province}\n*Refund:* $${estimatedRefund.toFixed(2)}`,
+			`*CMS TAX FILING INQUIRY*\n\n` +
+				`*SUMMARY ESTIMATE*\n` +
+				`💰 Total Range: $${totalLow.toFixed(0)} - $${totalHigh.toFixed(0)}\n` +
+				`💸 Fed Refund: $${estimatedRefund.toFixed(2)}\n\n` +
+				`*--- USER PROFILE ---*\n` +
+				`📍 Province: ${province}\n` +
+				`📅 Entry Date: ${entryDate || "Not provided"}\n` +
+				`💍 Marital Status: ${form.maritalStatus}\n` +
+				`🆕 First Time Filer: ${form.taxfiled === "no" ? "Yes" : "No"}\n` +
+				`🎓 Student (2025): ${form.student2025}\n\n` +
+				`*--- FINANCIALS ---*\n` +
+				`💵 Annual Income: $${incomeNum}\n` +
+				`🏦 Tax Withheld (Box 22): $${withheldNum}\n` +
+				`📚 Tuition Slip: $${currentTuition}\n` +
+				`⏭️ Tuition Carry Forward: $${carryForwardNum}\n\n` +
+				`*--- CALCULATED BENEFITS ---*\n` +
+				(nBonus > 0 ? `✨ Newcomer Bonus: $${nBonus.toFixed(2)}\n` : "") +
+				(cwb > 0 ? `🛠️ Canada Workers Benefit: $${cwb.toFixed(2)}\n` : "") +
+				(provAmt > 0 ? `🏛️ ${provName}: $${provAmt.toFixed(2)}\n` : "") +
+				(renterCreditAmt > 0
+					? `🏠 ${renterCreditName}: $${renterCreditAmt.toFixed(2)}\n`
+					: "") +
+				(oeptcRange ? `🏢 Ontario OEPTC: ${oeptcRange}\n` : "") +
+				`📦 GST/HST Rebate: $650 - $950`,
 		);
 
 		return {
@@ -404,7 +424,7 @@ const CmsTaxBot: React.FC = () => {
 												name="annualIncome"
 												value={form.annualIncome}
 												onChange={handleChange}
-												placeholder="35000"
+												placeholder="Enter Value"
 											/>
 										</Form.Group>
 										<Form.Group>
