@@ -193,32 +193,43 @@ const CmsTaxBot: React.FC = () => {
 			estimatedRefund +
 			(province === "Ontario" ? 450 : 0);
 
-		const waMsg = encodeURIComponent(
-			`*CMS TAX FILING INQUIRY*\n\n` +
-				`*SUMMARY ESTIMATE*\n` +
-				`💰 Total Range: $${totalLow.toFixed(0)} - $${totalHigh.toFixed(0)}\n` +
-				`💸 Fed Refund: $${estimatedRefund.toFixed(2)}\n\n` +
-				`*--- USER PROFILE ---*\n` +
+		let message = "";
+		if (form.maritalStatus === "married") {
+			message =
+				`*CMS MARRIED TAX FILING INQUIRY*\n\n` +
 				`📍 Province: ${province}\n` +
 				`📅 Entry Date: ${entryDate || "Not provided"}\n` +
-				`💍 Marital Status: ${form.maritalStatus}\n` +
-				`🆕 First Time Filer: ${form.taxfiled === "no" ? "Yes" : "No"}\n` +
-				`🎓 Student (2025): ${form.student2025}\n\n` +
-				`*--- FINANCIALS ---*\n` +
-				`💵 Annual Income: $${incomeNum}\n` +
-				`🏦 Tax Withheld (Box 22): $${withheldNum}\n` +
-				`📚 Tuition Slip: $${currentTuition}\n` +
-				`⏭️ Tuition Carry Forward: $${carryForwardNum}\n\n` +
-				`*--- CALCULATED BENEFITS ---*\n` +
-				(nBonus > 0 ? `✨ Newcomer Bonus: $${nBonus.toFixed(2)}\n` : "") +
-				(cwb > 0 ? `🛠️ Canada Workers Benefit: $${cwb.toFixed(2)}\n` : "") +
-				(provAmt > 0 ? `🏛️ ${provName}: $${provAmt.toFixed(2)}\n` : "") +
-				(renterCreditAmt > 0
-					? `🏠 ${renterCreditName}: $${renterCreditAmt.toFixed(2)}\n`
-					: "") +
-				(oeptcRange ? `🏢 Ontario OEPTC: ${oeptcRange}\n` : "") +
-				`📦 GST/HST Rebate: $650 - $950`,
-		);
+				`💍 Status: Married\n` +
+				`🆕 First Time Filer: ${form.taxfiled === "no" ? "Yes" : "No"}\n\n` +
+				`Note: I am looking for a family tax optimization review.`;
+		} else {
+			message = encodeURIComponent(
+				`*CMS TAX FILING INQUIRY*\n\n` +
+					`*SUMMARY ESTIMATE*\n` +
+					`💰 Total Range: $${totalLow.toFixed(0)} - $${totalHigh.toFixed(0)}\n` +
+					`💸 Fed Refund: $${estimatedRefund.toFixed(2)}\n\n` +
+					`*--- USER PROFILE ---*\n` +
+					`📍 Province: ${province}\n` +
+					`📅 Entry Date: ${entryDate || "Not provided"}\n` +
+					`💍 Marital Status: ${form.maritalStatus}\n` +
+					`🆕 First Time Filer: ${form.taxfiled === "no" ? "Yes" : "No"}\n` +
+					`🎓 Student (2025): ${form.student2025}\n\n` +
+					`*--- FINANCIALS ---*\n` +
+					`💵 Annual Income: $${incomeNum}\n` +
+					`🏦 Tax Withheld (Box 22): $${withheldNum}\n` +
+					`📚 Tuition Slip: $${currentTuition}\n` +
+					`⏭️ Tuition Carry Forward: $${carryForwardNum}\n\n` +
+					`*--- CALCULATED BENEFITS ---*\n` +
+					(nBonus > 0 ? `✨ Newcomer Bonus: $${nBonus.toFixed(2)}\n` : "") +
+					(cwb > 0 ? `🛠️ Canada Workers Benefit: $${cwb.toFixed(2)}\n` : "") +
+					(provAmt > 0 ? `🏛️ ${provName}: $${provAmt.toFixed(2)}\n` : "") +
+					(renterCreditAmt > 0
+						? `🏠 ${renterCreditName}: $${renterCreditAmt.toFixed(2)}\n`
+						: "") +
+					(oeptcRange ? `🏢 Ontario OEPTC: ${oeptcRange}\n` : "") +
+					`📦 GST/HST Rebate: $650 - $950`,
+			);
+		}
 
 		return {
 			totalLow,
@@ -231,7 +242,7 @@ const CmsTaxBot: React.FC = () => {
 			renterCreditName,
 			oeptcRange,
 			estimatedRefund,
-			waMsg,
+			waMsg: encodeURIComponent(message),
 		};
 	}, [form]);
 
