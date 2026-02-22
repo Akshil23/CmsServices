@@ -47,7 +47,26 @@ const CmsTaxBot: React.FC = () => {
 		e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
 	) => {
 		const { name, value } = e.target;
-		setForm(prev => ({ ...prev, [name]: value }));
+		let newValue = value;
+
+		// PROTECTION: Snap any date past 2025 back to Dec 31, 2025
+		if (name === "entryDate" && value) {
+			const selectedDate = new Date(value);
+			if (selectedDate.getFullYear() > 2025) {
+				newValue = "2025-12-31";
+			}
+		}
+
+		setForm(prev => {
+			const updatedForm = { ...prev, [name]: newValue };
+
+			// LOGIC: If income is 0, tax withheld must be 0
+			if (name === "annualIncome" && (newValue === "0" || newValue === "")) {
+				updatedForm.taxWithheld = "0";
+			}
+
+			return updatedForm;
+		});
 	};
 
 	const handleServiceSelection = (serviceName: string) => {
@@ -116,10 +135,10 @@ const CmsTaxBot: React.FC = () => {
 		}
 
 		let cwb = 0;
-		const arrivalYear = entryDate ? new Date(entryDate).getFullYear() : 0;
+		const arrivalYearValue = entryDate ? new Date(entryDate).getFullYear() : 0;
 		if (
-			arrivalYear < 2025 &&
-			arrivalYear !== 0 &&
+			arrivalYearValue < 2025 &&
+			arrivalYearValue !== 0 &&
 			incomeNum >= 3000 &&
 			incomeNum <= 37742
 		) {
@@ -174,7 +193,6 @@ const CmsTaxBot: React.FC = () => {
 			estimatedRefund +
 			(province === "Ontario" ? 450 : 0);
 
-		// --- NEW ENHANCED WHATSAPP MESSAGE ---
 		const waMsg = encodeURIComponent(
 			`*CMS TAX FILING INQUIRY*\n\n` +
 				`*SUMMARY ESTIMATE*\n` +
@@ -235,7 +253,6 @@ const CmsTaxBot: React.FC = () => {
 
 					<Card className="border-0 shadow-lg rounded-4 overflow-hidden">
 						<Card.Body className="p-4 p-md-5">
-							{/* STEP 0: Selection */}
 							{step === 0 && (
 								<div>
 									<h4 className="fw-bold mb-3 text-center">
@@ -272,7 +289,6 @@ const CmsTaxBot: React.FC = () => {
 								</div>
 							)}
 
-							{/* STEP 5: Redirection */}
 							{step === 5 && (
 								<div className="text-center py-4">
 									<h4 className="fw-bold mb-4">Contact CMS Experts</h4>
@@ -301,7 +317,6 @@ const CmsTaxBot: React.FC = () => {
 								</div>
 							)}
 
-							{/* STEP 1: Background */}
 							{step === 1 && (
 								<Form>
 									<h3 className="fw-bold mb-4">Tax Estimate (2026)</h3>
@@ -370,7 +385,6 @@ const CmsTaxBot: React.FC = () => {
 												<option value="Nova Scotia">Nova Scotia</option>
 												<option value="Ontario">Ontario</option>
 												<option value="Prince Edward Island">Prince Edward Island</option>
-												<option value="Quebec">Quebec</option>
 												<option value="Saskatchewan">Saskatchewan</option>
 												<option value="Northwest Territories">
 													Northwest Territories
@@ -410,7 +424,6 @@ const CmsTaxBot: React.FC = () => {
 								</Form>
 							)}
 
-							{/* STEP 2: Financials */}
 							{step === 2 && (
 								<Form>
 									<h4 className="fw-bold mb-4">Income And Credits</h4>
@@ -428,8 +441,12 @@ const CmsTaxBot: React.FC = () => {
 											/>
 										</Form.Group>
 										<Form.Group>
-											<Form.Label className="small fw-bold text-muted">
-												Total Tax (Box 22 - Total of All T4's)
+											<Form.Label
+												className={`small fw-bold ${parseFloat(form.annualIncome) === 0 ? "text-danger" : "text-muted"}`}
+											>
+												Total Tax Paid (Box 22){" "}
+												{parseFloat(form.annualIncome) === 0 &&
+													"(Not applicable if income is 0)"}
 											</Form.Label>
 											<Form.Control
 												type="number"
@@ -437,11 +454,12 @@ const CmsTaxBot: React.FC = () => {
 												value={form.taxWithheld}
 												onChange={handleChange}
 												placeholder="0.00"
+												disabled={parseFloat(form.annualIncome) === 0}
 											/>
 										</Form.Group>
 										<Form.Group>
 											<Form.Label className="small fw-bold text-muted">
-												Full-time student in 2025 (If you studied more than 13 weeks)?
+												Full-time student in 2025?
 											</Form.Label>
 											<Form.Select
 												name="student2025"
@@ -455,19 +473,19 @@ const CmsTaxBot: React.FC = () => {
 										<Row>
 											<Col>
 												<Form.Label className="small fw-bold text-muted">
-													Tuition Slip (T2202)
+													Tuition (T2202)
 												</Form.Label>
 												<Form.Control
 													type="number"
 													name="tuitionFees"
 													value={form.tuitionFees}
 													onChange={handleChange}
-													placeholder="T2202"
+													placeholder="0"
 												/>
 											</Col>
 											<Col>
 												<Form.Label className="small fw-bold text-muted">
-													Carry Forward (Last Year Tution Fee)
+													Carry Forward
 												</Form.Label>
 												<Form.Control
 													type="number"
@@ -494,7 +512,6 @@ const CmsTaxBot: React.FC = () => {
 								</Form>
 							)}
 
-							{/* STEP 3: Married */}
 							{step === 3 && (
 								<div className="text-center py-3">
 									<h5 className="fw-bold text-warning mb-3">
@@ -523,7 +540,6 @@ const CmsTaxBot: React.FC = () => {
 								</div>
 							)}
 
-							{/* STEP 4: Results */}
 							{step === 4 && (
 								<div>
 									<div className="text-center mb-4">
